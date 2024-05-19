@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap');
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+#root {
+  font-family: 'Public Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body{
+  padding: 0 20px;
+}
+
+.input-box-shadow {
+  filter: drop-shadow(-4px -4px 44px rgba(0, 0, 0, 0.08));
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+  font-size: 40px;
+}
+
+.slick-next:before {
+  position: absolute;
+  right: 0;
+  margin-top: -10px;
+  margin-right: 5px;
+}
+
+.slick-next,
+.slick-prev {
+  position: absolute;
+  right: 0;
+}
+
+.slick-prev {
+  z-index: 99999;
+  margin-left: 25px;
+}
+
+.category-card:hover .arrow-icon {
+  fill: white;
+}
+
+.slick-arrow {
+  position: absolute;
+  right: 50;
+  margin-right: 25px;
+}
+
+.slick-dots {
+  @apply ml-[-10px] hidden
+}
+
+@media screen and (max-width: 1150px) {
+  #authImg {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  #loginForm {
+    padding: 6px 2px;
+  }
+
+  #eventCarousel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #eventForm {
+    width: 90%;
+  }
+
+  #eventForm>div {
+    padding: 0 10%;
+  }
+
+  #eventForm input[type=submit] {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  #loginForm {
+    margin: 0;
+    width: 80%;
+    padding: 0;
+  }
+
+  #or {
+    width: 30%;
+  }
+
+  #offPro {
+    width: 80%;
+  }
+
+  #choose {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  #eventForm label {
+    font-size: 20px;
+  }
+}
+
+/* ________________________________________________________________________________________________________ */
+
+@import url("https://fonts.googleapis.com/css2?family=Island+Moments&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #FF7E01;
+  --secondary-color: #FAA935;
+  --heading-color: #0B2727;
+  --text-color: #6E7074;
+  --font-name: "Montserrat", sans-serif;
+  --subtitle-font-name: "Island Moments", cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-name);
+}
+
+section {
+  padding: 50px 0px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+ul {
+  list-style: none;
+}
+
+.primary__btn {
+  background: var(--secondary-color) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 0.4rem 1.5rem !important;
+}
+
+.primary__btn a {
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.primary__btn a:hover {
+  color: inherit;
+}
+
+.secondary__btn {
+  background: transparent !important;
+  color: #0B2727 !important;
+  border: none !important;
+  font-weight: 500 !important;
+}
+
+.secondary__btn a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: var(--heading-color);
+}
+
+.secondary__btn a:hover {
+  color: inherit;
+}
+
+.section__subtitle {
+  background: var(--secondary-color);
+  font-family: var(--subtitle-font-name);
+  width: max-content;
+  padding: 0px 0.5rem;
+  padding-right: 1rem;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1.7rem;
+  color: var(--heading-color);
+}
+
+/* ================ MAKE IT RESPONSIVE =============== */
+@media only screen and (max-width: 992px) {
+
+  .primary__btn a,
+  .secondary__btn a {
+    font-size: 0.9rem;
+  }
+
+  .primary__btn,
+  .secondary__btn,
+  .btn-dark {
+    padding: 0.2rem 1.1rem !important;
+  }
+
+  section {
+    padding: 40px 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .section__subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+
+.thank__you span i {
+  font-size: 4rem;
+  color: green;
+}
+
+.thank__you h1 {
+  font-size: 3.6rem;
+  font-family: var(--subtitle-font-name);
+}
