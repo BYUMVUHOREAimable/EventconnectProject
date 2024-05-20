@@ -59,8 +59,9 @@ export default function ForgotPassword() {
           <p className="text-purple-900 ml-5 mt-2">
             Enter your registered email verification.
             <br />
-            <span className="text-gray-500">
-              We will share link to reset your password on your email.
+            <span className="text-gray-500 flex">
+            You will receive a password reset email soon.
+            Follow the link in the email to reset your password.
             </span>
           </p>
           <div className="flex flex-col w-full px-5 my-6">
