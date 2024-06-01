@@ -228,6 +228,13 @@ ul {
   }
 }
 
+@media screen and (max-width: 325px) {
+  #viewmoreMainP {
+    display: none;
+    font-size: 16px;
+  }
+}
+
 
 .thank__you span i {
   font-size: 4rem;

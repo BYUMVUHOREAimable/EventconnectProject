@@ -1,5 +1,5 @@
 import React from 'react'
-import { blogImg1 } from '../assets'
+// import { blogImg1 } from '../assets'
 import StarRating from './StarRating'
 
 const Card = ({course}) => {

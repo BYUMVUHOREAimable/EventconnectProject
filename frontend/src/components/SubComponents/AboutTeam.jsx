@@ -1,5 +1,8 @@
 import React from 'react';
 import Image1 from '../../assets/profile-picture.jpg';
+import Blaise from '../../assets/blaisepro.jpg'
+import Remy from '../../assets/Remy.jpg'
+import Jeremy from '../../assets/Jeremie.jpg'
 
 const AboutTeam = () => {
   const team = [
@@ -14,14 +17,14 @@ const AboutTeam = () => {
       id: 2,
       name: "GITOLI Remy Claudien",
       tasks: "Data Analyst & Backend Designer",
-      profile: Image1,
+      profile: Remy,
       linked: "https://www.linkedIn.com/Remy"
     },
     {
       id: 3,
       name: "BIGIRABAGABO Blaise",
       tasks: "System Integrator & Backend Designer",
-      profile: Image1,
+      profile: Blaise,
       linked: "https://www.linkedIn.com/Blaise"
     },
     {
@@ -35,7 +38,7 @@ const AboutTeam = () => {
       id: 5,
       name: "NKUNDABAGENZI Jeremy",
       tasks: "UI/UX Designer & Frontend Designer",
-      profile: Image1,
+      profile: Jeremy,
       linked: "https://www.linkedIn.com/Jeremy"
     }
   ];
@@ -46,7 +49,7 @@ const AboutTeam = () => {
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}>
         {team.map((member) => (
           <div key={member.id} className='relative w-full p-4 rounded-lg shadow-lg cursor-pointer'>
-            <div><img src={member.profile} alt={member.name} className='w-full h-auto rounded-md' /></div>
+            <div className=''><img src={member.profile} alt={member.name} className='w-full rounded-md' /></div>
             <p className='text-gray-800 mt-2'>{member.name}</p>
             <div>
               <a href={member.linked} className='text-blue-600'>LinkedIn</a>

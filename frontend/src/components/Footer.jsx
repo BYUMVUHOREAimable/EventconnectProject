@@ -14,12 +14,12 @@ const Footer = () => {
                 <h3 className='py-2 text-[#6D737A]'>Call : +250 784191775</h3>
                 <h3 className='py-2 text-[#6D737A]'>Praesent nulla massa, hendrerit <br></br> vestibulum gravida in, feugiat auctor felis.</h3>
                 <h3 className='py-2 text-[#363A3D]'>Email: eventconnect123@mail.com</h3>
-                <div className='flex gap-4 py-4'>
-                <a href="https://www.facebook.com/kirengaremyclaudien/" target="_blank" rel="noopener noreferrer" className='p-4 bg-[#E9F8F3] rounded-xl  hover:bg-[#91d6a9]'><FaFacebookF size={25} style={{color:'#4DC39E'}} /></a>
-                        <a href="https://dribbble.com/byumvuhoreaimable" target="_blank" rel="noopener noreferrer" className='p-4 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaDribbble size={25} style={{color:'#4DC39E'}} /></a>
-                        <a href="https://www.linkedin.com/in/jeremy-nk-413a612a6/" target="_blank" rel="noopener noreferrer" className='p-4 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaLinkedinIn size={25} style={{color:'#4DC39E'}} /></a>
-                        <a href="www.instagram.comhttps://www.instagram.com/firstttyyy.____/" target="_blank" rel="noopener noreferrer" className='p-4 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaInstagram size={25} style={{color:'#4DC39E'}} /></a>
-                        <a href="https://www.youtube.com/@BAI-SHOWS" target="_blank" rel="noopener noreferrer" className='p-4 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaYoutube size={25} style={{color:'#4DC39E'}} /></a>
+                <div className='flex gap-4 py-4 max-sm:gap-1'>
+                <a href="https://www.facebook.com/kirengaremyclaudien/" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl  hover:bg-[#91d6a9]'><FaFacebookF size={25} style={{color:'#4DC39E'}} /></a>
+                        <a href="https://dribbble.com/byumvuhoreaimable" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaDribbble size={25} style={{color:'#4DC39E'}} /></a>
+                        <a href="https://www.linkedin.com/in/jeremy-nk-413a612a6/" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaLinkedinIn size={25} style={{color:'#4DC39E'}} /></a>
+                        <a href="www.instagram.comhttps://www.instagram.com/firstttyyy.____/" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaInstagram size={25} style={{color:'#4DC39E'}} /></a>
+                        <a href="https://www.youtube.com/@BAI-SHOWS" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaYoutube size={25} style={{color:'#4DC39E'}} /></a>
 
                 </div>
 

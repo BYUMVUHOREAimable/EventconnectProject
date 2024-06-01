@@ -47,12 +47,11 @@ export default function ResetPassword() {
           <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-purple-900"></div>
         </div>
       )}
-      <div className="w-full flex flex-col text-gray-400 justify-center items-center self-center">
+      <div className="flex flex-col text-gray-400 justify-center items-center self-center max-sm:w-full sm:w-4/5">
         <p className="text-purple-900 text-xl font-semibold">Reset password</p>
-        <form className="flex flex-col justify-center self-center items-center w-2/4 my-5" onSubmit={handleSubmit}>
-        <div className="flex flex-col relative text-gray-800 py-1">
+        <form className="w-10/12 max-sm:w-11/12 my-5" onSubmit={handleSubmit}>
           <input 
-          className=" p-1 rounded-sm focus:border-blue-500 border border-violet-900 bg-white indent-3" 
+          className="p-1 rounded-sm focus:border-blue-500 border border-violet-900 bg-white indent-3 w-full" 
           type={visible ? "text" : "password"}
           name="password" 
            placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="" />
@@ -60,7 +59,6 @@ export default function ResetPassword() {
             <AiOutlineEye className="absolute top-3 right-1 cursor-pointer" onClick={() => setVisible(false)} />) : (
             <AiOutlineEyeInvisible className="absolute top-3 right-1 cursor-pointer" onClick={() => setVisible(true)}/>
           )}
-        </div>
           <button type="submit" className="shadow-lg shadow-slate-500/50 hover:shadow-slate-500/40 text-white bg-purple-900 hover:bg-purple-700 font-semibold rounded-sm w-full p-2 my-3">
             Reset
           </button>

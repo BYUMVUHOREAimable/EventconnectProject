@@ -1,12 +1,12 @@
 
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,18 +45,16 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center">
-            {loading && (
+    <div className="pt-3 flex flex-col justify-center items-center w-full">
+      {loading && (
         <div className="fixed inset-0 bg-purple-500 bg-opacity-40 flex justify-center items-center z-10">
           <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-purple-900"></div>
         </div>
       )}
-      <div className="flex flex-col justify-center self-center p-3">
-        <h1 className="text-purple-900 text-xl font-semibold">
-          Forgot password
-        </h1>
-        <form onSubmit={handleSubmit}>
-          <p className="text-purple-900 ml-5 mt-2">
+      <div className="grid grid-flow-row gap-3 max-sm:w-full sm:w-4/5 w-1/2 rounded-lg p-3 px-8 max-sm:px-4">
+        <h1 className="text-purple-900 text-xl font-semibold">Forgot password</h1>
+        <form onSubmit={handleSubmit} className="justify-center items-center w-11/12 max-sm:w-full">
+          <p className="text-purple-900 my-2">
             Enter your registered email verification.
             <br />
             <span className="text-gray-500 flex">
@@ -64,9 +62,8 @@ export default function ForgotPassword() {
             Follow the link in the email to reset your password.
             </span>
           </p>
-          <div className="flex flex-col w-full px-5 my-6">
             <input
-              className="p-1 rounded-sm border border-purple-800 indent-2 text-gray-800 border-current"
+              className="p-1 rounded-sm border border-purple-800 indent-2 text-gray-800 border-current w-full my-2"
               type="email"
               placeholder="Enter your email here"
               name="email"
@@ -74,10 +71,9 @@ export default function ForgotPassword() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
           <button
             type="submit"
-            className={`w-11/12 shadow-lg shadow-slate-500/50 hover:shadow-slate-500/40 text-white font-semibold rounded-lg p-2 mt-4 bg-purple-800 hover:bg-purple-600 text-center self-center`}
+            className={`w-full shadow-lg shadow-slate-500/50 hover:shadow-slate-500/40 text-white font-semibold rounded-lg p-2 mt-4 bg-purple-800 hover:bg-purple-600 text-center self-center`}
           >
             Send
           </button>

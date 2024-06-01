@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(40%, 1fr))',
-      },
+      }
     },
   },
   plugins: [],
