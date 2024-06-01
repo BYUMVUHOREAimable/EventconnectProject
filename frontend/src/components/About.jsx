@@ -10,7 +10,7 @@ const About = () => {
     <div>
      <Navbar />
      <main className='pt-16 flex flex-col'>
-          <h1 className='max-sm:text-xl md:text-4xl text-center p-3 font-bold sm:w-full md:w-3/4 self-center'>Find Event Near You Easily And Broadcast Your Events For Free</h1>
+          <h1 className='max-sm:text-xl md:text-4xl text-center p-3 font-bold sm:w-full md:w-3/4 self-center'>Find AllEvents Near You Easily And Broadcast Your Events For Free</h1>
           <AboutFirst />
           <AboutSecond />
           <AboutTeam />
