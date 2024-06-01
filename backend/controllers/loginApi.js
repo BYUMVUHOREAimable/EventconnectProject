@@ -13,6 +13,7 @@ const validate = (data) => {
     password: Joi.string().label('Password'),
   });
   return schema.validate(data);
+  console.log(data);
 };
 
 router.post('/', async (req, res) => {
@@ -30,7 +31,7 @@ router.post('/', async (req, res) => {
 
   // Access JWT_SECRET from environment variable
   const token = jwt.sign({ _id: user._id, email: user.email }, process.env.JWT_SECRET);
-  res.status(302).send({ location: '/homedashboard', token: token , message: "Successful login"});
+  res.status(302).send({  token: token , message: "Successful login"});
 });
 
 module.exports = router;

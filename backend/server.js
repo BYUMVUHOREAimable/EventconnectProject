@@ -34,9 +34,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors({
   origin: "http://localhost:3000",
-  methods: ["*"],
-  credentials: true,
-  allowedHeaders: "Content-Type, Authorization"
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
 
 app.use((req, res, next) => {
@@ -133,10 +132,6 @@ app.post('/reset-password/:id/:token', async (req, res) => {
     }
   }
 });
-
-app.get("/", (req, res) => {
-  res.send("Route Url For Event Connect")
-})
 
 
   // Starting the server
