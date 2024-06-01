@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    
     "@nivo/core": "^0.79.0",
     "@nivo/bar": "^0.79.0",
     "@nivo/line": "^0.79.0",
@@ -63,6 +64,7 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+    
   },
   "eslintConfig": {
     "extends": [

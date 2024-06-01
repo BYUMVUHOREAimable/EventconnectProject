@@ -133,6 +133,10 @@ app.post('/reset-password/:id/:token', async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("Route Url For Event Connect")
+})
+
 
   // Starting the server
 app.listen(PORT, () => {
