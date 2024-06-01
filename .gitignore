@@ -1,2 +1,4 @@
 .vercel
 .vscode
+.gitignore
+.git
