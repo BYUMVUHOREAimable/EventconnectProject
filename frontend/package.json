@@ -60,7 +60,7 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "build": "npm install --legacy-peer-deps && vercel build",
+    "build": "react-scripts build",
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
