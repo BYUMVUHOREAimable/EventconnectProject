@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
 import React, { useState } from 'react';
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
