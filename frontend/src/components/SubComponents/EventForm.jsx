@@ -35,22 +35,21 @@ const EventForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
-      name,
-      description,
-      date,
-      address,
-      city,
-      state,
-      country,
-      postalCode,
-      categories,
-      price,
-      currency,
-      availability,
-      images
+      name: eventData.name,
+      description: eventData.description,
+      date: eventData.date,
+      address: eventData.address,
+      city: eventData.city,
+      state: eventData.state,
+      country: eventData.country,
+      postalCode: eventData.postalCode,
+      categories: eventData.categories,
+      price: eventData.price,
+      currency: eventData.currency,
+      availability: eventData.availability,
+      images: eventData.images
     };
     try {
-      setLoading(true);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/event`, {
         method: "POST",
         headers: {
@@ -62,22 +61,20 @@ const EventForm = () => {
   
       if (response.status === 302) {
         // Extract redirect location and navigate
-      toast(dataRes.message);
-      navigate("/dashboard")
+        toast(dataRes.message);
+        navigate("/dashboard");
       } else {
         // Handle other status codes (e.g., errors)
         toast.error(dataRes.message);
       }
     } catch (error) {
       console.error(error);
-      toast.error("Login failed. Please check your email and password.");
-    } finally {
-      setLoading(false);
+      toast.error("Creating event failed. Please try again.");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-6">
       <form 
         className="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl" 
         onSubmit={handleSubmit}
@@ -270,7 +267,7 @@ const EventForm = () => {
           Create Event
         </button>
       </form>
-      <Link to="dashboard" className="text-violet-900 hover:text-violet-800">Return home&#63;</Link>
+      <Link to="/dashboard" className="text-violet-900 hover:text-violet-800 mt-4">Return home&#63;</Link>
     </div>
   );
 };
