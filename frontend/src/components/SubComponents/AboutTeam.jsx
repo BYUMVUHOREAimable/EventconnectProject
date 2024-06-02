@@ -10,7 +10,7 @@ const AboutTeam = () => {
     {
       id: 1,
       name: "BYUMVUHORE Aimable",
-      tasks: "Project Manager & Frontend Designer",
+      tasks: "Project Manager, Frontend Designer & UI/UX Designer",
       profile: Aimable,
       linked: "https://www.linkedin.com/in/byumvuhore-aimable-554019262/"
     },
