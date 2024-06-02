@@ -9,17 +9,17 @@ const Hero = () => {
             
             <div className='flex flex-col justify-start gap-4'>
                 <p className='py-2 text-2xl text-[#20B486] font-medium'>START TO SUCCESS</p>
-                <h1 className='md:leading-[72px] py-2 md:text-4xl text-5xl font-semibold'>Access To <span className='text-[#20B486]'>1000+</span> Events
-                    from <span  className='text-[#20B486]'>500+</span> Inventors
+                <h1 className='md:leading-[72px] py-2 md:text-4xl text-5xl font-semibold'>Access To <span className='text-[#20B486]'>500+</span> Events
+                    from <span  className='text-[#20B486]'>100+</span> Organisers
                     & Institutions
                 </h1>
-                <p className='py-2 text-lg text-gray-600'>Various versions have evolved over the years, sometimes by accident.</p>
+                <p className='py-2 text-lg text-gray-600'>Enhance your event with top-notch audiovisual services at budget-friendly prices.</p>
                 
                 <form className='bg-white border max-w-[500px] p-4 input-box-shadow rounded-md flex justify-between'>
                     <input 
                         className='bg-white'
                         type="text"
-                        placeholder='What do want to learn?'
+                        placeholder='What is the event?'
                     />
                     <button>
                         <AiOutlineSearch 
@@ -33,7 +33,7 @@ const Hero = () => {
                 </form>
             </div>
             
-            <img  src={heroImg} className="md:order-last  order-first " alt='heroImg' />
+            <img  src={heroImg} className="md:order-last lg:ml-2 order-first " alt='heroImg' />
 
 
 
