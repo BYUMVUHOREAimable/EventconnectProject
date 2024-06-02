@@ -9,6 +9,7 @@ const passport = require("passport");
 const connection = require('./Models/db.js');
 const signUpRoute = require('./controllers/signupApi.js');
 const loginRoute = require('./controllers/loginApi');
+const eventRoute = require('./controllers/event.js');
 const storeRoute = require('./controllers/storeApi');
 const cookieSession = require('cookie-session');
 const UserModel = require('./Models/user.js')
@@ -46,7 +47,7 @@ app.use((req, res, next) => {
 app.use('/auth', authRoute);
 app.use('/v1/api/signup', signUpRoute);
 app.use('/v1/api/login', loginRoute);
-// app.use('/v1/api', forgotRoute);
+app.use('/v1/api/event', eventRoute);
 app.use('/v1/api/store', storeRoute);
 
 
