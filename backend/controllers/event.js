@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Event = require('../Models/event.js');
+const Event = require('../Models/eventcreate.js');
 
 // Get all events
 router.get('/', async (req, res) => {
@@ -33,6 +33,7 @@ router.post('/', async (req, res) => {
       name: req.body.name,
       description: req.body.description,
       date: req.body.date,
+      startTime: req.body.startTime, // Include startTime
       location: {
         address: req.body.location.address,
         city: req.body.location.city,
@@ -65,6 +66,7 @@ router.put('/:id', async (req, res) => {
       name: req.body.name,
       description: req.body.description,
       date: req.body.date,
+      startTime: req.body.startTime, // Include startTime
       location: {
         address: req.body.location.address,
         city: req.body.location.city,
