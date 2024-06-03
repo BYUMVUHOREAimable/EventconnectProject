@@ -138,7 +138,7 @@ export default function BookProcess() {
                   <Link to="/dashboard" className="w-full py-2">Go to Home</Link>
                   <div className="w-11/12 grid grid-cols-2 gap-2 mx-auto md:text-xs sm:text-xs text-[.6em]">
                     <button className="bg-violet-950 text-white rounded-md sm:py-3 md:py-3 py-2 px-1">Download your ticket</button>
-
+<ThankYou/>
 
                  <Link to="/sharing"> <button className="bg-violet-950 text-white rounded-md sm:py-3 md:py-3 py-2 px-1">Share to social media</button> </Link>
                   </div>

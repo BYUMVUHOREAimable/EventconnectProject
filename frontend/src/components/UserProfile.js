@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 export default function UserProfile() {
@@ -7,23 +7,55 @@ export default function UserProfile() {
   const [email, setEmail] = useState("aimablebyumvuhore@gmail.com");
   const [username, setUsername] = useState("BYUMVUHOREAimable");
   const [phoneNumber, setPhoneNumber] = useState("+250 784191775");
+  const [profilePicture, setProfilePicture] = useState(null);
   const [editing, setEditing] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleEditToggle = () => {
     setEditing(!editing);
   };
 
-  const handleSave = () => {
-    // Perform API request to update user details
-    setTimeout(() => {
-      setEditing(false);
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setProfilePicture(file);
+  };
+
+  const handleSave = async () => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("fullName", fullName);
+    formData.append("email", email);
+    formData.append("username", username);
+    formData.append("phoneNumber", phoneNumber);
+    if (profilePicture) {
+      formData.append("profilePicture", profilePicture);
+    }
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/updateProfile`, {
+        method: "POST",
+        body: formData,
+      });
+
+      const dataRes = await response.json();
+      toast(dataRes.message);
+
+      if (!response.ok) {
+        toast.error(dataRes.message || "Failed to update profile");
+        return;
+      }
+
       toast.success("Profile updated successfully!");
-    }, 1000); // Simulating API request delay
+      setEditing(false);
+    } catch (error) {
+      toast.error("An error occurred while updating the profile");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleLogout = () => {
-    // Handle logout functionality
     navigate("/logout");
   };
 
@@ -33,7 +65,7 @@ export default function UserProfile() {
         <div className="flex items-center justify-center p-6">
           <img
             className="h-24 w-24 rounded-full object-cover cursor-pointer"
-            src="https://via.placeholder.com/150"
+            src={profilePicture ? URL.createObjectURL(profilePicture) : "https://via.placeholder.com/150"}
             alt="User Avatar"
             onClick={handleEditToggle}
           />
@@ -95,6 +127,18 @@ export default function UserProfile() {
               disabled={!editing}
             />
           </div>
+          {editing && (
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Profile Picture
+              </label>
+              <input
+                type="file"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={handleFileChange}
+              />
+            </div>
+          )}
           <div className="flex items-center justify-between">
             {editing ? (
               <>
@@ -119,12 +163,13 @@ export default function UserProfile() {
                 >
                   Edit Profile
                 </button>
-                <button
+             <Link to="/"><button
                   onClick={handleLogout}
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                   Logout
-                </button>
+                  </button>
+                    </Link>
               </>
             )}
           </div>
