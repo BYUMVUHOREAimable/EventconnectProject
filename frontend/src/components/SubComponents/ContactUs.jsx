@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../Navbar'
 
 const ContactUs = () => {
   return (
-    <div className='my-[1rem] flex max-lg:flex-col xl:flex-row max-sm:p-[1rem] max-sm:px-[0%] md:p-[3rem] justify-center items-center'>
+    <>
+    <Navbar />
+    <div className='my-[1rem] mt-14 flex max-lg:flex-col xl:flex-row max-sm:p-[1rem] max-sm:px-[0%] md:p-[3rem] justify-center items-center'>
       <div className='flex flex-col gap-4 px-[3rem] max-sm:px-0'>
           <h2 className='text-2xl font-bold '>Contact Us</h2>
           <p>Need To Get In Touch With Us? Either FIll Out The Form With The Inquiry Or Find The 
@@ -31,6 +34,7 @@ const ContactUs = () => {
           <div className='w-full flex justify-center'><button className='px-[2rem] py-[.7rem] mt-[1rem] text-white bg-[#20B486] hover:bg-[#6beac2] rounded-md'>Send</button></div>
       </form>
     </div>
+    </>
   )
 }
 

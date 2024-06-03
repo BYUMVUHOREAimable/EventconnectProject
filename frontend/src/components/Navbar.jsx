@@ -17,7 +17,6 @@ const Navbar = () => {
                 <ul className='flex gap-4'>
                     <Link to='/' className='hover:underline'><li>Home</li></Link>
                     <Link to='/services' className='hover:underline'><li>Products & Services</li></Link>
-                    <Link to='/terms&conditions' className='hover:underline'><li>Terms & Conditions</li></Link>
                     <Link to='/about' className='hover:underline'><li>About</li></Link>
                     <Link to='/support' className='hover:underline'><li>Support</li></Link>
                 </ul>
