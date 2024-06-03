@@ -4,7 +4,7 @@ import StarRating from './StarRating'
 
 const Card = ({course}) => {
   return (
-    <div className='z-10 bg-white drop-shadow-md overflow-hidden rounded-2xl mr-2  my-4'>
+    <div className='z-10 bg-white drop-shadow-md overflow-hidden rounded-2xl mr-2  my-4' title={course.title}>
         <img src={course.linkImg} 
                 className="h-40 w-full object-cover" alt='linkImg'/>
         <div className='p-5 border border-b'>
