@@ -95,7 +95,6 @@ function App() {
         <Route path='/planners' exact element={<ServicePlanners />} />
         <Route path='/support' exact element={<Support />} />
         <Route path='/contact' exact element={<ContactUs />} />
-         <Route path ='/profile' exact element={<UserProfile />}/>
 
         <Route path='*' exact element={<Missing />} />
       </Routes>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Image1 from '../../assets/comedy.jpeg';
+import Image1 from '../../assets/comedy.jpg';
 import { FaGoogle, FaAdn, FaAddressCard, FaAccessibleIcon } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
