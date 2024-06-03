@@ -143,11 +143,7 @@ export default function SignUp() {
             autoComplete=""
           />
         </div>
-<<<<<<< HEAD
         <div className="flex flex-col text-gray-400 py-1 mt-1">
-=======
-         <div className="flex flex-col text-gray-700 py-1 mt-1">
->>>>>>> 320fb9c612942b508566440728788d4a2f0c2f34
           <input
             className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
             type="tel"
