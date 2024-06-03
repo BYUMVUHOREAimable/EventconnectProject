@@ -16,6 +16,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "../theme";
 import Calendar from "../scenes/calendar/calendar";
 import Services from "./Services";
+import UserProfile from "./UserProfile";
 
 
 function HomeDashboard() {
@@ -43,6 +44,8 @@ function HomeDashboard() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/geography" element={<Geography />} />
+              <Route path="/profile" element={<UserProfile />} />
+                
             </Routes>
           </main>
         </div>

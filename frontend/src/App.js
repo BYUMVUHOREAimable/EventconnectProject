@@ -47,6 +47,7 @@ import { Toaster } from 'react-hot-toast';
 import Support from './components/Support';
 import ContactUs from './components/SubComponents/ContactUs';
 import ThankYou from './scenes/Thankyou/Thankyou';
+import UserProfile from './components/UserProfile';
 
 
 function App() {
@@ -93,7 +94,7 @@ function App() {
               <Route path ='/services' exact element={<Services />}/>
         <Route path='/planners' exact element={<ServicePlanners />} />
         <Route path='/support' exact element={<Support />} />
-        <Route path ='/contact' exact element={<ContactUs />}/>
+        <Route path='/contact' exact element={<ContactUs />} />
 
         <Route path='*' exact element={<Missing />} />
       </Routes>

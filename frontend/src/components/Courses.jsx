@@ -49,16 +49,13 @@ const Courses = () => {
         <div className='md:max-w-[1480px] m-auto max-w-[600px]  px-4 md:px-0'>
             <div className='py-4'>
               <h1 className='py-3 text-3xl font-bold'> Popular <span className='text-[#20B486]'>Events</span></h1>
-              <p className='text-[#6D737A]'>Various versions have evolved over the years, sometimes by accident.</p>
+              <p className='text-[#6D737A]'>From corporate gatherings to personal celebrations, we ensure your events are a step ahead, leaving a lasting impact.</p>
             </div>
-            
             <Slider {...settings} className='px-5'>
               {courses.map((course,i)=>
                 <div key={i}>
                   <Card course={course} />
                 </div> ) }
-              
-
             </Slider>
             
         </div>
