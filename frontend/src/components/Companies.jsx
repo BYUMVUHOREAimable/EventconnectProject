@@ -9,10 +9,10 @@ const Companies = () => {
             <p className='text-center  text-[#536E96] text-xl'>Event Connect partners offer the high-quality of goods and services to all.</p>
             <div className='flex justify-center py-8 md:gap-8 '>
                 <div className='grid md:grid-cols-4 grid-cols-2 gap-2'>
-                  <img src={companyLogo1} alt='companyLogo1' />
-                  <img src={companyLogo2} alt='companyLogo2' />
-                  <img src={companyLogo3} alt='companyLogo3' />
-                  <img src={companyLogo4} alt='companyLogo4'/>
+                  <img src={companyLogo1} alt='companyLogo1' className='max-h-[5rem] min-w-[10rem]' />
+                  <img src={companyLogo2} alt='companyLogo2' className='max-h-[5rem] min-w-[10rem]' />
+                  <img src={companyLogo3} alt='companyLogo3' className='max-h-[5rem] min-w-[10rem]' />
+                  <img src={companyLogo4} alt='companyLogo4' className='max-h-[5rem] min-w-[10rem]'/>
                 </div>
             </div>
         
