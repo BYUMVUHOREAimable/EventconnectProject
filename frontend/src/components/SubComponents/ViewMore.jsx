@@ -6,8 +6,8 @@ const ViewMore = ({ data, onClose }) => {
     <div className='fixed top-[3cm] max-lg:top-[2.4cm] left-[3cm] max-md:left-[.3rem] right-[3cm] max-md:right-[.3rem] bg-slate-200 p-[2rem] max-sm:p-[.4rem] z-10 flex flex-row max-lg:flex-col shadow-2xl text-left' key={data.id}>
      <AiFillCloseCircle className='absolute top-[.5rem] right-[.5rem] text-3xl text-[#20B486]' onClick={onClose} />
      <div className='w-3/5 max-lg:w-full max-md:h-5/6 max-sm:h-[4.6cm]'>
-          <img src={data.img} alt={data.title} className='w-full h-full max-lg:max-h-[10cm] max-lg:inline hidden xl:inline' />
-          <img src={data.img2} alt={data.title} className='w-full h-full max-lg:max-h-[10cm] max-lg:hidden xl:hidden' />
+          <img src={data.img} alt={data.title} className={`w-full h-full max-lg:max-h-[10cm] max-lg:inline ${!data.img2 ? "inline" : "hidden"} xl:inline`} />
+          {!data.img2 ? null : <img src={data.img2} alt={data.title} className='w-full h-full max-lg:max-h-[10cm] max-lg:hidden xl:hidden' />}
      </div>
      <div className='w-full px-[3rem] max-md:px-[1rem]'>
           <h1 className='text-xl font-bold'>{data.title}</h1>
