@@ -9,6 +9,7 @@ import { FaCcVisa } from 'react-icons/fa';
 import BookPage from './Book';
 import { Link } from 'react-router-dom';
 import ThankYou from '../../scenes/Thankyou/Thankyou';
+import BookingStepIV from '../../components/BuyTicketStepIV';
 
 export default function BookProcess() {
   const [paymentStatus, setPaymentStatus] = useState(null); // Payment status to track if the payment was successful
@@ -103,23 +104,7 @@ export default function BookProcess() {
         return (
           <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-white text-violet-950 rounded-2xl relative overflow-x-scroll">
             <ChevronLeft size={30} onClick={goToPreviousStep} className="absolute top-4 left-4 cursor-pointer" />
-            <h1 className="py-4">Add a Card</h1>
-            <form onSubmit={handlePayment}>
-              <div className="grid gap-2 grid-rows-2 md:w-4/5 w-5/6 mx-auto">
-                <input type="text" className="text-center py-3 border-b-2" name="NameOnCard" placeholder="Name on Card" required />
-                <input type="number" className="text-center py-3 border-b-2" name="CardNumber" placeholder="Card Number" required />
-              </div>
-              <div className="flex justify-around w-full gap-1 py-4 px-3">
-                <div className="grid grid-flow-row gap-2">
-                  <label htmlFor="DateEX" className="text-center">Expiry Date</label>
-                  <input type="date" className="text-center text-sm py-3 border-b-2" id="DateEX" name="DateEX" required />
-                </div>
-                <input type="text" className="text-center border-b-2 py-3" name="CVV" placeholder="CVV" required />
-              </div>
-              <div className="w-full absolute bottom-0 flex-shrink-0 flex justify-center">
-                <button type="submit" className="bg-violet-950 text-white px-4 py-2 rounded-md w-4/5 mx-auto mb-3">Make Payment</button>
-              </div>
-            </form>
+            <BookingStepIV />
           </div>
         );
       case 5:
@@ -162,14 +147,7 @@ export default function BookProcess() {
     setCurrentStep(step);
   };
 
-  const handlePayment = (event) => {
-    event.preventDefault();
-    //to Simulate payment processing...
-    setTimeout(() => {
-      setPaymentStatus(true);
-      goToStep(3);
-    }, 1000);
-  };
+  
 
   return (
     <div className="relative">

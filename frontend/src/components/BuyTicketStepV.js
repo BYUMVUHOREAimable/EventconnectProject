@@ -2,7 +2,7 @@ import React from 'react'
 import { GrStatusGood } from 'react-icons/gr';
 import { Link } from 'react-feather';
 
-export default function BookingStepIV() {
+export default function BookingStepV() {
   return (
       <div className="md:w-2/6 sm:w-1/2 md:text-sm sm:text-x text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-white text-violet-950 rounded-2xl  relative overflow-x-scroll">
           <div className='sm:w-full md:w-full w-[15rem] mx-auto text-[.5em] md:text-xs sm:text-xs  grid grid-flow-row text-center '>
