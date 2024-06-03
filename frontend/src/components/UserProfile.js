@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-// import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 export default function UserProfile() {
-  const [fullName, setFullName] = useState("John Doe");
-  const [email, setEmail] = useState("johndoe@example.com");
-  const [username, setUsername] = useState("johndoe");
-  const [phoneNumber, setPhoneNumber] = useState("+250 7899030993");
-  // const [visible, setVisible] = useState(false);
+  const [fullName, setFullName] = useState("BYUMVUHORE Aimable");
+  const [email, setEmail] = useState("aimablebyumvuhore@gmail.com");
+  const [username, setUsername] = useState("BYUMVUHOREAimable");
+  const [phoneNumber, setPhoneNumber] = useState("+250 784191775");
   const [editing, setEditing] = useState(false);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleEditToggle = () => {
@@ -18,10 +15,8 @@ export default function UserProfile() {
   };
 
   const handleSave = () => {
-    setLoading(true);
     // Perform API request to update user details
     setTimeout(() => {
-      setLoading(false);
       setEditing(false);
       toast.success("Profile updated successfully!");
     }, 1000); // Simulating API request delay

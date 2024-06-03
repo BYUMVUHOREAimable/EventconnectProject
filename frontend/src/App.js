@@ -78,7 +78,8 @@ function App() {
         <Route path='/sharing' exact element={<Sharing />} />
 
         <Route path='/homeDashboard' exact element={<HomeDashboard />} />
-         <Route path="/dashboard" element={<HomeDashboard />} />
+        <Route path="/dashboard" element={<HomeDashboard />} />
+        <Route path="/dashboard/userprofile" element={<UserProfile />} />
               <Route path="/team" element={<Team />} />
         <Route path="/contacts" element={<Services />} />
         <Route path="/thankyou" element={<ThankYou />} />

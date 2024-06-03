@@ -36,6 +36,7 @@ function HomeDashboard() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/team" element={<Team />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/userprofile" element={<UserProfile />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/form" element={<Form />} />
               <Route path="/bar" element={<Bar />} />
@@ -44,7 +45,7 @@ function HomeDashboard() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/geography" element={<Geography />} />
-              <Route path="/profile" element={<UserProfile />} />
+            
                 
             </Routes>
           </main>
