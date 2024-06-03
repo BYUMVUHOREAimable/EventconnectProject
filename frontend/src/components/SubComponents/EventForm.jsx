@@ -157,7 +157,6 @@ const EventForm = () => {
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="country">Country</label>
             <input
@@ -183,7 +182,6 @@ const EventForm = () => {
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="categories">Event Categories</label>
             <select
