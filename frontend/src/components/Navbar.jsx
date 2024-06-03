@@ -41,13 +41,12 @@ const Navbar = () => {
 
         </div>
 
-        <div className={toggle ? 'absolute z-10 pt-4  bg-white w-full px-8 md:hidden border-b' : 'hidden'}>
-            <ul>
+        <div className={toggle ? 'absolute z-10 pt-4 bg-white w-full px-8 md:hidden border-b' : 'hidden'}>
+            <ul className='flex flex-col'>
                 <Link to='/' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Home</Link>
-                  <Link to='/services' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Products&Services</Link>
-                  <Link to='/terms&conditions' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Terms & Conditions</Link>
-                  <Link to='/about' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>About</Link>
-                  <Link to='/support' className='pr-8 mr-4 hover:bg-gray-100 hover:underline cursor-pointer'>Support</Link>
+                <Link to='/services' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Products & Services</Link>
+                <Link to='/about' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>About</Link>
+                <Link to='/support' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Support</Link>
                 <div  className='flex flex-row my-4 gap-4'>
                 <Link to='/authentication'> <button className='border border-[20B486] flex justify-center items-center  bg-transparent  px-6 gap-2 py-4'>
                         <img src={lock} alt='lock' />

@@ -48,6 +48,8 @@ import Support from './components/Support';
 import ContactUs from './components/SubComponents/ContactUs';
 import ThankYou from './scenes/Thankyou/Thankyou';
 import UserProfile from './components/UserProfile';
+import TermsAndConditions from './components/TermsandConditions';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 
 function App() {
@@ -96,6 +98,10 @@ function App() {
         <Route path='/planners' exact element={<ServicePlanners />} />
         <Route path='/support' exact element={<Support />} />
         <Route path='/contact' exact element={<ContactUs />} />
+        <Route path='/termsandconditions' exact element={<TermsAndConditions />} />
+        <Route path='/privacyandpolicy' exact element={<PrivacyPolicy />} />
+
+
 
         <Route path='*' exact element={<Missing />} />
       </Routes>

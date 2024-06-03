@@ -12,8 +12,8 @@ const Footer = () => {
                 <img src={logo} className="w-[10rem]" alt='logo' />
                 <h3 className='text-2xl font-bold mt-10'>Contact Us</h3>
                 <h3 className='py-2 text-[#6D737A]'>Call : +250 784191775</h3>
-                <h3 className='py-2 text-[#6D737A]'>Praesent nulla massa, hendrerit <br></br> vestibulum gravida in, feugiat auctor felis.</h3>
-                <h3 className='py-2 text-[#363A3D]'>Email: eventconnect123@mail.com</h3>
+                <h3 className='py-2 text-[#6D737A]'>We value your opinion. Tell us how we can enhance your app experience.</h3>
+                <h3>Email: <a href="mailto: eventconnect123@gmail.com" className="text-blue-500 underline">eventconnect123@gmail.com</a></h3>
                 <div className='flex gap-4 py-4 max-sm:gap-1'>
                 <a href="https://www.facebook.com/kirengaremyclaudien/" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl  hover:bg-[#91d6a9]'><FaFacebookF size={25} style={{color:'#4DC39E'}} /></a>
                         <a href="https://dribbble.com/byumvuhoreaimable" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaDribbble size={25} style={{color:'#4DC39E'}} /></a>
@@ -32,8 +32,8 @@ const Footer = () => {
                     <li className='py-2 hover:underline'><Link to={'/about'}>About</Link></li>
                     <li className='py-2 hover:underline'><Link to={'/support'}>Support</Link></li>
                     <li className='py-2 hover:underline'><Link to={'/contact'}>Contacts</Link></li>
-                    <li className='py-2 hover:underline'><Link to={'/terms'}>Terms of Services</Link></li>
-                    <li className='py-2 hover:underline'><Link to={'/policies'}>Pricacy Policies</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/termsandconditions'}>Terms & Conditions</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/privacyandpolicy'}>Privacy & Policy</Link></li>
 
                 </ul>
             </div>
@@ -43,7 +43,7 @@ const Footer = () => {
                 <ul className='py-6 text-[#6D737A]'>
                       <Link to='design'><li className='py-2 hover:underline'>Design</li></Link>
                       <Link to='development'><li className='py-2 hover:underline'>Development</li></Link>
-                      <Link to='marteting'><li className='py-2 hover:underline'>Marketing</li></Link>
+                      <Link to='marketing'><li className='py-2 hover:underline'>Marketing</li></Link>
                       <Link to='business'><li className='py-2 hover:underline'>Business</li></Link>
                       <Link to='lifestyle'><li className='py-2 hover:underline'>Lifestyle</li></Link>
                       <Link to='photography'><li className='py-2 hover:underline'>Photography</li></Link>
@@ -68,7 +68,7 @@ const Footer = () => {
             </div>
        
           </div>
-          <footer className=" text-gray-600 text-center w-full mt-8">
+          <footer className=" text-gray-600 text-center w-full mt-8 mb-0">
            <p>&copy; Copyright Event Connect {new Date().getFullYear()} All rights reserved</p>
       </footer>
       </div>  

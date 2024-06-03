@@ -24,7 +24,7 @@ export default function BookProcess() {
     switch (currentStep) {
       case 1:
         return (
-          <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-white text-violet-950 rounded-2xl relative overflow-x-scroll">
+          <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-white text-green-600 rounded-2xl relative overflow-x-scroll">
             <ChevronLeft size={30} onClick={goToPreviousStep} className="absolute top-4 left-4 cursor-pointer" />
             <h1 className="text-center py-6">Coolulu Kormangala turf park</h1>
             <div className="bg-gray-300 w-10/12 rounded-lg p-2 text-xs mx-auto grid-rows-3">
@@ -54,7 +54,7 @@ export default function BookProcess() {
               )}
             </div>
             <div className="w-full absolute bottom-2 flex-shrink-0 flex justify-center">
-              <button onClick={() => goToStep(2)} className="bg-violet-950 text-white px-4 py-2 rounded-md w-[70%] mx-auto">Proceed to Pay</button>
+              <button onClick={() => goToStep(2)} className="bg-green-600 text-white px-4 py-2 rounded-md w-[70%] mx-auto">Proceed to Pay</button>
             </div>
           </div>
         );
@@ -89,20 +89,20 @@ export default function BookProcess() {
         );
       case 3:
         return (
-          <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-white text-violet-950 rounded-2xl relative overflow-x-scroll">
+          <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-white text-green-600 rounded-2xl relative overflow-x-scroll">
             <ChevronLeft size={30} onClick={goToPreviousStep} className="absolute top-4 left-4 cursor-pointer" />
             <GrStatusGood size={80} className="mx-auto my-3" />
             <h3 className="text-center text-base">Payment Successful!</h3>
             <h1 className="text-center text-sm">Order ID: 124450</h1>
             <p className="text-center py-4">Tickets have been mailed via Email/SMS</p>
             <div className="w-full absolute bottom-0 flex-shrink-0 flex justify-center">
-              <button onClick={() => goToStep(5)} className="bg-violet-950 text-white px-4 py-2 rounded-md w-4/5 mx-auto mb-3">Download Ticket</button>
+              <button onClick={() => goToStep(5)} className="bg-green-600 text-white px-4 py-2 rounded-md w-4/5 mx-auto mb-3">Download Ticket</button>
             </div>
           </div>
         );
       case 4:
         return (
-          <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-white text-violet-950 rounded-2xl relative overflow-x-scroll">
+          <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-green-600 text-white rounded-2xl relative overflow-x-scroll">
             <ChevronLeft size={30} onClick={goToPreviousStep} className="absolute top-4 left-4 cursor-pointer" />
             <BookingStepIV />
           </div>
@@ -111,7 +111,7 @@ export default function BookProcess() {
         return (
           <>
             {paymentStatus ? (
-              <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-white text-violet-950 rounded-2xl relative overflow-x-scroll">
+              <div className="md:w-2/6 sm:w-1/2 text-center w-full h-full md:max-h-[90vh] sm:max-h-[90vh] bg-green-600 text-white rounded-2xl relative overflow-x-scroll">
                 <ChevronLeft size={30} onClick={goToPreviousStep} className="absolute top-4 left-4 cursor-pointer" />
                 <div className="sm:w-full md:w-full w-[15rem] mx-auto text-[.5em] md:text-xs sm:text-xs grid grid-flow-row text-center">
                   <GrStatusGood size={80} className="mx-auto my-3" />

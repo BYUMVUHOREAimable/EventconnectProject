@@ -15,7 +15,7 @@ const generateTicketPDF = async (ticketInfo) => {
   const page = pdfDoc.addPage([400, 250]);
   await ticketInfo.populate('user');
   const username = ticketInfo.user.username;
-  const event = ticketInfo.event.name; // Assuming event has a name field
+ // Assuming event has a name field
   const ticketType = ticketInfo.ticketType;
   const seatArea = ticketInfo.seatArea || 'N/A';
   const price = ticketInfo.price;
