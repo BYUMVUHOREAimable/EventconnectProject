@@ -118,7 +118,7 @@ const Sidebar = () => {
                   BYUMVUHORE Aimable
                 </Typography>
               <Link to="/dashboard/profile"><Typography variant="h5" color={colors.greenAccent[500]}>
-                  Update your profile
+                  Update Profile
                 </Typography> </Link>
               </Box>
             </Box>
