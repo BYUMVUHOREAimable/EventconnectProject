@@ -3,7 +3,6 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
-<<<<<<< HEAD
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt')
 // const passport = require("passport");
@@ -20,23 +19,6 @@ const authRoute = require("./controllers/auth.js");
 const nodemailer = require("nodemailer");
 const paymentRoute=require("./controllers/paymentRoute.js")
  
-=======
-const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt");
-const passport = require("passport");
-const connection = require("./Models/db.js");
-const signUpRoute = require("./controllers/signupApi.js");
-const loginRoute = require("./controllers/loginApi");
-const storeRoute = require("./controllers/storeApi");
-const cookieSession = require("cookie-session");
-const UserModel = require("./Models/user.js");
-const jwt = require("jsonwebtoken");
-require("./passport/passport.js");
-const authRoute = require("./controllers/auth.js");
-// const forgotRoute = require("./controllers/forgotPassword.js")
-const nodemailer = require("nodemailer");
-
->>>>>>> 3686cf871d0dea7adf1a7bd83c3bc1f659d2d0ae
 // Configuration
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -49,25 +31,13 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
   })
 );
-<<<<<<< HEAD
-// app.use(passport.initialize());
+// app.use(passport.initialize());`
 // app.use(passport.session());
 app.use(cors({
   origin: "http://localhost:3000",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
-=======
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
->>>>>>> 3686cf871d0dea7adf1a7bd83c3bc1f659d2d0ae
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -78,13 +48,9 @@ app.use("/auth", authRoute);
 app.use("/v1/api/signup", signUpRoute);
 app.use("/v1/api/login", loginRoute);
 // app.use('/v1/api', forgotRoute);
-<<<<<<< HEAD
 app.use('/v1/api/store', storeRoute);
 app.use('/v1/api/payment', paymentRoute);
 
-=======
-app.use("/v1/api/store", storeRoute);
->>>>>>> 3686cf871d0dea7adf1a7bd83c3bc1f659d2d0ae
 
 // Database connection
 connection();
