@@ -83,7 +83,7 @@ const Sidebar = () => {
             }}
           >
             {!isCollapsed && (
-             <Link to="/dashboard/userprofile"> <Box display="flex" justifyContent="space-between" alignItems="center" ml="15px">
+             <Link to="/dashboard/profile"> <Box display="flex" justifyContent="space-between" alignItems="center" ml="15px">
                 <Typography variant="h3" color={colors.grey[100]}>
                   LOGGED USER
                 </Typography>
