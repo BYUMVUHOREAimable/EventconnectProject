@@ -9,6 +9,7 @@ const passport = require("passport");
 const connection = require("./Models/db.js");
 const signUpRoute = require("./controllers/signupApi.js");
 const loginRoute = require("./controllers/loginApi");
+const eventRoute = require("./controllers/event.js");
 const storeRoute = require("./controllers/storeApi");
 const cookieSession = require("cookie-session");
 const UserModel = require("./Models/user.js");
@@ -19,7 +20,7 @@ const authRoute = require("./controllers/auth.js");
 const nodemailer = require("nodemailer");
 
 // Configuration
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true, limit: "3mb" }));
@@ -34,7 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(
   cors({
-    origin: "*",
+    origin: `${process.env.FRONTEND_URL}`,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
@@ -48,7 +49,7 @@ app.use((req, res, next) => {
 app.use("/auth", authRoute);
 app.use("/v1/api/signup", signUpRoute);
 app.use("/v1/api/login", loginRoute);
-// app.use('/v1/api', forgotRoute);
+app.use("/v1/api/event", eventRoute);
 app.use("/v1/api/store", storeRoute);
 
 // Database connection

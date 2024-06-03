@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { ImagetoBase64 } from '../utility/ImagetoBase64.js';
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { IoCloudUploadOutline } from "react-icons/io5";
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
@@ -17,7 +19,8 @@ const EventForm = () => {
     price: '',
     currency: 'USD',
     availability: '',
-    images: []
+    organizer: '',
+    eventimages: []
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -27,10 +30,20 @@ const EventForm = () => {
     setEventData({ ...eventData, [name]: value });
   };
 
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    setEventData({ ...eventData, images: files });
-  };
+//   const handleImageChange = (e) => {
+//     const files = Array.from(e.target.files);
+//     setEventData({ ...eventData, images: files });
+//   };
+  const handleImageChange = async(e)=>{
+    const data = await ImagetoBase64(e.target.files[0])
+
+    setEventData((preve)=>{
+        return{
+          ...preve,
+          eventimages : data
+        }
+    })
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,7 +87,7 @@ const EventForm = () => {
         </div>
       )}
       <form 
-        className="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl" 
+        className="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl" 
         onSubmit={handleSubmit}
       >
         <h2 className="text-3xl font-bold text-center mb-6 text-green-600">Create An Event</h2>
@@ -257,18 +270,37 @@ const EventForm = () => {
               required
             />
           </div>
+          <div>
+          <label className="block text-lg font-semibold mb-2" htmlFor="organizer">Organizer Name</label>
+            <input
+              type="text"
+              id="organizer"
+              name="organizer"
+              className="w-full p-3 border rounded-md"
+              value={eventData.organizer}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
           <div className="col-span-2">
-            <label className="block text-lg font-semibold mb-2" htmlFor="images">Event Images</label>
+            <label className="block text-lg font-semibold mb-2" htmlFor="eventimages">Event Images
+            <div className="flex items-center justify-center w-full p-3 border rounded-md cursor-pointer">
+  <IoCloudUploadOutline className="mr-2" />
+  <p className="text-sm text-black">Upload</p>
+</div>
+
             <input
               type="file"
-              id="images"
-              name="images"
-              className="w-full p-3 border rounded-md"
+              id="eventimages"
+              name="eventimages"
+              accept='image/*'
+              className="hidden"
               onChange={handleImageChange}
               multiple
               required
             />
+            </label>
           </div>
         </div>
         
@@ -282,7 +314,7 @@ const EventForm = () => {
       <a 
         href="/dashboard" 
         onClick={handleReturnHome} 
-        className="text-violet-900 hover:text-violet-800"
+        className="text-violet-900 hover:text-violet-800 py-6"
       >
         Return home&#63;
       </a>

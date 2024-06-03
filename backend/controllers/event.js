@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Event = require('../Models/eventcreate.js');
+const Event = require('../Models/event.js');
 
 // Get all events
 router.get('/', async (req, res) => {
@@ -26,11 +26,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new event
 router.post('/', async (req, res) => {
   try {
     const event = new Event({
-      name: req.body.name,
+      eventname: req.body.eventname,
       description: req.body.description,
       date: req.body.date,
       startTime: req.body.startTime, // Include startTime
@@ -48,7 +47,9 @@ router.post('/', async (req, res) => {
         currency: req.body.ticketInfo.currency,
         availability: req.body.ticketInfo.availability
       },
-      images: req.body.images
+      organizer: req.body.organizer,
+      eventimages: req.body.eventimages,
+      attendees: [] // Initialize as empty
     });
 
     await event.save();
@@ -59,11 +60,36 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put('/:id/attendees', async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const { userId, action } = req.body;
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      return res.status(404).send({ message: 'Event not found' });
+    }
+
+    if (action === 'add') {
+      event.attendees.push({ user: userId });
+    } else if (action === 'remove') {
+      event.attendees = event.attendees.filter(attendee => attendee.user.toString() !== userId);
+    }
+
+    await event.save();
+    res.status(200).send({ message: 'Attendees updated successfully', event });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send({ message: 'Internal Server Error' });
+  }
+});
+
+
 // Update an existing event
 router.put('/:id', async (req, res) => {
   try {
     const updatedEvent = await Event.findByIdAndUpdate(req.params.id, {
-      name: req.body.name,
+      eventname: req.body.eventname,
       description: req.body.description,
       date: req.body.date,
       startTime: req.body.startTime, // Include startTime
@@ -81,7 +107,7 @@ router.put('/:id', async (req, res) => {
         currency: req.body.ticketInfo.currency,
         availability: req.body.ticketInfo.availability
       },
-      images: req.body.images
+      eventimages: req.body.eventimages
     }, { new: true });
 
     if (!updatedEvent) {

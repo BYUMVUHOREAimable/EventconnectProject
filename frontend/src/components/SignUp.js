@@ -110,7 +110,7 @@ export default function SignUp() {
         Sign up
         <div className="text-sm align-bottom inline">
           or{" "}
-          <Link to="../" className="text-[#20B486] inline">Have Acount&#63;</Link>
+          <Link to="../" className="text-[#20B486] inline">Have Account&#63;</Link>
         </div>
       </div>
       <div className="flex flex-col w-1/2 pt-3 self-center relative" id="offPro">
@@ -143,11 +143,7 @@ export default function SignUp() {
             autoComplete=""
           />
         </div>
-<<<<<<< HEAD
-        <div className="flex flex-col text-gray-400 py-1 mt-1">
-=======
-         <div className="flex flex-col text-gray-700 py-1 mt-1">
->>>>>>> 320fb9c612942b508566440728788d4a2f0c2f34
+        <div className="flex flex-col text-gray-700 py-1 mt-1">
           <input
             className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
             type="tel"
@@ -218,7 +214,6 @@ export default function SignUp() {
               ? "bg-[#20B486] hover:shadow-teal-500/40"
               : "bg-gray-400 cursor-not-allowed"
           }`}
-          onClick={handleSubmit}
           disabled={!terms}
         >
           Create account
