@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
-import { FaMoneyBill, FaCreativeCommons } from 'react-icons/fa'
-import { TbNews } from 'react-icons/tb'
+import { FaHandshake, FaHandsHelping,FaShareSquare, FaPen, FaGift, FaDonate, FaChartLine, FaCommentDots } from 'react-icons/fa'
+import { TbNews,  } from 'react-icons/tb'
 import Footer from './Footer'
 import ContactUs from './SubComponents/ContactUs'
 
@@ -26,15 +26,15 @@ const Support = () => {
                <h2 className='text-xl font-bold'>Contributions</h2>
                <div className='grid gap-[1rem] my-[1rem] max-sm:w-full md:w-5/6' style={{ gridTemplateColumns: "repeat(auto-fill, minmax(290px , 1fr))" }}>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
-                         <FaCreativeCommons className='text-4xl text-[#20B486]' />
+                         <FaHandsHelping className='text-4xl text-[#20B486]' />
                          <h3 className='text-xl'>Volunteering</h3>
                     </article>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
-                         <FaCreativeCommons className='text-4xl text-[#20B486]' />
+                         <FaPen className='text-4xl text-[#20B486]' />
                          <h3 className='text-xl'>Creating Content</h3>
                     </article>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
-                         <FaMoneyBill className='text-4xl text-[#20B486]' />
+                         <FaDonate className='text-4xl text-[#20B486]' />
                          <h3 className='text-xl'>Monetary Contribution</h3>
                     </article>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
@@ -42,23 +42,23 @@ const Support = () => {
                          <h3 className='text-xl'>Attending Events</h3>
                     </article>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
-                         <TbNews className='text-4xl text-[#20B486]' />
+                         <FaHandshake className='text-4xl text-[#20B486]' />
                          <h3 className='text-xl'>Partnership</h3>
                     </article>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
-                         <TbNews className='text-4xl text-[#20B486]' />
+                         <FaChartLine className='text-4xl text-[#20B486]' />
                          <h3 className='text-xl'>Buy Shares</h3>
                     </article>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
-                         <TbNews className='text-4xl text-[#20B486]' />
+                         <FaGift className='text-4xl text-[#20B486]' />
                          <h3 className='text-xl'>Donating Resources</h3>
                     </article>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
-                         <TbNews className='text-4xl text-[#20B486]' />
+                         <FaShareSquare className='text-4xl text-[#20B486]' />
                          <h3 className='text-xl'>Referral Programs</h3>
                     </article>
                     <article className='p-[1rem] flex flex-col shadow-lg justify-center items-center'>
-                         <TbNews className='text-4xl text-[#20B486]' />
+                         <FaCommentDots className='text-4xl text-[#20B486]' />
                          <h3 className='text-xl'>Providing Feedback</h3>
                     </article>
                </div>
