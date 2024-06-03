@@ -28,11 +28,12 @@ const Footer = () => {
             <div>
                 <h3 className='text-2xl font-bold'>Explore</h3>
                 <ul className='py-6 text-[#6D737A]'>
-                    <li className='py-2 hover:underline'>Home</li>
-                    <li className='py-2 hover:underline'>About</li>
-                    <li className='py-2 hover:underline'>Course</li>
-                    <li className='py-2 hover:underline'>Blog</li>
-                    <li className='py-2 hover:underline'>Contact</li>
+                    <li className='py-2 hover:underline'><Link to={'/'}>Home</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/about'}>About</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/support'}>Support</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/contact'}>Contacts</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/terms'}>Terms of Services</Link></li>
+                    <li className='py-2 hover:underline'><Link to={'/policies'}>Pricacy Policies</Link></li>
 
                 </ul>
             </div>
