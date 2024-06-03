@@ -1,0 +1,2 @@
+DB_MINE=mongodb://localhost:27017/eventconnect_backend
+STRIPE_SECRET_KEY=sk_test_51PCncCHVIJrIZ9MUnHy0bIcIsdOh6CFxhutsCPhlD6xM8j2cmEo3NrzuUArejqOHQwoabXuHz8HYFTaOWp4wJ5ru001nPqtELS

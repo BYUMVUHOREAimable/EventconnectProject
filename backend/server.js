@@ -5,7 +5,7 @@ require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt')
-const passport = require("passport");
+// const passport = require("passport");
 const connection = require('./Models/db.js');
 const signUpRoute = require('./controllers/signupApi.js');
 const loginRoute = require('./controllers/loginApi');
@@ -13,10 +13,11 @@ const storeRoute = require('./controllers/storeApi');
 const cookieSession = require('cookie-session');
 const UserModel = require('./Models/user.js')
 const jwt = require('jsonwebtoken')
-require('./passport/passport.js');
+// require('./passport/passport.js');
 const authRoute = require("./controllers/auth.js");
 // const forgotRoute = require("./controllers/forgotPassword.js")
 const nodemailer = require("nodemailer");
+const paymentRoute=require("./controllers/paymentRoute.js")
  
 // Configuration
 app.use(express.json());
@@ -30,8 +31,8 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 app.use(cors({
   origin: "http://localhost:3000",
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -48,6 +49,7 @@ app.use('/v1/api/signup', signUpRoute);
 app.use('/v1/api/login', loginRoute);
 // app.use('/v1/api', forgotRoute);
 app.use('/v1/api/store', storeRoute);
+app.use('/v1/api/payment', paymentRoute);
 
 
 // Database connection
