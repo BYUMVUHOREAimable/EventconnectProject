@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom'; // Update import
-import Step1 from '../../components/Step1'; // Update import path
-import Step2 from '../../components/Step2'; // Update import path
-import Step3 from '../../components/Step4'; // Update import path
-import Step4 from '../../components/Step3'; // Update import path
-import Step5 from '../../components/Step5'; // Update import path
+import { Route, Routes } from 'react-router-dom';
+import Step1 from '../../components/Step1';
+import Step2 from '../../components/Step2';
+import Step3 from '../../components/Step4';
+import Step4 from '../../components/Step3';
+import Step5 from '../../components/Step5';
 
 export default function BuyTicketProcess() {
   const [paymentStatus, setPaymentStatus] = useState(null);
