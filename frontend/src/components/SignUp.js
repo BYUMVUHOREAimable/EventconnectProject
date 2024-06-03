@@ -196,10 +196,12 @@ export default function SignUp() {
             className="p-1 rounded-sm focus:border-blue-500 border border-violet-900 bg-white indent-3"
           />
         </div> */}
-          <div className="flex flex-col text-gray-400 py-1">
-          <label htmlFor="profilePicture" className="text-sm">Profile Picture
+          <div className="flex flex-col py-1 p-1 rounded-sm focus:border-blue-500 border border-[#20B486]">
+          <label htmlFor="profilePicture" className="block text-lg font-semibold mb-2">
+          <div className="flex items-center justify-center w-full cursor-pointer">
   <IoCloudUploadOutline className="mr-2" />
   <p className="text-sm text-black">Upload</p>
+  </div>
 
             <input
               type="file"

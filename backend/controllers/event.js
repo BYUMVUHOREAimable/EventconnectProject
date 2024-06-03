@@ -55,7 +55,8 @@ router.post('/', async (req, res) => {
     res.status(201).send({ message: 'Event created successfully', event });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send({ message: 'Internal Server Error' });
+    res.status(500).send({ message: 'Internal Server Error', error });
+    console.error(error.message);
   }
 });
 
