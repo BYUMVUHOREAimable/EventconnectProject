@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { toast } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
-    name: '',
+    eventname: '',
     description: '',
     date: '',
+    startTime: '', // Add startTime to state
     address: '',
     city: '',
     state: '',
@@ -18,6 +19,7 @@ const EventForm = () => {
     availability: '',
     images: []
   });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -32,21 +34,6 @@ const EventForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      name,
-      description,
-      date,
-      address,
-      city,
-      state,
-      country,
-      postalCode,
-      categories,
-      price,
-      currency,
-      availability,
-      images
-    };
     try {
       setLoading(true);
       const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/event`, {
@@ -54,28 +41,38 @@ const EventForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(eventData),
       });
       const dataRes = await response.json();
   
       if (response.status === 302) {
         // Extract redirect location and navigate
-      toast(dataRes.message);
-      navigate("/dashboard")
+        toast(dataRes.message);
+        navigate("/dashboard", { replace: true });
       } else {
         // Handle other status codes (e.g., errors)
         toast.error(dataRes.message);
       }
     } catch (error) {
       console.error(error);
-      toast.error("Login failed. Please check your email and password.");
+      toast.error("Event creation failed. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
+  const handleReturnHome = (e) => {
+    e.preventDefault();
+    navigate("/dashboard", { replace: true });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-6">
+    <div className="pt-3 flex flex-col justify-center items-center w-full">
+      {loading && (
+        <div className="fixed inset-0 bg-purple-500 bg-opacity-40 flex justify-center items-center z-10">
+          <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-purple-900"></div>
+        </div>
+      )}
       <form 
         className="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl" 
         onSubmit={handleSubmit}
@@ -84,13 +81,13 @@ const EventForm = () => {
         
         <div className="grid gap-6 md:grid-cols-2">
           <div className="col-span-2">
-            <label className="block text-lg font-semibold mb-2" htmlFor="name">Event Name</label>
+            <label className="block text-lg font-semibold mb-2" htmlFor="eventname">Event Name</label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="eventname"
+              name="eventname"
               className="w-full p-3 border rounded-md"
-              value={eventData.name}
+              value={eventData.eventname}
               onChange={handleChange}
               required
             />
@@ -116,6 +113,19 @@ const EventForm = () => {
               name="date"
               className="w-full p-3 border rounded-md"
               value={eventData.date}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-lg font-semibold mb-2" htmlFor="startTime">Event Start Time</label>
+            <input
+              type="time"
+              id="startTime"
+              name="startTime"
+              className="w-full p-3 border rounded-md"
+              value={eventData.startTime}
               onChange={handleChange}
               required
             />
@@ -187,20 +197,20 @@ const EventForm = () => {
           </div>
 
           <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="categories">Event Categories</label>
+            <label className="block text-lg font-semibold mb-2" htmlFor="categories">Categories</label>
             <select
               id="categories"
               name="categories"
               className="w-full p-3 border rounded-md"
               value={eventData.categories}
               onChange={handleChange}
-              multiple
               required
             >
               <option value="Wedding">Wedding</option>
               <option value="Festival">Festival</option>
               <option value="Concert">Concert</option>
               <option value="Conference">Conference</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -231,6 +241,7 @@ const EventForm = () => {
               <option value="EUR">EUR</option>
               <option value="GBP">GBP</option>
               <option value="RWF">RWF</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
@@ -268,7 +279,13 @@ const EventForm = () => {
           Create Event
         </button>
       </form>
-      <Link to="dashboard" className="text-violet-900 hover:text-violet-800">Return home&#63;</Link>
+      <a 
+        href="/dashboard" 
+        onClick={handleReturnHome} 
+        className="text-violet-900 hover:text-violet-800"
+      >
+        Return home&#63;
+      </a>
     </div>
   );
 };
