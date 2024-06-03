@@ -28,37 +28,68 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
+    const { 
+      eventname, 
+      description, 
+      date, 
+      startTime, 
+      location, 
+      categories, 
+      ticketInfo, 
+      organizer, 
+      eventimages 
+    } = req.body;
+
+    // Check for missing required fields
+    if (!eventname || !description || !date || !startTime || !location || !ticketInfo || !organizer) {
+      return res.status(400).send({ message: 'Missing required fields' });
+    }
+
+    // Validate location fields
+    const { address, city, state, country, postalCode } = location;
+    if (!address || !city || !state || !country || !postalCode) {
+      return res.status(400).send({ message: 'Missing required location fields' });
+    }
+
+    // Validate ticketInfo fields
+    const { price, currency, availability } = ticketInfo;
+    if (price == null || !currency || availability == null) {
+      return res.status(400).send({ message: 'Missing required ticketInfo fields' });
+    }
+
     const event = new Event({
-      eventname: req.body.eventname,
-      description: req.body.description,
-      date: req.body.date,
-      startTime: req.body.startTime, // Include startTime
+      eventname,
+      description,
+      date,
+      startTime,
       location: {
-        address: req.body.location.address,
-        city: req.body.location.city,
-        state: req.body.location.state,
-        country: req.body.location.country,
-        postalCode: req.body.location.postalCode
+        address,
+        city,
+        state,
+        country,
+        postalCode
       },
-      categories: req.body.categories,
+      categories,
       ticketInfo: {
-        price: req.body.ticketInfo.price,
-        currency: req.body.ticketInfo.currency,
-        availability: req.body.ticketInfo.availability
+        price,
+        currency,
+        availability
       },
-      organizer: req.body.organizer,
-      eventimages: req.body.eventimages,
+      organizer,
+      eventimages,
       attendees: [] // Initialize as empty
     });
 
     await event.save();
     res.status(201).send({ message: 'Event created successfully', event });
   } catch (error) {
-    console.error(error.message);
-    res.status(500).send({ message: 'Internal Server Error', error });
-    console.error(error.message);
+    console.error('Error creating event:', error.message);
+    res.status(500).send({ message: 'Internal Server Error', error: error.message });
   }
 });
+
+module.exports = router;
+
 
 router.put('/:id/attendees', async (req, res) => {
   try {
