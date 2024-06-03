@@ -1,8 +1,7 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-restricted-globals */
 import React, { useState } from 'react';
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from '@mui/material';
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
@@ -267,7 +266,7 @@ const EventForm = () => {
           Create Event
         </button>
       </form>
-      <Link to="/dashboard" className="text-violet-900 hover:text-violet-800 mt-4">Return home&#63;</Link>
+      <Link to="/dashboard" className="text-violet-900 hover:text-violet-400 mt-4 bg-green-600"><Button>Return home&#63;</Button></Link>
     </div>
   );
 };
