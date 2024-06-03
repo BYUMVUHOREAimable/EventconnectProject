@@ -6,7 +6,8 @@ const ViewMore = ({ data, onClose }) => {
     <div className='fixed top-[3cm] max-lg:top-[2.4cm] left-[3cm] max-md:left-[.3rem] right-[3cm] max-md:right-[.3rem] bg-slate-200 p-[2rem] max-sm:p-[.4rem] z-10 flex flex-row max-lg:flex-col shadow-2xl text-left' key={data.id}>
      <AiFillCloseCircle className='absolute top-[.5rem] right-[.5rem] text-3xl text-[#20B486]' onClick={onClose} />
      <div className='w-3/5 max-lg:w-full max-md:h-5/6 max-sm:h-[4.6cm]'>
-          <img src={data.img} alt={data.title} className='w-full h-full' />
+          <img src={data.img} alt={data.title} className={`w-full h-full max-lg:max-h-[10cm] max-lg:inline ${!data.img2 ? "inline" : "hidden"} xl:inline`} />
+          {!data.img2 ? null : <img src={data.img2} alt={data.title} className='w-full h-full max-lg:max-h-[10cm] max-lg:hidden xl:hidden' />}
      </div>
      <div className='w-full px-[3rem] max-md:px-[1rem]'>
           <h1 className='text-xl font-bold'>{data.title}</h1>
@@ -17,14 +18,14 @@ const ViewMore = ({ data, onClose }) => {
           <div className='text-end max-sm:text-sm float-end' id='priceDetails'>
                <ol>
                     <li className='font-bold'>{data.topic === "Events" ? <span>Ticket</span> : <span>Price</span>}: {data.normalTicket} Frw</li>
-                    {data.vipTicket && <li className={`font-bold ${data.topic === "Events" ? 'block' : 'hidden'}`}>VIP: {data.vipTicket} Frw</li>}
-                    {data.vvipTicket && <li className={`font-bold ${data.topic === "Events" ? 'block' : 'hidden'} max-sm:hidden`}>VVIP: {data.vvipTicket} Frw</li>}
+                    {data.vipTicket && <li className={`font-bold ${data.topic === "Events" ? 'block' : 'hidden'}`}>VIP: {data.vipTicket} {data.title === "Kwita izina" ? "$" : "Frw"}</li>}
+                    {data.vvipTicket && <li className={`font-bold ${data.topic === "Events" ? 'block' : 'hidden'} max-sm:hidden`}>VVIP: {data.vvipTicket} {data.title === "Kwita izina" ? "$" : "Frw"}</li>}
                </ol>
           </div>
           {data.topic === "Events" ? <ol className='max-sm:text-sm'>
                <li>Address: {data.address}</li>
                <li>Hours: {data.hours}</li>
-               <li>Phone: {data.phone}</li>
+               {data.phone ? <li>Phone: {data.phone}</li> : null}
                <li className=' max-lg:hidden'>Photos: 
                     <div className='flex'>
                     { data.photos.map((photo) => {

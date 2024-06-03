@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Event = require('../Models/eventcreate.js');
+const Event = require('../Models/event.js');
 
 // Get all events
 router.get('/', async (req, res) => {
@@ -26,44 +26,101 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Create a new event
 router.post('/', async (req, res) => {
   try {
+    const { 
+      eventname, 
+      description, 
+      date, 
+      startTime, 
+      location, 
+      categories, 
+      ticketInfo, 
+      organizer, 
+      eventimages 
+    } = req.body;
+
+    // Check for missing required fields
+    if (!eventname || !description || !date || !startTime || !location || !ticketInfo || !organizer) {
+      return res.status(400).send({ message: 'Missing required fields' });
+    }
+
+    // Validate location fields
+    const { address, city, state, country, postalCode } = location;
+    if (!address || !city || !state || !country || !postalCode) {
+      return res.status(400).send({ message: 'Missing required location fields' });
+    }
+
+    // Validate ticketInfo fields
+    const { price, currency, availability } = ticketInfo;
+    if (price == null || !currency || availability == null) {
+      return res.status(400).send({ message: 'Missing required ticketInfo fields' });
+    }
+
     const event = new Event({
-      name: req.body.name,
-      description: req.body.description,
-      date: req.body.date,
-      startTime: req.body.startTime, // Include startTime
+      eventname,
+      description,
+      date,
+      startTime,
       location: {
-        address: req.body.location.address,
-        city: req.body.location.city,
-        state: req.body.location.state,
-        country: req.body.location.country,
-        postalCode: req.body.location.postalCode
+        address,
+        city,
+        state,
+        country,
+        postalCode
       },
-      organizer: req.body.organizer,
-      categories: req.body.categories,
+      categories,
       ticketInfo: {
-        price: req.body.ticketInfo.price,
-        currency: req.body.ticketInfo.currency,
-        availability: req.body.ticketInfo.availability
+        price,
+        currency,
+        availability
       },
-      images: req.body.images
+      organizer,
+      eventimages,
+      attendees: [] // Initialize as empty
     });
 
     await event.save();
     res.status(201).send({ message: 'Event created successfully', event });
+  } catch (error) {
+    console.error('Error creating event:', error.message);
+    res.status(500).send({ message: 'Internal Server Error', error: error.message });
+  }
+});
+
+module.exports = router;
+
+
+router.put('/:id/attendees', async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const { userId, action } = req.body;
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      return res.status(404).send({ message: 'Event not found' });
+    }
+
+    if (action === 'add') {
+      event.attendees.push({ user: userId });
+    } else if (action === 'remove') {
+      event.attendees = event.attendees.filter(attendee => attendee.user.toString() !== userId);
+    }
+
+    await event.save();
+    res.status(200).send({ message: 'Attendees updated successfully', event });
   } catch (error) {
     console.error(error.message);
     res.status(500).send({ message: 'Internal Server Error' });
   }
 });
 
+
 // Update an existing event
 router.put('/:id', async (req, res) => {
   try {
     const updatedEvent = await Event.findByIdAndUpdate(req.params.id, {
-      name: req.body.name,
+      eventname: req.body.eventname,
       description: req.body.description,
       date: req.body.date,
       startTime: req.body.startTime, // Include startTime
@@ -81,7 +138,7 @@ router.put('/:id', async (req, res) => {
         currency: req.body.ticketInfo.currency,
         availability: req.body.ticketInfo.availability
       },
-      images: req.body.images
+      eventimages: req.body.eventimages
     }, { new: true });
 
     if (!updatedEvent) {

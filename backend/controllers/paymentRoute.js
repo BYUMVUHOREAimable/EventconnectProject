@@ -5,30 +5,77 @@ const router = express.Router();
 const Payment = require('../Models/payment');
 const stripe=require("stripe")(process.env.STRIPE_SECRET_KEY)
 const Ticket=require("../Models/ticket")
-const {PDFDocument,rgb} =require("pdf-lib")
+const {PDFDocument,rgb, StandardFonts} =require("pdf-lib")
 const fs=require("fs")
 const nodemailer=require("nodemailer")
 
-const CLIENT_URL='http://localhost:5000/v1/api/payment'
-const generateTicketPDF=async(ticketInfo)=>{
-  const pdfDoc=await PDFDocument.create();
-  const page = pdfDoc.addPage([400, 200]);
-  await ticketInfo.populate('user')
-  const username=ticketInfo.user.username
-  
-  page.drawText(`Ticket for ${username}`, {
-    x: 50,
-    y: 150,
-    size: 18,
-    color: rgb(0, 0.53, 0.71),
+const CLIENT_URL=`${process.env.REACT_APP_API_URL}/v1/api/payment`;
+const generateTicketPDF = async (ticketInfo) => {
+  const pdfDoc = await PDFDocument.create();
+  const page = pdfDoc.addPage([400, 250]);
+  await ticketInfo.populate('user');
+  const username = ticketInfo.user.username;
+ // Assuming event has a name field
+  const ticketType = ticketInfo.ticketType;
+  const seatArea = ticketInfo.seatArea || 'N/A';
+  const price = ticketInfo.price;
+
+  // Add a title
+  page.drawText('Ticket Details', {
+    x: 150,
+    y: 220,
+    size: 20,
+    color: rgb(0.2, 0.84, 0.67),
+    font: await pdfDoc.embedFont(StandardFonts.TimesRomanBold)
   });
-  page.drawText(`Name: ${ticketInfo.ticketType}`, { x: 50, y: 120, size: 12 });
-  page.drawText(`SeatArea: ${ticketInfo.seatArea}`, { x: 50, y: 100, size: 12 });
-  page.drawText(`Price: ${ticketInfo.price}`, { x: 50, y: 80, size: 12 });
+
+  // Add a horizontal line below the title
+  page.drawLine({
+    start: { x: 50, y: 210 },
+    end: { x: 350, y: 210 },
+    thickness: 1,
+    color: rgb(0.2, 0.84, 0.67),
+  });
+
+  // Add ticket details
+
+  page.drawText(`Name: ${username}`, {
+    x: 50,
+    y: 160,
+    size: 12,
+    color: rgb(0, 0, 0),
+  });
+  page.drawText(`Ticket Type: ${ticketType}`, {
+    x: 50,
+    y: 140,
+    size: 12,
+    color: rgb(0, 0, 0),
+  });
+  page.drawText(`Seat Area: ${seatArea}`, {
+    x: 50,
+    y: 120,
+    size: 12,
+    color: rgb(0, 0, 0),
+  });
+  page.drawText(`Price: $${price}`, {
+    x: 50,
+    y: 100,
+    size: 12,
+    color: rgb(0, 0, 0),
+  });
+
+  // Add footer note
+  page.drawText('Thank you for your purchase!', {
+    x: 100,
+    y: 60,
+    size: 10,
+    color: rgb(0.5, 0.5, 0.5),
+  });
 
   const pdfBytes = await pdfDoc.save();
   return pdfBytes;
-}
+};
+
 const sendEmailWithLink = async (email, link) => {
  console.log(process.env.MY_EMAIL)
   const transporter = nodemailer.createTransport({
@@ -55,27 +102,28 @@ const sendEmailWithLink = async (email, link) => {
 // POST route for handling payments
 router.post('/', async (req, res) => {
   try {
-    const {seatArea, user, eventOrBooking, eventType, paymentMethod, amount,ticketType } = req.body;
+    const {paymentMethodId,seatArea, user, eventOrBooking, eventType, amount,ticketType } = req.body;
 
     // Validate payment data (e.g., check if user exists, event/booking is valid, etc.)
 
     // Create a new Payment instance
+    console.log(paymentMethodId)
     const newPayment = new Payment({
       user,
       eventOrBooking,
       eventType,
-      paymentMethod,
+      paymentMethod:paymentMethodId,
       amount,
     
+
     });
     // console.log(stripe)
     const charge = await stripe.charges.create({
       amount: amount, // amount in cents
       currency: 'usd',
-      source: "tok_visa", // token obtained with Stripe.js
-      description: 'Charge for  test@example.com',
+      source:'tok_visa', // token obtained with Stripe.js
+      //localhost:3000/bookVenueTicket/:id"
     });
-    
     
 if (charge.status==='succeeded'){
   

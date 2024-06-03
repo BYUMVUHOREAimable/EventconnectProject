@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineGoogle } from "react-icons/ai";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { ImagetoBase64 } from './utility/ImagetoBase64.js';
+import { IoCloudUploadOutline } from "react-icons/io5";
 
 export default function SignUp() {
   const [fullName, setFullName] = useState("");
@@ -12,14 +14,14 @@ export default function SignUp() {
   const [visible, setVisible] = useState(false);
   const [terms, setTerms] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [profilePicture, setProfilePicture] = useState(null); // Added state for profile picture
+  const [userprofile, setUserprofile] = useState(null); // Added state for profile picture
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate required fields and email/password format
-    if (!fullName || !email || !password || !username || !phoneNumber) {
+    if (!fullName || !email || !password || !username || !phoneNumber || !userprofile) {
       toast.error("Please enter all required fields.");
       return;
     }
@@ -44,8 +46,8 @@ export default function SignUp() {
       formData.append("password", password);
       formData.append("username", username);
       formData.append("phoneNumber", phoneNumber);
-      if (profilePicture) {
-        formData.append("profilePicture", profilePicture); // Append profile picture to form data
+      if (userprofile) {
+        formData.append("userprofile", userprofile); // Append profile picture to form data
       }
 
       // Make API request
@@ -88,16 +90,26 @@ export default function SignUp() {
       setLoading(false);
     }
   };
+  const handleImageChange = async(e)=>{
+    const data = await ImagetoBase64(e.target.files[0])
+
+    setUserprofile((preve)=>{
+        return{
+          ...preve,
+          userprofile : data
+        }
+    })
+}
 
   const googleSignup = () => {
     setLoading(true);
     window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
   };
 
-  const handleProfilePictureChange = (e) => {
-    const file = e.target.files[0];
-    setProfilePicture(file); // Update profile picture state
-  };
+  // const handleProfilePictureChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setProfilePicture(file); // Update profile picture state
+  // };
 
   return (
     <div className="w-full flex flex-col shadow-xl justify-center items-center mt-20">
@@ -110,7 +122,7 @@ export default function SignUp() {
         Sign up
         <div className="text-sm align-bottom inline">
           or{" "}
-          <Link to="../" className="text-[#20B486] inline">Have Acount&#63;</Link>
+          <Link to="../" className="text-[#20B486] inline">Have Account&#63;</Link>
         </div>
       </div>
       <div className="flex flex-col w-1/2 pt-3 self-center relative" id="offPro">
@@ -133,26 +145,6 @@ export default function SignUp() {
           <input className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
             type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete=""/>
         </div>
-        <div className="flex flex-col text-gray-800 py-1">
-          <input
-            className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            autoComplete=""
-          />
-        </div>
-        <div className="flex flex-col text-gray-400 py-1 mt-1">
-          <input
-            className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
-            type="tel"
-            placeholder="Tel: +250 7899030993"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            autoComplete=""
-          />
-        </div>
         <div className="flex flex-col relative text-gray-400 py-1">
           <input
             className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
@@ -174,7 +166,27 @@ export default function SignUp() {
             />
           )}
         </div>
-        <div className="flex flex-col text-gray-400 py-1">
+        <div className="flex flex-col text-gray-400 py-1 mt-1">
+          <input
+            className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
+            type="tel"
+            placeholder="Tel: +250 7899030993"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+            autoComplete=""
+          />
+        </div>
+        <div className="flex flex-col text-gray-800 py-1">
+          <input
+            className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            autoComplete=""
+          />
+        </div>
+        {/* <div className="flex flex-col text-gray-400 py-1">
           <label htmlFor="profilePicture" className="text-sm">Profile Picture</label>
           <input
             type="file"
@@ -183,7 +195,30 @@ export default function SignUp() {
             onChange={handleProfilePictureChange}
             className="p-1 rounded-sm focus:border-blue-500 border border-violet-900 bg-white indent-3"
           />
-        </div>
+        </div> */}
+          <div className="flex flex-col py-1 p-1 rounded-sm focus:border-blue-500 border border-[#20B486]">
+          <label htmlFor="profilePicture" className="block text-lg font-semibold mb-2">
+          <div className="flex items-center justify-center w-full cursor-pointer">
+  <IoCloudUploadOutline className="mr-2" />
+  <p className="text-sm text-black">Upload</p>
+  </div>
+
+            <input
+              type="file"
+              id="userprofile"
+              name="userprofile"
+              accept='image/*'
+              className="hidden"
+              onChange={handleImageChange}
+              required
+            />
+            </label>
+          </div>
+
+
+
+
+
         <div className="text-sm text-center">
           <input
             type="checkbox"
@@ -214,7 +249,6 @@ export default function SignUp() {
               ? "bg-[#20B486] hover:shadow-teal-500/40"
               : "bg-gray-400 cursor-not-allowed"
           }`}
-          onClick={handleSubmit}
           disabled={!terms}
         >
           Create account

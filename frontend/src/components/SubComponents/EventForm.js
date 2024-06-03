@@ -1,37 +1,70 @@
 import React, { useState } from 'react';
+import { ImagetoBase64 } from '../utility/ImagetoBase64.js';
+import { IoCloudUploadOutline } from "react-icons/io5";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
 const EventForm = () => {
   const [eventData, setEventData] = useState({
     eventname: '',
     description: '',
     date: '',
-    startTime: '', // Add startTime to state
-    address: '',
-    city: '',
-    state: '',
-    country: '',
-    postalCode: '',
+    startTime: '',
+    location: {
+      address: '',
+      city: '',
+      state: '',
+      country: '',
+      postalCode: ''
+    },
     categories: [],
-    price: '',
-    currency: 'USD',
-    availability: '',
-    images: []
+    ticketInfo: {
+      price: '',
+      currency: 'USD',
+      availability: ''
+    },
+    organizer: '',
+    eventimages: []
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEventData({ ...eventData, [name]: value });
+    const keys = name.split('.');
+    if (keys.length === 1) {
+      setEventData({ ...eventData, [name]: value });
+    } else {
+      setEventData(prevState => ({
+        ...prevState,
+        [keys[0]]: {
+          ...prevState[keys[0]],
+          [keys[1]]: value
+        }
+      }));
+    }
   };
+  // const handleImageChange = async (e) => {
+  //   const files = Array.from(e.target.files);
+  //   const imageUrls = [];
+  
+  //   // Loop through each selected file
+  //   for (const file of files) {
+  //     // Convert the image to base64 format
+  //     const data = await ImagetoBase64(file);
+  //     // Push the base64 data to the array
+  //     imageUrls.push(data);
+  //   }
+  
+  //   // Update the state with the array of base64 image data
+  //   setEventData((prevData) => ({
+  //     ...prevData,
+  //     eventimages: imageUrls,
+  //   }));
+  // };
 
   const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    setEventData({ ...eventData, images: files });
+    setEventData({ ...eventData, eventimages: e.target.files });
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -41,16 +74,22 @@ const EventForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(eventData),
+        body: JSON.stringify({
+          eventname: eventData.eventname,
+          description: eventData.description,
+          date: new Date(`${eventData.date}T${eventData.startTime}`).toISOString(),
+          location: eventData.location,
+          organizer: eventData.organizer,
+          categories: [eventData.categories],
+          ticketInfo: eventData.ticketInfo,
+          eventimages: eventData.eventimages
+        }),
       });
       const dataRes = await response.json();
-  
-      if (response.status === 302) {
-        // Extract redirect location and navigate
-        toast(dataRes.message);
+      if (response.status === 201) {
+        toast.success(dataRes.message);
         navigate("/dashboard", { replace: true });
       } else {
-        // Handle other status codes (e.g., errors)
         toast.error(dataRes.message);
       }
     } catch (error) {
@@ -60,12 +99,10 @@ const EventForm = () => {
       setLoading(false);
     }
   };
-
   const handleReturnHome = (e) => {
     e.preventDefault();
     navigate("/dashboard", { replace: true });
   };
-
   return (
     <div className="pt-3 flex flex-col justify-center items-center w-full">
       {loading && (
@@ -73,12 +110,8 @@ const EventForm = () => {
           <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-purple-900"></div>
         </div>
       )}
-      <form 
-        className="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl" 
-        onSubmit={handleSubmit}
-      >
+      <form className="bg-white p-8 rounded-lg shadow-xl w-full max-w-2xl" onSubmit={handleSubmit}>
         <h2 className="text-3xl font-bold text-center mb-6 text-green-600">Create An Event</h2>
-        
         <div className="grid gap-6 md:grid-cols-2">
           <div className="col-span-2">
             <label className="block text-lg font-semibold mb-2" htmlFor="eventname">Event Name</label>
@@ -92,7 +125,6 @@ const EventForm = () => {
               required
             />
           </div>
-          
           <div className="col-span-2">
             <label className="block text-lg font-semibold mb-2" htmlFor="description">Event Description</label>
             <textarea
@@ -104,7 +136,6 @@ const EventForm = () => {
               required
             ></textarea>
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="date">Event Date</label>
             <input
@@ -117,7 +148,6 @@ const EventForm = () => {
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="startTime">Event Start Time</label>
             <input
@@ -130,72 +160,66 @@ const EventForm = () => {
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="address">Event Address</label>
             <input
               type="text"
               id="address"
-              name="address"
+              name="location.address"
               className="w-full p-3 border rounded-md"
-              value={eventData.address}
+              value={eventData.location.address}
               onChange={handleChange}
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="city">City</label>
             <input
               type="text"
               id="city"
-              name="city"
+              name="location.city"
               className="w-full p-3 border rounded-md"
-              value={eventData.city}
+              value={eventData.location.city}
               onChange={handleChange}
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="state">State</label>
             <input
               type="text"
               id="state"
-              name="state"
+              name="location.state"
               className="w-full p-3 border rounded-md"
-              value={eventData.state}
+              value={eventData.location.state}
               onChange={handleChange}
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="country">Country</label>
             <input
               type="text"
               id="country"
-              name="country"
+              name="location.country"
               className="w-full p-3 border rounded-md"
-              value={eventData.country}
+              value={eventData.location.country}
               onChange={handleChange}
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="postalCode">Postal Code</label>
             <input
               type="text"
               id="postalCode"
-              name="postalCode"
+              name="location.postalCode"
               className="w-full p-3 border rounded-md"
-              value={eventData.postalCode}
+              value={eventData.location.postalCode}
               onChange={handleChange}
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="categories">Categories</label>
             <select
@@ -213,27 +237,25 @@ const EventForm = () => {
               <option value="Other">Other</option>
             </select>
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="price">Ticket Price</label>
             <input
               type="number"
               id="price"
-              name="price"
+              name="ticketInfo.price"
               className="w-full p-3 border rounded-md"
-              value={eventData.price}
+              value={eventData.ticketInfo.price}
               onChange={handleChange}
               required
             />
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="currency">Currency</label>
             <select
               id="currency"
-              name="currency"
+              name="ticketInfo.currency"
               className="w-full p-3 border rounded-md"
-              value={eventData.currency}
+              value={eventData.ticketInfo.currency}
               onChange={handleChange}
               required
             >
@@ -244,50 +266,69 @@ const EventForm = () => {
               <option value="Other">Other</option>
             </select>
           </div>
-
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="availability">Ticket Availability</label>
             <input
               type="number"
               id="availability"
-              name="availability"
+              name="ticketInfo.availability"
               className="w-full p-3 border rounded-md"
-              value={eventData.availability}
+              value={eventData.ticketInfo.availability}
               onChange={handleChange}
               required
             />
           </div>
-
-          <div className="col-span-2">
-            <label className="block text-lg font-semibold mb-2" htmlFor="images">Event Images</label>
+          <div>
+            <label className="block text-lg font-semibold mb-2" htmlFor="organizer">Organizer Name</label>
             <input
-              type="file"
-              id="images"
-              name="images"
+              type="text"
+              id="organizer"
+              name="organizer"
               className="w-full p-3 border rounded-md"
-              onChange={handleImageChange}
-              multiple
+              value={eventData.organizer}
+              onChange={handleChange}
               required
             />
           </div>
+          <div className="col-span-2">
+            <label className="block text-lg font-semibold mb-2" htmlFor="eventimages">Event Images
+              <div className="flex items-center justify-center w-full p-3 border rounded-md cursor-pointer">
+                <IoCloudUploadOutline className="mr-2" /> <p className="text-sm text-black">Upload</p>
+              </div>
+              <input
+                type="file"
+                id="eventimages"
+                name="eventimages"
+                accept='image/*'
+                className="hidden"
+                onChange={handleImageChange}
+                multiple
+                required
+              />
+            </label>
+          </div>
         </div>
-        
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           className="mt-6 w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700"
         >
           Create Event
         </button>
       </form>
-      <a 
-        href="/dashboard" 
-        onClick={handleReturnHome} 
-        className="text-violet-900 hover:text-violet-800"
+      <a
+        href="/dashboard"
+        onClick={handleReturnHome}
+        className="text-violet-900 hover:text-violet-800 py-6"
       >
-        Return home&#63;
+        Return home?
       </a>
     </div>
   );
 };
-
 export default EventForm;
+
+
+
+
+
+
