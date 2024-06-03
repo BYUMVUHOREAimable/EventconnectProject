@@ -14,7 +14,7 @@ const storeRoute = require("./controllers/storeApi");
 const cookieSession = require("cookie-session");
 const UserModel = require("./Models/user.js");
 const jwt = require("jsonwebtoken");
-require("./passport/passport.js");
+// require("./passport/passport.js");
 const authRoute = require("./controllers/auth.js");
 // const forgotRoute = require("./controllers/forgotPassword.js")
 const nodemailer = require("nodemailer");

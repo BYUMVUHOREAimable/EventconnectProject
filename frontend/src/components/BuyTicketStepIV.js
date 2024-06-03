@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 // Load your Stripe publishable key
 const stripePromise = loadStripe(
-  "pk_test_51PCncCHVIJrIZ9MUfLv8FnCwfY4Jb3GiSxladQXYoZ0TKNrYW7amqYm7ZKBay7fai7f7k5DFwEzi4mXIs7pZN6I300JealTDR8"
+  `${process.env.PUBLISHABLE_KEY}`
 );
 
 const CheckoutForm = () => {
@@ -45,14 +45,14 @@ const CheckoutForm = () => {
       const paymentData = {
         paymentMethodId: paymentMethod.id,
         seatArea: 1200,
-        user: "66371dee312c68d198209c69", // Replace with the actual user ID
-        eventOrBooking: "66372030312c68d198209c6d", // Replace with actual event/booking ID
+        user: `${process.env.USER}`, // Replace with the actual user ID
+        eventOrBooking: `${process.env.EVENTORBOOKING}`, // Replace with actual event/booking ID
         eventType: "Event", // Replace with actual event type
         amount: 5000, // Amount in cents ($50.00)
         ticketType: "VIP", // Replace with actual ticket type
       };
 
-      const response = await fetch("http://localhost:5000/v1/api/payment", {
+const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
