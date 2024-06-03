@@ -18,7 +18,8 @@ require("./passport/passport.js");
 const authRoute = require("./controllers/auth.js");
 // const forgotRoute = require("./controllers/forgotPassword.js")
 const nodemailer = require("nodemailer");
-
+const paymentRoute=require("./controllers/paymentRoute.js")
+ 
 // Configuration
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));

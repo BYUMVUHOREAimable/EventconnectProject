@@ -83,7 +83,7 @@ const Sidebar = () => {
             }}
           >
             {!isCollapsed && (
-             <Link to="/dashboard/profile"> <Box display="flex" justifyContent="space-between" alignItems="center" ml="15px">
+             <Box display="flex" justifyContent="space-between" alignItems="center" ml="15px">
                 <Typography variant="h3" color={colors.grey[100]}>
                   LOGGED USER
                 </Typography>
@@ -91,7 +91,6 @@ const Sidebar = () => {
                   <MenuOutlinedIcon />
                 </IconButton>
               </Box>
-                </Link>
             )}
           </MenuItem>
 
@@ -118,9 +117,9 @@ const Sidebar = () => {
                 >
                   BYUMVUHORE Aimable
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
-                  EventConnect Admin
-                </Typography>
+              <Link to="/dashboard/profile"><Typography variant="h5" color={colors.greenAccent[500]}>
+                  Update Profile
+                </Typography> </Link>
               </Box>
             </Box>
           )}

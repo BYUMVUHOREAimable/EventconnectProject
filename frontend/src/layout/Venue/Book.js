@@ -7,7 +7,7 @@ import Amenities from '../../components/SubComponents/Amenities';
 import Sports from '../../components/SubComponents/Sports';
 import Details from '../../components/SubComponents/Details';
 
-import basketPlaygroundImg from '../../assets/basketplayground.jpg'; // Replace with the correct path to your image
+import basketPlaygroundImg from '../../assets/basketplayground.jpg';
 
 const BookPage = () => {
     return (

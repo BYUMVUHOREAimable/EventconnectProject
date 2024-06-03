@@ -34,8 +34,10 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-oauth2": "^1.8.0",
     "passport-strategy": "^1.0.0",
+    "pdf-lib": "^1.17.1",
     "qrcode": "^1.5.3",
     "semver": "^7.5.3",
+    "stripe": "^15.8.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.3"
   }

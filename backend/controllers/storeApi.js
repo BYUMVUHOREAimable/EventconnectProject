@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Venue, Event } = require('../Models/store');
+// const { Venue, Event } = require('../Models/store');
 
 // Venue routes
 router.get('/venues', async (req, res) => {
