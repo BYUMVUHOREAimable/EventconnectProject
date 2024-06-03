@@ -11,11 +11,11 @@ import Image from "./Image";
 // Assuming you have sidebarItems and config defined somewhere
 const Sidebar = ({ onSidebarHide, showSidebar, sidebarItems, config }) => {
   const [selected, setSelected] = useState("0");
-  const { dashOffset, indicatorWidth, precentage } = useSpring({
+  const { dashOffset, indicatorWidth, percentage } = useSpring({
     dashOffset: 26.015,
     indicatorWidth: 70,
-    precentage: 77,
-    from: { dashOffset: 113.113, indicatorWidth: 0, precentage: 0 },
+    percentage: 77,
+    from: { dashOffset: 113.113, indicatorWidth: 0, percentage: 0 },
     config: config.molasses,
   });
   return (
@@ -57,8 +57,8 @@ const Sidebar = ({ onSidebarHide, showSidebar, sidebarItems, config }) => {
           >
             <div className="block sm:hidden xl:block pt-3">
               <div className="font-bold text-gray-300 text-sm">Used Space</div>
-              <div className="text-gray-500 text-xs">Admin updated 09:12 am November 08,2020</div>
-              <animated.div className="text-right text-gray-400 text-xs">{precentage.interpolate((i) => `${Math.round(i)}%`)}</animated.div>
+              <div className="text-gray-500 text-xs">Admin updated 09:12 am June 03,2024</div>
+              <animated.div className="text-right text-gray-400 text-xs">{percentage.interpolate((i) => `${Math.round(i)}%`)}</animated.div>
               <div className="w-full text-gray-300">
                 <svg viewBox="0 0 100 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <line x1="5" y1="5.25" x2="95" y2="5.25" stroke="#3C3C3C" strokeWidth="5" strokeLinecap="round" />
@@ -96,7 +96,7 @@ const Sidebar = ({ onSidebarHide, showSidebar, sidebarItems, config }) => {
       <div className="flex-shrink-0 overflow-hidden p-2">
         <div className="flex items-center h-full sm:justify-center xl:justify-start p-2 sidebar-separator-bottom">
           <Image path="mock_faces_8" className="w-10 h-10" />
-          <div className="block sm:hidden xl:block ml-2 font-bold ">Jerry Wilson</div>
+          <div className="block sm:hidden xl:block ml-2 font-bold ">BYUMVUHORE Aimable</div>
           <div className="flex-grow block sm:hidden xl:block" />
           <Icon path="res-react-dash-options" className="block sm:hidden xl:block w-3 h-3" />
         </div>

@@ -16,8 +16,7 @@ const Navbar = () => {
             <div className='hidden md:flex items-center '>
                 <ul className='flex gap-4'>
                     <Link to='/' className='hover:underline'><li>Home</li></Link>
-                    <Link to='/services' className='hover:underline'><li>Products | Services</li></Link>
-                    <Link to='/pricing' className='hover:underline'><li>Pricing</li></Link>
+                    <Link to='/services' className='hover:underline'><li>Products & Services</li></Link>
                     <Link to='/about' className='hover:underline'><li>About</li></Link>
                     <Link to='/support' className='hover:underline'><li>Support</li></Link>
                 </ul>
@@ -45,8 +44,8 @@ const Navbar = () => {
         <div className={toggle ? 'absolute z-10 pt-4  bg-white w-full px-8 md:hidden border-b' : 'hidden'}>
             <ul>
                 <Link to='/' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Home</Link>
-                  <Link to='/services' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Products</Link>
-                  <Link to='/pricing' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Pricing</Link>
+                  <Link to='/services' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Products&Services</Link>
+                  <Link to='/terms&conditions' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>Terms & Conditions</Link>
                   <Link to='/about' className='p-2 hover:bg-gray-100 hover:underline cursor-pointer'>About</Link>
                   <Link to='/support' className='pr-8 mr-4 hover:bg-gray-100 hover:underline cursor-pointer'>Support</Link>
                 <div  className='flex flex-row my-4 gap-4'>

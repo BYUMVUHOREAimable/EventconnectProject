@@ -1,8 +1,9 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const cors = require('cors');
-require('dotenv').config();
+const cors = require("cors");
+require("dotenv").config();
 const PORT = process.env.PORT || 5000;
+<<<<<<< HEAD
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt')
 // const passport = require("passport");
@@ -19,11 +20,28 @@ const authRoute = require("./controllers/auth.js");
 const nodemailer = require("nodemailer");
 const paymentRoute=require("./controllers/paymentRoute.js")
  
+=======
+const bodyParser = require("body-parser");
+const bcrypt = require("bcrypt");
+const passport = require("passport");
+const connection = require("./Models/db.js");
+const signUpRoute = require("./controllers/signupApi.js");
+const loginRoute = require("./controllers/loginApi");
+const storeRoute = require("./controllers/storeApi");
+const cookieSession = require("cookie-session");
+const UserModel = require("./Models/user.js");
+const jwt = require("jsonwebtoken");
+require("./passport/passport.js");
+const authRoute = require("./controllers/auth.js");
+// const forgotRoute = require("./controllers/forgotPassword.js")
+const nodemailer = require("nodemailer");
+
+>>>>>>> 3686cf871d0dea7adf1a7bd83c3bc1f659d2d0ae
 // Configuration
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true, limit: '3mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "3mb" }));
 app.use(
   cookieSession({
     name: "session",
@@ -31,6 +49,7 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
   })
 );
+<<<<<<< HEAD
 // app.use(passport.initialize());
 // app.use(passport.session());
 app.use(cors({
@@ -38,68 +57,85 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+=======
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+>>>>>>> 3686cf871d0dea7adf1a7bd83c3bc1f659d2d0ae
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
 });
 // Routes
-app.use('/auth', authRoute);
-app.use('/v1/api/signup', signUpRoute);
-app.use('/v1/api/login', loginRoute);
+app.use("/auth", authRoute);
+app.use("/v1/api/signup", signUpRoute);
+app.use("/v1/api/login", loginRoute);
 // app.use('/v1/api', forgotRoute);
+<<<<<<< HEAD
 app.use('/v1/api/store', storeRoute);
 app.use('/v1/api/payment', paymentRoute);
 
+=======
+app.use("/v1/api/store", storeRoute);
+>>>>>>> 3686cf871d0dea7adf1a7bd83c3bc1f659d2d0ae
 
 // Database connection
 connection();
 
-app.post('/forgot-password', async (req, res) => {
+app.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
 
   try {
-      // Find the user by email
-      const user = await UserModel.findOne({ email });
+    // Find the user by email
+    const user = await UserModel.findOne({ email });
 
-      // If no user is found, return a generic success response
-      if (!user) {
-        return res.status(404).send({ message: "Email not found" });
-      }
-      // Create a JWT token for password reset
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    // If no user is found, return a generic success response
+    if (!user) {
+      return res.status(404).send({ message: "Email not found" });
+    }
+    // Create a JWT token for password reset
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
-      // Configure the email transporter
-      const transporter = nodemailer.createTransport({
-          service: 'gmail',
-          port: 465,
-          secure: true,
-          auth: {
-              user: process.env.MY_EMAIL,
-              pass: process.env.MY_PASSWORD
-          }
-      });
+    // Configure the email transporter
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.MY_EMAIL,
+        pass: process.env.MY_PASSWORD,
+      },
+    });
 
-      // Set up mail options
-      const mailOptions = {
-          from: process.env.MY_EMAIL,
-          to: email,
-          subject: 'Event Connect - Reset Password',
-          text: `${process.env.FRONTEND_URL}/authentication/reset_password/${user._id}/${token}`
-      };
-      // Send the email
-      await transporter.sendMail(mailOptions);
-      res.status(200).send({ message: "Check, Email is sent via your account(email)." });
-
+    // Set up mail options
+    const mailOptions = {
+      from: process.env.MY_EMAIL,
+      to: email,
+      subject: "Event Connect - Reset Password",
+      text: `${process.env.FRONTEND_URL}/authentication/reset_password/${user._id}/${token}`,
+    };
+    // Send the email
+    await transporter.sendMail(mailOptions);
+    res
+      .status(200)
+      .send({ message: "Check, Email is sent via your account(email)." });
   } catch (error) {
-      // Log the error and return a 500 status code
-      console.error('Error in forgot-password:', error);
-      res.status(500).send({ message: "Internal server error" });
+    // Log the error and return a 500 status code
+    console.error("Error in forgot-password:", error);
+    res.status(500).send({ message: "Internal server error" });
   }
 });
 
-app.post('/reset-password/:id/:token', async (req, res) => {
-
+app.post("/reset-password/:id/:token", async (req, res) => {
   try {
     // Verify the token first
     const verify = jwt.verify(req.params.token, process.env.JWT_SECRET);
@@ -107,7 +143,9 @@ app.post('/reset-password/:id/:token', async (req, res) => {
     // User is authorized, proceed with password reset
     const oldUser = await UserModel.findOne({ _id: req.params.id });
     if (!oldUser) {
-      return res.status(404).send({ message: "User not found, you may signup" });
+      return res
+        .status(404)
+        .send({ message: "User not found, you may signup" });
     }
 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -118,16 +156,16 @@ app.post('/reset-password/:id/:token', async (req, res) => {
       { $set: { password: hashedPassword } }
     );
 
-    if (updatedUser.matchedCount === 1) { // Check if exactly one document was updated
+    if (updatedUser.matchedCount === 1) {
+      // Check if exactly one document was updated
       res.status(200).send({ message: "Password updated successfully" });
     } else {
       console.error("Error: Password update failed");
       res.status(500).send({ message: "Password update failed" }); // More specific error
     }
-
   } catch (error) {
-    console.error('Error during password reset:', error);
-    if (error.name === 'JsonWebTokenError') {
+    console.error("Error during password reset:", error);
+    if (error.name === "JsonWebTokenError") {
       res.status(401).send({ message: "Invalid token" }); // Specific error for token issues
     } else {
       res.status(500).send({ message: "Internal server error" });
@@ -135,8 +173,11 @@ app.post('/reset-password/:id/:token', async (req, res) => {
   }
 });
 
+app.get("/", (req, res) =>
+  res.send("Index Route For Server Api Event Connect ...")
+);
 
-  // Starting the server
+// Starting the server
 app.listen(PORT, () => {
   console.log(`Server started on http://127.0.0.1:${PORT}`);
 });

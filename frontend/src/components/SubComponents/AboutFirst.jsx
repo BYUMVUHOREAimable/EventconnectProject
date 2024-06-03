@@ -1,5 +1,5 @@
 import React from 'react';
-import Image1 from '../../assets/comedy.jpeg';
+import Image1 from '../../assets/comedy.jpg';
 import { FaGoogle, FaAdn, FaAddressCard, FaAccessibleIcon } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
@@ -33,8 +33,8 @@ const AboutFirst = () => {
           <div className='w-full max-w-md md:max-w-[10cm] md:h-[13cm] bg-slate-100 text-center md:text-xl shadow-xl'>
             <img src={Image1} alt="" className='w-full h-[7cm] md:h-[9cm]' />
             <div className='p-4'>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita.</p>
-              <span className='text-blue-700 block'>lorem Ipsum</span>
+              <p className='text-sm'>Get ready to LOL at Sekalive Comedy</p>
+              <span className='text-blue-700 block'>Book Ticket First At Selena Hotel</span>
             </div>
           </div>
         </div>

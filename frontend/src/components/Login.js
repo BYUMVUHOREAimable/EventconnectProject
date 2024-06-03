@@ -52,8 +52,8 @@ export default function Login() {
   return (
     <div className="pt-3 flex flex-col justify-center items-center w-full">
       {loading && (
-        <div className="fixed inset-0 bg-purple-500 bg-opacity-40 flex justify-center items-center z-10">
-          <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-purple-900"></div>
+        <div className="fixed inset-0 bg-[#20B486] bg-opacity-40 flex justify-center items-center z-10">
+          <div className="animate-spin rounded-full h-20 w-20 border-t-2 border-b-2 border-[#20B486]"></div>
         </div>
       )}
       <div
@@ -63,7 +63,7 @@ export default function Login() {
         Log in{" "}
         <div className="text-sm align-bottom inline">
           or{" "}
-          <Link to="./Signup" className="text-purple-900 inline">
+          <Link to="./Signup" className="text-[#20B486] inline">
             Create an account
           </Link>
         </div>
@@ -72,7 +72,7 @@ export default function Login() {
         className="flex flex-col w-1/2 pt-3 "
         id="offPro"
       >
-        <div className="p-1 bg-violet-900 hover:bg-violet-800 hover:shadow-slate-950/30 shadow-lg text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleLogin}>
+        <div className="p-1 bg-[#20B486] hover:bg-[#43edb7] hover:shadow-slate-950/30 shadow-lg text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleLogin}>
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
           Log in with Google
         </div>
@@ -92,7 +92,7 @@ export default function Login() {
       >
         <div className="flex flex-col text-gray-800 py-1">
           <input
-            className=" p-1 rounded-sm focus:border-blue-500 border border-violet-900 bg-white indent-3"
+            className=" p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3"
             type="text"
             placeholder="Email"
             value={email}
@@ -103,7 +103,7 @@ export default function Login() {
         </div>
         <div className="flex flex-col relative text-gray-800 py-1">
           <input
-            className=" p-1 rounded-sm focus:border-blue-500 border border-violet-900 bg-white indent-3"
+            className=" p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3"
             type={visible ? "text" : "password"}
             placeholder="Password"
             value={password}
@@ -128,12 +128,12 @@ export default function Login() {
             <input type="checkbox" id="remember" className="w-5" />
             <label>Remember Me</label>
           </span>
-          <button className="p-1 px-5 bg-violet-900 shadow-lg hover:shadow-slate-950/30 text-white font-semibold rounded-sm" type="submit">
+          <button className="p-1 px-5 bg-[#20B486] shadow-lg hover:shadow-slate-950/30 text-white font-semibold rounded-sm" type="submit">
             Log In
           </button>
         </div>
       </form>
-      <Link to="forgot" className="text-violet-900 hover:text-violet-800">Forgot Your Password&#63;</Link>
+      <Link to="forgot" className="text-[#20B486] hover:text-[#52f8c4]">Forgot Your Password&#63;</Link>
     </div>
   );
 }

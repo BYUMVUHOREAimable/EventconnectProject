@@ -5,7 +5,7 @@ const AboutSecond = () => {
     <div className='flex flex-col justify-center items-center px-4'>
       <div className='my-8'>
         <h2 className='text-2xl text-center font-bold mb-4'>Event Connect Objective</h2>
-        <div className='flex gap-4 max-md:text-lg lg:text-xl text-left max-md:flex-col lg:flex-row'>
+        <div className='flex gap-4 max-sm:text-sm max-md:text-md lg:text-lg text-left max-md:flex-col lg:flex-row'>
           <p className='px-4 py-2'>
             Event Connect is an event management system aimed at digitalizing the process of event preparation through connecting event planners and event owners.
           </p>

@@ -83,7 +83,7 @@ const Sidebar = () => {
             }}
           >
             {!isCollapsed && (
-              <Box display="flex" justifyContent="space-between" alignItems="center" ml="15px">
+             <Link to="/dashboard/profile"> <Box display="flex" justifyContent="space-between" alignItems="center" ml="15px">
                 <Typography variant="h3" color={colors.grey[100]}>
                   LOGGED USER
                 </Typography>
@@ -91,20 +91,24 @@ const Sidebar = () => {
                   <MenuOutlinedIcon />
                 </IconButton>
               </Box>
+                </Link>
             )}
           </MenuItem>
 
           {!isCollapsed && (
             <Box mb="25px">
+              <Link to="profile">
               <Box display="flex" justifyContent="center" alignItems="center">
                 <img
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/user.png`}
+                 src={`../../assets/user.png`} 
                   style={{ cursor: "pointer", borderRadius: "50%" }}
-                />
-              </Box>
+                  />
+                  
+                </Box>
+                </Link>
               <Box textAlign="center">
                 <Typography
                   variant="h2"
