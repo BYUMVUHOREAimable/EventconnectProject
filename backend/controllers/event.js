@@ -40,7 +40,6 @@ router.post('/', async (req, res) => {
         country: req.body.location.country,
         postalCode: req.body.location.postalCode
       },
-      organizer: req.body.organizer,
       categories: req.body.categories,
       ticketInfo: {
         price: req.body.ticketInfo.price,
