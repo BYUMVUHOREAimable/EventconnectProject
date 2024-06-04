@@ -18,11 +18,7 @@ import Home from './layout/Venue/Home'
 import BookPage from './layout/Venue/Book';
 import BuyingTicketProcess from './layout/Venue/BuyTicketProcess';
 import BookEvent from "./components/SubComponents/EventCard";
-import BookEventTicket from "./components/BuyTicketStepI";
-
-//import BookEvent from './layout/Event/EventBooking'
-//import BookEventTicket from './Scenes/Event/BookingEvent'
-
+import BookEventTicket from "./components/Step4";
 import Testing from './components/SubComponents/BookingSteptest'
 import About from "./components/About";
 import Missing from './components/Missing';
@@ -33,7 +29,6 @@ import Services from './components/Services';
 import ServicePlanners from './components/ServicePlanners';
 
 import HomeDashboard from './components/HomeDashboard';
-//import Dashboard from "./scenes/dashboard";
 import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
 import Bar from "./scenes/bar";
@@ -50,6 +45,11 @@ import ThankYou from './scenes/Thankyou/Thankyou';
 import UserProfile from './components/UserProfile';
 import TermsAndConditions from './components/TermsandConditions';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import Step1 from './components/Step1';
+import Step2 from './components/Step2';
+import Step3 from './components/Step4';
+import Step4 from './components/Step3';
+import Step5 from './components/Step5';
 
 
 function App() {
@@ -101,8 +101,11 @@ function App() {
         <Route path='/termsandconditions' exact element={<TermsAndConditions />} />
         <Route path='/privacyandpolicy' exact element={<PrivacyPolicy />} />
 
-
-
+        <Route path='/step1' exact element={<Step1 />} />
+        <Route path='/step2' exact element={<Step2 />} />
+        <Route path='/step3' exact element={<Step3 />} />
+        <Route path='/step4' exact element={<Step4 />} />
+        <Route path='/step5' exact element={<Step5 />} />
         <Route path='*' exact element={<Missing />} />
       </Routes>
 
