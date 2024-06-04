@@ -9,9 +9,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 // Load your Stripe publishable key
-const stripePromise = loadStripe(
-  `${process.env.PUBLISHABLE_KEY}`
-);
+const stripePromise = loadStripe(`${process.env.PUBLISHABLE_KEY}`);
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -27,32 +25,27 @@ const CheckoutForm = () => {
 
     const cardElement = elements.getElement(CardElement);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: cardElement,
-      billing_details: {
-        name: event.target.NameOnCard.value,
-      },
+    const { token, error } = await stripe.createToken(cardElement, {
+      name: event.target.NameOnCard.value,
     });
 
     if (error) {
       console.error("[error]", error);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
-       
+      console.log("[Token]", token);
 
-      // Send payment data to the backend for payment processing
+    
       const paymentData = {
-        paymentMethodId: paymentMethod.id,
+        token: token.id,
         seatArea: 1200,
-        user: `${process.env.USER}`, // Replace with the actual user ID
-        eventOrBooking: `${process.env.EVENTORBOOKING}`, // Replace with actual event/booking ID
-        eventType: "Event", // Replace with actual event type
-        amount: 5000, // Amount in cents ($50.00)
-        ticketType: "VIP", // Replace with actual ticket type
+        user: `${process.env.USER}`, 
+        eventOrBooking: `${process.env.EVENTORBOOKING}`, 
+        eventType: "Event", 
+        amount: 5000*100, 
+        ticketType: "VIP", 
       };
 
-const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/payment`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,17 +58,14 @@ const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/payment`, 
 
       if (paymentResult.error) {
         console.log("Error while paying", paymentResult.error);
-        
       } else {
         console.log("Payment successful", paymentResult);
-        
-
       }
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}  className="md:w-2/3 sm:w-4/5 mx-auto">
+    <form onSubmit={handleSubmit} className="md:w-2/3 sm:w-4/5 mx-auto">
       <div className="grid gap-2 grid-rows-2 md:w-4/5 w-5/6 mx-auto">
         <input type="text" className="text-center py-3 border-b-2" name="NameOnCard" placeholder="Name on Card" required />
       </div>
@@ -116,16 +106,13 @@ const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/payment`, 
 
 const BookingStepIV = () => {
   return (
-   
     <div className="md:w-2/3 sm:w-4/5 text-center w-full h-full max-h-[90vh] bg-white text-violet-950 rounded-2xl relative overflow-x-scroll">
       <h1 className="py-4">Add a Card</h1>
       <Elements stripe={stripePromise}>
         <CheckoutForm />
       </Elements>
-    
-  </div>
+    </div>
   );
-
 };
 
 export default BookingStepIV;
