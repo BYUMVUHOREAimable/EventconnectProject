@@ -8,6 +8,7 @@ import Segmentation from "./Segmentation";
 import Satisfication from "./Satisfication";
 import AddComponent from "./AddComponent";
 
+
 const Content = ({ onSidebarHide, employeeData }) => {
   return (
     <div className="flex w-full">

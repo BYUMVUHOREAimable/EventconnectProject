@@ -6,6 +6,7 @@ const bookingSchema = new mongoose.Schema({
   venue: { type: mongoose.Schema.Types.ObjectId, ref: 'Venue', required: true },
   date: { type: Date, required: true },
   time: { type: String, required: true },
+  
 });
 
 const Booking = mongoose.model('Booking', bookingSchema);
