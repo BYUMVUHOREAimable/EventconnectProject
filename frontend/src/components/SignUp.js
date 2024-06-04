@@ -77,7 +77,8 @@ export default function SignUp() {
 
   const googleSignup = () => {
     setLoading(true);
-    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
+   // https://eventconnect2.onrender.com/auth/google/callback
+    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google/callback`;
   };
 
   return (
