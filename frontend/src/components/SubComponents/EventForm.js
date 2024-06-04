@@ -47,10 +47,7 @@ const EventForm = () => {
 
   const handleImageChange = async (e) => {
     const imageUrls = [];
-
-
-
-    setEventData(prevData => ({
+  setEventData(prevData => ({
       ...prevData,
       eventimages: imageUrls,
     }));
@@ -317,9 +314,3 @@ const EventForm = () => {
   );
 };
 export default EventForm;
-
-
-
-
-
-
