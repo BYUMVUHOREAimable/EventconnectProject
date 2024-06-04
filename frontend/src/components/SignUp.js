@@ -14,14 +14,14 @@ export default function SignUp() {
   const [visible, setVisible] = useState(false);
   const [terms, setTerms] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [userprofile, setUserprofile] = useState(null); // Added state for profile picture
+  const [userProfile, setUserProfile] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate required fields and email/password format
-    if (!fullName || !email || !password || !username || !phoneNumber || !userprofile) {
+    if (!fullName || !email || !password || !username || !phoneNumber || !userProfile) {
       toast.error("Please enter all required fields.");
       return;
     }
@@ -46,70 +46,39 @@ export default function SignUp() {
       formData.append("password", password);
       formData.append("username", username);
       formData.append("phoneNumber", phoneNumber);
-      if (userprofile) {
-        formData.append("userprofile", userprofile); // Append profile picture to form data
-      }
+      formData.append("userProfile", userProfile);
 
       // Make API request
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/signup`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/event`, {
         method: "POST",
         body: formData,
       });
 
-      // Parse JSON response
       const dataRes = await response.json();
 
-      // Check response status
-      if (!response.ok) {
-        if (response.status === 401) {
-          toast.error("Failed to create account");
-        } else if (response.status === 500) {
-          toast.error("Server error");
-        } else {
-          toast.error("Something went wrong");
-        }
-        return;
-      }
-
-      // Display success or error message
-      if (dataRes) {
+      if (response.status === 302) {
         toast.success(dataRes.message);
-        navigate("/authentication");
+        navigate("/dashboard", { replace: true });
       } else {
         toast.error(dataRes.message);
       }
     } catch (error) {
-      // Handle error cases
-      console.error("Error during form submission:", error);
-      if (error.message === "Network Error") {
-        toast.error("Network error, please check your internet connection");
-      } else {
-        toast.error(error.message);
-      }
+      console.error(error);
+      toast.error("Event creation failed. Please try again.");
     } finally {
       setLoading(false);
     }
   };
-  const handleImageChange = async(e)=>{
-    const data = await ImagetoBase64(e.target.files[0])
 
-    setUserprofile((preve)=>{
-        return{
-          ...preve,
-          userprofile : data
-        }
-    })
-}
+  const handleImageChange = async (e) => {
+    const data = await ImagetoBase64(e.target.files[0]);
+    setUserProfile(data);
+  };
 
   const googleSignup = () => {
     setLoading(true);
     window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
   };
-
-  // const handleProfilePictureChange = (e) => {
-  //   const file = e.target.files[0];
-  //   setProfilePicture(file); // Update profile picture state
-  // };
 
   return (
     <div className="w-full flex flex-col shadow-xl justify-center items-center mt-20">
