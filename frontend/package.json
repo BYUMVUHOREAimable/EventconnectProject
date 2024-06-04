@@ -101,5 +101,9 @@
     "tailwindcss": "^3.3.2",
     "vite": "^4.4.7",
     "webpack": "^5.88.2"
+  },
+  "resolutions": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

@@ -43,7 +43,7 @@ const Step2 = () => {
               <Link to={'/step4'}>
               <button className="w-full md:w-10/12 block rounded-lg px-4 py-3 text-sm md:text-base bg-gray-200 mx-auto my-2">Net Banking</button>
               </Link>
-            <Link to="/step4">   <button className="bg-green-600 text-white w-full md:w-10/12 block rounded-lg px-4 py-3 text-sm md:text-base mx-auto my-2">
+            <Link to="/step3">   <button className="bg-green-600 text-white w-full md:w-10/12 block rounded-lg px-4 py-3 text-sm md:text-base mx-auto my-2">
             Continue
               </button>
                   </Link>

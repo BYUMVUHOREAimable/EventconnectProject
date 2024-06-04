@@ -16,9 +16,7 @@ import ResetPassword from './components/ResetPassword';
 import ForgotPassword from './components/ForgotPassword';
 import Home from './layout/Venue/Home'
 import BookPage from './layout/Venue/Book';
-import BuyingTicketProcess from './layout/Venue/BuyTicketProcess';
 import BookEvent from "./components/SubComponents/EventCard";
-import BookEventTicket from "./components/Step4";
 import Testing from './components/SubComponents/BookingSteptest'
 import About from "./components/About";
 import Missing from './components/Missing';
@@ -70,10 +68,8 @@ function App() {
       <Route path ='/home' exact element={<Home/>}/>
       <Route path ='/create' exact element={<EventCreation/>}/>
       <Route path='/bookVenue/:id' exact element={<BookPage />} />
-        <Route path='/bookVenueTicket/:id' exact element={<BuyingTicketProcess />} />
         
         <Route path='/bookEvent/:id' exact element={<BookEvent />} /> 
-       <Route path='/bookEventTicket/:id' exact element={<BookEventTicket/>}/> 
         
       <Route path='/Notification' exact element={<Notification />} />
         <Route path='/testing' exact element={<Testing />} />

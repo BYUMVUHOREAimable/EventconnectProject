@@ -23,7 +23,7 @@ const Services = () => {
           {
                id: 1,
                topic: "Events",
-               link: "/bookVenueTicket/:id",
+               link: "/step1",
                title: "Kwita izina",
                shortDesc: "Participate the ceremony and give your name.",
                mainContent: "Experience one of the world's most important celebrations of nature and meet Rwanda’s newborn baby gorillas",
@@ -40,7 +40,7 @@ const Services = () => {
           {
                id: 2,
                topic: "Events",
-               link: "/bookVenueTicket/:id",
+               link: "/step1",
                title: "KIGALI UP FESIVA",
                shortDesc: "Festivals By ishyoarts",
                mainContent: "Ishyo has been a partner of this unique outdoor music festival which brings together, every year since 2011, world-renowned artists from different horizons for live shows.",
@@ -58,7 +58,7 @@ const Services = () => {
           {
                id: 3,
                topic: "Events",
-               link: "/bookVenueTicket/:id",
+               link: "/step1",
                title: "Genz Comedy Show",
                shortDesc: "It showcases stand up comedians across Rwanda.",
                mainContent: "GEN-Z COMEDY SHOW Innovative comedy show, founded by Rwandan comedian @mercindaruhutse, known as Fally Merci.",
@@ -75,7 +75,7 @@ const Services = () => {
           {
                id: 4,
                topic: "Events",
-               link: "/bookVenueTicket/:id",
+               link: "/step1",
                title: "Event 4",
                shortDesc: "This is a short description of this event",
                mainContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dicta accusamus enim, animi aperiam",
@@ -92,7 +92,7 @@ const Services = () => {
           {
                id: 5,
                topic: "Events",
-               link: "/bookVenueTicket/:id",
+               link: "/step1",
                title: "Event 5",
                shortDesc: "This is a short description of this event",
                mainContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dicta accusamus enim, animi aperiam",
