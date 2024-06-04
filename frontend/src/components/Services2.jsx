@@ -101,7 +101,7 @@ const Services = () => {
                hours: "7-10 h",
                phone: "078 221 1212",
                photos: [Image1, Image2, Image3, Image4],
-               normalTicket: 3000,
+               normalTicket: 4000,
                img: Image1
           }
      ]
