@@ -113,10 +113,9 @@ const Services = () => {
                <h className='text-2xl font-bold'>Popular Events</h>
                <article>
                     <p className='mb-[1rem]'>
-                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo vero esse suscipit quae adipisci sed dolore, assumenda totam aliquid aut iusto.
+                         Crafting experiences that leave a lasting impression. <br />
                          <span className='max-sm:hidden'>
-                              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo vero esse suscipit quae adipisci sed dolore, assumenda totam aliquid aut iusto.
-                              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quo vero esse suscipit quae adipisci sed dolore, assumenda totam aliquid aut iusto.
+                              At the heart of our event planning is a commitment to creating moments that resonate long after the day has passed. We meticulously design each element to not just meet but exceed your expectations, ensuring that every experience we craft leaves a lasting impression on you and your guests. From the ambiance to the smallest detail, we aim to create events that are unforgettable
                          </span>
                     </p>
                     <Link to={'/planners'} className='max-sm:px-2 sm:px-4 md:px-[6%] py-2 max-sm:py-1 sm:mx-[1rem] md:m-0 rounded-lg bg-[#20B486] text-white shadow-md'>For Event Planners</Link>
@@ -126,7 +125,7 @@ const Services = () => {
           <div>
                <h className='text-2xl font-bold'>New Events</h>
                <p className='my-[1rem]'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti id aspernatur nobis quaerat enim in eum quae voluptatibus beatae rerum voluptate, eaque natus commodi, modi incidunt quam impedit veritatis nam.
+                    Embrace the future with our cutting-edge event solutions. From corporate gatherings to personal celebrations, we ensure your events are a step ahead, leaving a lasting impact.
                </p>
                <NewEvents newEvents={ newEvents } />
           </div>

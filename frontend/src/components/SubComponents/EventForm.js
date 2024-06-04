@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+
 const EventForm = () => {
   const [eventData, setEventData] = useState({
     eventname: '',
@@ -15,7 +16,7 @@ const EventForm = () => {
       country: '',
       postalCode: ''
     },
-    categories: [],
+    categories: '',
     ticketInfo: {
       price: '',
       currency: 'USD',
@@ -24,8 +25,10 @@ const EventForm = () => {
     organizer: '',
     eventimages: []
   });
+
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     const keys = name.split('.');
@@ -41,29 +44,22 @@ const EventForm = () => {
       }));
     }
   };
-  // const handleImageChange = async (e) => {
-  //   const files = Array.from(e.target.files);
-  //   const imageUrls = [];
-  
-  //   // Loop through each selected file
-  //   for (const file of files) {
-  //     // Convert the image to base64 format
-  //     const data = await ImagetoBase64(file);
-  //     // Push the base64 data to the array
-  //     imageUrls.push(data);
-  //   }
-  
-  //   // Update the state with the array of base64 image data
-  //   setEventData((prevData) => ({
-  //     ...prevData,
-  //     eventimages: imageUrls,
-  //   }));
-  // };
 
-  const handleImageChange = (e) => {
-    setEventData({ ...eventData, eventimages: e.target.files });
+  const handleImageChange = async (e) => {
+    const files = Array.from(e.target.files);
+    const imageUrls = [];
+
+    for (const file of files) {
+      const data = await ImagetoBase64(file);
+      imageUrls.push(data);
+    }
+
+    setEventData(prevData => ({
+      ...prevData,
+      eventimages: imageUrls,
+    }));
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -98,10 +94,12 @@ const EventForm = () => {
       setLoading(false);
     }
   };
+
   const handleReturnHome = (e) => {
     e.preventDefault();
     navigate("/dashboard", { replace: true });
   };
+
   return (
     <div className="pt-3 flex flex-col justify-center items-center w-full">
       {loading && (
@@ -301,8 +299,6 @@ const EventForm = () => {
                 accept='image/*'
                 className="hidden"
                 onChange={handleImageChange}
-                multiple
-                required
               />
             </label>
           </div>
