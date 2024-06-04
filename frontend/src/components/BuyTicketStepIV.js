@@ -10,9 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 // Load your Stripe publishable key
-const stripePromise = loadStripe(
-  `${process.env.PUBLISHABLE_KEY}`
-);
+const stripePromise = loadStripe(`${process.env.PUBLISHABLE_KEY}`);
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -28,31 +26,27 @@ const CheckoutForm = () => {
 
     const cardElement = elements.getElement(CardElement);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: "card",
-      card: cardElement,
-      billing_details: {
-        name: event.target.NameOnCard.value,
-      },
+    const { token, error } = await stripe.createToken(cardElement, {
+      name: event.target.NameOnCard.value,
     });
 
     if (error) {
       console.error("[error]", error);
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      console.log("[Token]", token);
 
-      // Send payment data to the backend for payment processing
+    
       const paymentData = {
-        paymentMethodId: paymentMethod.id,
+        token: token.id,
         seatArea: 1200,
-        user: `${process.env.USER}`, // Replace with the actual user ID
-        eventOrBooking: `${process.env.EVENTORBOOKING}`, // Replace with actual event/booking ID
-        eventType: "Event", // Replace with actual event type
-        amount: 5000, // Amount in cents ($50.00)
-        ticketType: "VIP", // Replace with actual ticket type
+        user: `${process.env.USER}`, 
+        eventOrBooking: `${process.env.EVENTORBOOKING}`, 
+        eventType: "Event", 
+        amount: 5000*100, 
+        ticketType: "VIP", 
       };
 
-const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/payment`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
