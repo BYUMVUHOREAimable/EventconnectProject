@@ -46,13 +46,9 @@ const EventForm = () => {
   };
 
   const handleImageChange = async (e) => {
-    const files = Array.from(e.target.files);
     const imageUrls = [];
 
-    for (const file of files) {
-      const data = await ImagetoBase64(file);
-      imageUrls.push(data);
-    }
+
 
     setEventData(prevData => ({
       ...prevData,
