@@ -300,8 +300,6 @@ const EventForm = () => {
                 accept='image/*'
                 className="hidden"
                 onChange={handleImageChange}
-                multiple
-                required
               />
             </label>
           </div>
