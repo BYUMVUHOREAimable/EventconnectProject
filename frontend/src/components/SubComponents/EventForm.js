@@ -141,7 +141,7 @@ const EventForm = () => {
           <div>
             <label className="block text-lg font-semibold mb-2" htmlFor="startTime">Event Start Time</label>
             <input
-              type="time"
+              type="text"
               id="startTime"
               name="startTime"
               className="w-full p-3 border rounded-md"
@@ -292,6 +292,8 @@ const EventForm = () => {
                 accept='image/*'
                 className="hidden"
                 onChange={handleImageChange}
+                multiple
+                required 
               />
             </label>
           </div>
