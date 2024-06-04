@@ -5,7 +5,7 @@ require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
-// const passport = require("passport");
+const passport = require("passport");
 const connection = require("./Models/db.js");
 const signUpRoute = require("./controllers/signupApi.js");
 const loginRoute = require("./controllers/loginApi");
@@ -14,7 +14,7 @@ const storeRoute = require("./controllers/storeApi");
 const cookieSession = require("cookie-session");
 const UserModel = require("./Models/user.js");
 const jwt = require("jsonwebtoken");
-// require("./passport/passport.js");
+require("./passport/passport.js");
 const authRoute = require("./controllers/auth.js");
 // const forgotRoute = require("./controllers/forgotPassword.js")
 const nodemailer = require("nodemailer");
@@ -32,8 +32,8 @@ app.use(
     maxAge: 24 * 60 * 60 * 1000,
   })
 );
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(
   cors({
     origin: `${process.env.FRONTEND_URL}`,
