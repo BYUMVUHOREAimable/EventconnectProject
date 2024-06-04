@@ -4,6 +4,7 @@ const eventSchema = new mongoose.Schema({
   eventname: { type: String, required: true },
   description: { type: String, required: true },
   date: { type: Date, required: true },
+  startTime: { type: String, required: true }, // Changed from 'time' to 'String'
   location: {
     address: { type: String, required: true },
     city: { type: String, required: true },
@@ -19,7 +20,7 @@ const eventSchema = new mongoose.Schema({
     availability: { type: Number, required: true }, // Number of tickets available
   },
   eventimages: [{ type: String }], // Array of image URLs
-  attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // Users who have booked or attended the event
+  attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', default: [] }], // Changed 'default: empty' to 'default: []'
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }
 });
