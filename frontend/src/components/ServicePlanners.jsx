@@ -31,7 +31,7 @@ const ServicePlanners = () => {
           {
                id: 2,
                topic: "Products",
-               link: "/bookVenueTicket/:id",
+               link: "bookVenueTicket/:id",
                title: "Product 2",
                shortDesc: "This is a short description of this event",
                mainContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dicta accusamus enim, animi aperiam",
@@ -47,7 +47,7 @@ const ServicePlanners = () => {
           {
                id: 3,
                topic: "Products",
-               link: "/bookVenueTicket/:id",
+               link: "bookVenueTicket/:id",
                title: "Product 3",
                shortDesc: "This is a short description of this event",
                mainContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dicta accusamus enim, animi aperiam",
@@ -64,7 +64,7 @@ const ServicePlanners = () => {
           {
                id: 4,
                topic: "Products",
-               link: "/bookVenueTicket/:id",
+               link: "bookVenueTicket/:id",
                title: "Product 4",
                shortDesc: "This is a short description of this event",
                mainContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dicta accusamus enim, animi aperiam",
@@ -81,7 +81,7 @@ const ServicePlanners = () => {
           {
                id: 5,
                topic: "Products",
-               link: "/bookVenueTicket/:id",
+               link: "bookVenueTicket/:id",
                title: "Product 5",
                shortDesc: "This is a short description of this event",
                mainContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae dicta accusamus enim, animi aperiam",
