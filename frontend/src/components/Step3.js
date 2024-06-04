@@ -47,7 +47,7 @@ const Step3 = ({ handlePayment }) => {
             />
           </div>
           <div className="mt-8 flex justify-center">
-            <Link to="/step4">
+            <Link to="/step3">
               <button type="submit" className="bg-green-600 text-white px-6 py-3 rounded-md w-full md:w-auto">
                 Make Payment
               </button>

@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaCcVisa } from 'react-icons/fa';
 import { FaPaypal } from 'react-icons/fa';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 const Step2 = () => {
   return (
@@ -15,25 +16,37 @@ const Step2 = () => {
         <div className="w-full md:w-10/12 p-4 rounded-lg grid grid-flow-row gap-4 text-xs md:text-sm bg-gray-200 mx-auto my-2">
           <h2 className="text-left text-sm md:text-base font-semibold">UPI</h2>
           {['Google Pay'].map((pay, idx) => (
-            <button key={idx} className="flex items-center justify-between border-b-2 border-gray-300 py-2">
-              <FcGoogle size="1.1em" /> <span>{pay}</span> <ChevronRight size={16} />
-            </button>
+              <Link to={'/step4'}>
+                  <button key={idx} className="flex items-center justify-between border-b-2 border-gray-300 py-2">
+                      <FcGoogle size="1.1em" /> <span>{pay}</span> <ChevronRight size={16} /> 
+                    </button>
+              </Link>
           ))}
         </div>
         <div className="w-full md:w-10/12 p-4 rounded-lg grid grid-flow-row gap-4 text-xs md:text-sm bg-gray-200 mx-auto my-2">
-          <button className="flex items-center justify-between">
-            <span>Debit/Credit Cards</span> <FaCcVisa size={24} /> <ChevronRight size={16} />
-          </button>
+                  <Link to={'/step4'}>
+                      <button className="flex items-center justify-between">
+                        <span>Debit/Credit Cards</span> <FaCcVisa size={24} /> <ChevronRight size={16} />
+                    </button>
+                  </Link>
         </div>
         <div className="w-full md:w-10/12 p-4 rounded-lg grid grid-flow-row gap-4 text-xs md:text-sm bg-gray-200 mx-auto my-2">
           <h2 className="text-left text-sm md:text-base font-semibold">Wallet</h2>
           {['PayPal'].map((pay, idx) => (
-            <button key={idx} className="flex items-center justify-between border-b-2 border-gray-300 py-2">
-              <FaPaypal size="1.1em" /> <span>{pay}</span> <ChevronRight size={16} />
-            </button>
+              <Link to={'/step4'}>
+                <button key={idx} className="flex items-center justify-between border-b-2 border-gray-300 py-2">
+                    <FaPaypal size="1.1em" /> <span>{pay}</span> <ChevronRight size={16} />
+                </button>
+              </Link>
           ))}
         </div>
-        <button className="w-full md:w-10/12 block rounded-lg px-4 py-3 text-sm md:text-base bg-gray-200 mx-auto my-2">Net Banking</button>
+              <Link to={'/step4'}>
+              <button className="w-full md:w-10/12 block rounded-lg px-4 py-3 text-sm md:text-base bg-gray-200 mx-auto my-2">Net Banking</button>
+              </Link>
+            <Link to="/step4">   <button className="bg-green-600 text-white w-full md:w-10/12 block rounded-lg px-4 py-3 text-sm md:text-base mx-auto my-2">
+            Continue
+              </button>
+                  </Link>
       </div>
     </div>
   );

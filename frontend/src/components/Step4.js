@@ -2,6 +2,7 @@ import React from 'react';
 import { ChevronLeft } from 'react-feather';
 import { GrStatusGood } from 'react-icons/gr';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 const Step4 = () => {
   return (
@@ -14,9 +15,10 @@ const Step4 = () => {
           <h3 className="text-lg md:text-xl font-bold mb-2">Payment Successful!</h3>
           <h1 className="text-base md:text-lg mb-2">Order ID: 124450</h1>
           <p className="mb-6 text-sm md:text-base">Tickets have been mailed via Email/SMS</p>
-          <button className="bg-green-600 text-white px-6 py-3 rounded-md w-full md:w-auto focus:outline-none">
+         <Link to="/step5"> <button className="bg-green-600 text-white px-6 py-3 rounded-md w-full md:w-auto focus:outline-none">
             Download Ticket
           </button>
+            </Link>
         </div>
       </div>
     </div>

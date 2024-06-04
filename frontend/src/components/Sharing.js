@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ShareDivision from './SubComponents/ShareDivision';
+import Navbar from './Navbar';
 
 export default function Notification() {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,8 @@ export default function Notification() {
 
     return (
         <div>
-        <div className="flex items-center justify-center w-full h-screen bg-gray-100">
+            <Navbar/>
+        <div className="flex items-center justify-center w-full h-screen bg-gray-100 mt-10">
              
             <div className="w-full md:w-2/6 sm:w-1/2 h-full md:h-[90vh] bg-white rounded-2xl flex flex-col justify-center items-center relative overflow-y-auto p-4 shadow-lg">
                 <h1 className='text-center py-6 text-lg md:text-xl'>Invite</h1>

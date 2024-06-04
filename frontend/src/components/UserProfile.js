@@ -145,12 +145,14 @@ export default function UserProfile() {
                 <button
                   onClick={handleSave}
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  disabled={loading}
                 >
-                  Save
+                  {loading ? "Saving..." : "Save"}
                 </button>
                 <button
                   onClick={handleEditToggle}
                   className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  disabled={loading}
                 >
                   Cancel
                 </button>
@@ -163,13 +165,14 @@ export default function UserProfile() {
                 >
                   Edit Profile
                 </button>
-             <Link to="/"><button
-                  onClick={handleLogout}
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                  Logout
+                <Link to="/">
+                  <button
+                    onClick={handleLogout}
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  >
+                    Logout
                   </button>
-                    </Link>
+                </Link>
               </>
             )}
           </div>
