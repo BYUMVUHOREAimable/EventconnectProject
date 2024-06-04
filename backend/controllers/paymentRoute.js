@@ -9,7 +9,7 @@ const {PDFDocument,rgb, StandardFonts} =require("pdf-lib")
 const fs=require("fs")
 const nodemailer=require("nodemailer")
 
-const CLIENT_URL='http://localhost:5000/v1/api/payment'
+const CLIENT_URL=`${process.env.REACT_APP_API_URL}/v1/api/payment`;
 const generateTicketPDF = async (ticketInfo) => {
   const pdfDoc = await PDFDocument.create();
   const page = pdfDoc.addPage([400, 250]);

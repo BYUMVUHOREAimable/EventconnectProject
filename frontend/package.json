@@ -22,7 +22,7 @@
     "@nivo/tooltip": "^0.79.0",
     "@reduxjs/toolkit": "^1.8.5",
     "@stripe/react-stripe-js": "^2.7.1",
-    "@stripe/stripe-js": "^3.4.1",
+    "@stripe/stripe-js": "^3.5.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
