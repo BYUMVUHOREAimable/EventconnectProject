@@ -42,8 +42,29 @@ router.post('/', async (req, res) => {
     } = req.body;
 
     // Check for missing required fields
-    if (!eventname || !description || !date || !startTime || !location || !ticketInfo || !categories || !organizer) {
-      return res.status(400).send({ message: 'Missing required fields' });
+    if (!eventname ) {
+      return res.status(400).send({ message: 'Missing required fields !eventname' });
+    }
+    if (!description ) {
+      return res.status(400).send({ message: 'Missing required fields !description' });
+    }
+    if ( !date ) {
+      return res.status(400).send({ message: 'Missing required fields !date' });
+    }
+    if ( !startTime ) {
+      return res.status(400).send({ message: 'Missing required fields !startTime ' });
+    }
+    if (!location ) {
+      return res.status(400).send({ message: 'Missing required fields !location' });
+    }
+    if ( !ticketInfo ) {
+      return res.status(400).send({ message: 'Missing required fields !ticketInfo' });
+    }
+    if ( !categories ) {
+      return res.status(400).send({ message: 'Missing required fields !categories' });
+    }
+    if ( !organizer) {
+      return res.status(400).send({ message: 'Missing required fields || !organizer' });
     }
 
     // Validate location fields
