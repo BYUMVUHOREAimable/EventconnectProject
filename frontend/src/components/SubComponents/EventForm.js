@@ -51,7 +51,7 @@ const EventForm = () => {
     setEventData((preve)=>{
         return{
           ...preve,
-          image : data
+          eventimages : data
         }
     })
 
