@@ -295,7 +295,6 @@ const EventForm = () => {
                 id="eventimages"
                 name="eventimages"
                 accept='image/*'
-                value={eventData.eventimages}
                 className="hidden"
                 onChange={handleImageChange}
                 required 
