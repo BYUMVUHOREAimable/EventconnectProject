@@ -65,7 +65,8 @@ const EventForm = () => {
         body: JSON.stringify({
           eventname: eventData.eventname,
           description: eventData.description,
-          date: new Date(`${eventData.date}T${eventData.startTime}`).toISOString(),
+          date: new Date(`${eventData.date}`).toISOString(),
+          startTime: eventData.startTime,
           location: eventData.location,
           organizer: eventData.organizer,
           categories: [eventData.categories],
@@ -82,7 +83,7 @@ const EventForm = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Event creation failed. Please try again.");
+      toast.error("Event creation failed. Network issues, Please try again.");
     } finally {
       setLoading(false);
     }
