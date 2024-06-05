@@ -31,7 +31,7 @@ const Step5 = () => {
               to="/dashboard"
               className="block text-center py-2 text-base md:text-lg underline text-green-600 mb-4 sm:mb-8 lg:mb-12"
             >
-              Go to Home
+              Go to dashboard
             </Link>
             <div className="w-full max-w-screen-sm mx-auto grid grid-cols-1 gap-4 sm:gap-6 lg:gap-8">
               <button className="bg-green-600 text-white rounded-md py-3 text-sm md:text-base">
