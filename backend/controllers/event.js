@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Event = require('../Models/event.js');
+const mongoose = require('mongoose');
 
 // Get all events
 router.get('/', async (req, res) => {
@@ -41,8 +42,29 @@ router.post('/', async (req, res) => {
     } = req.body;
 
     // Check for missing required fields
-    if (!eventname || !description || !date || !startTime || !location || !ticketInfo || !organizer) {
-      return res.status(400).send({ message: 'Missing required fields' });
+    if (!eventname ) {
+      return res.status(400).send({ message: 'Missing required fields !eventname' });
+    }
+    if (!description ) {
+      return res.status(400).send({ message: 'Missing required fields !description' });
+    }
+    if ( !date ) {
+      return res.status(400).send({ message: 'Missing required fields !date' });
+    }
+    if ( !startTime ) {
+      return res.status(400).send({ message: 'Missing required fields !startTime ' });
+    }
+    if (!location ) {
+      return res.status(400).send({ message: 'Missing required fields !location' });
+    }
+    if ( !ticketInfo ) {
+      return res.status(400).send({ message: 'Missing required fields !ticketInfo' });
+    }
+    if ( !categories ) {
+      return res.status(400).send({ message: 'Missing required fields !categories' });
+    }
+    if ( !organizer) {
+      return res.status(400).send({ message: 'Missing required fields || !organizer' });
     }
 
     // Validate location fields
@@ -57,6 +79,17 @@ router.post('/', async (req, res) => {
       return res.status(400).send({ message: 'Missing required ticketInfo fields' });
     }
 
+    const existingEvent = await Event.findOne({
+      eventname: eventname,
+      date: date,
+      startTime: startTime,
+      organizer: new mongoose.Types.ObjectId(organizer) // Use 'new' keyword
+    });
+
+    if (existingEvent) {
+      return res.status(400).json({ message: 'Event already exists' });
+    }
+    
     const event = new Event({
       eventname,
       description,
@@ -87,9 +120,6 @@ router.post('/', async (req, res) => {
     res.status(500).send({ message: 'Internal Server Error', error: error.message });
   }
 });
-
-module.exports = router;
-
 
 router.put('/:id/attendees', async (req, res) => {
   try {
