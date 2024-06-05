@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { ImagetoBase64 } from "../utility/ImagetoBase64.js";
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
@@ -46,15 +45,13 @@ const EventForm = () => {
     }
   };
 
-  const handleImageChange = async(e)=>{
-    const data = await ImagetoBase64(e.target.files[0])
-    setEventData((preve)=>{
-        return{
-          ...preve,
-          eventimages : data
-        }
-    })
-}
+  const handleImageChange = async (e) => {
+    const imageUrls = [];
+  setEventData(prevData => ({
+      ...prevData,
+      eventimages: imageUrls,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -308,8 +305,8 @@ const EventForm = () => {
         >
           Create Event
         </button>
-        </form>
-        <a
+      </form>
+      <a
         href="/dashboard"
         onClick={handleReturnHome}
         className="text-violet-900 hover:text-violet-800 hover:underline py-6"
