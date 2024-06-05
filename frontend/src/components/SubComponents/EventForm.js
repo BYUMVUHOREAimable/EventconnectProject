@@ -308,7 +308,7 @@ const EventForm = () => {
       <a
         href="/dashboard"
         onClick={handleReturnHome}
-        className="mt-6 w-full bg-green-600 p-3 text-center font-semibold text-white rounded-md hover:bg-green-700  hover:underline"
+        className="ml-28 w-full text-center rounded-md hover:bg-green-200  hover:underline"
       >
         Return home?
         </a>
