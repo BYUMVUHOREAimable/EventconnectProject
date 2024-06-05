@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { ImagetoBase64 } from "../utility/ImagetoBase64.js";
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
