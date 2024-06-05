@@ -46,15 +46,30 @@ const EventForm = () => {
     }
   };
 
-  const handleImageChange = async(e)=>{
-    const data = await ImagetoBase64(e.target.files[0])
-    setEventData((preve)=>{
-        return{
-          ...preve,
-          eventimages : data
-        }
-    })
-}
+  const handleImageChange = async (e) => {
+    const imagePromises = []; // Array to store promises for each image conversion
+  
+    for (const file of e.target.files) {
+      // Optional validation (e.g., size, type)
+      if (file.size > 1024 * 1024) { // Check for maximum size (1MB)
+        alert("Image size exceeds 1MB. Please choose a smaller image.");
+        continue; // Skip this file if validation fails
+      }
+  
+      imagePromises.push(ImagetoBase64(file));
+    }
+  
+    if (!imagePromises.length) {
+      return; // No valid images selected
+    }
+  
+    const imageData = await Promise.all(imagePromises);
+  
+    setEventData((prevState) => ({
+      ...prevState,
+      eventimages: imageData, // Update state with array of base64 strings
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
