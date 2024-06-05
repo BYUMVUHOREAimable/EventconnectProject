@@ -307,15 +307,14 @@ const EventForm = () => {
         >
           Create Event
         </button>
-      
-      <a
+        </form>
+        <a
         href="/dashboard"
         onClick={handleReturnHome}
-        className="ml-28 w-full text-center rounded-md hover:bg-green-200  hover:underline"
+        className="text-violet-900 hover:text-violet-800 py-6"
       >
         Return home?
-        </a>
-        </form>
+      </a>
     </div>
   );
 };
