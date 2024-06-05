@@ -1,14 +1,7 @@
-import React, { useState } from 'react';
-import ShareDivision from './SubComponents/ShareDivision';
 import Navbar from './Navbar';
+import { FaWhatsapp, FaInstagram, FaFacebook } from 'react-icons/fa';
 
-export default function Notification() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleShareDivision = () => {
-    setIsOpen(!isOpen);
-  };
-
+export default function Sharing() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -34,7 +27,6 @@ export default function Notification() {
             </div>
             <div className="w-full mx-auto border-b-2 text-sm">
               <textarea
-                type="text"
                 className="text-center w-full py-3 focus:outline-none focus:border-green-600"
                 placeholder="Message (60 words)"
                 rows={3}
@@ -71,15 +63,34 @@ export default function Notification() {
                 />
               </div>
             </div>
-            {isOpen && <ShareDivision />}
+            <div className='w-full flex justify-around text-black mb-4'>
+              <a href="https://web.whatsapp.com/" target='_blank' rel='noopener noreferrer'>
+                <button type='button' className='p-2'><FaWhatsapp size={20} /></button>
+              </a>
+              <a href="https://www.instagram.com/" target='_blank' rel='noopener noreferrer'>
+                <button type='button' className='p-2'><FaInstagram size={20} /></button>
+              </a>
+              <a href="http://www.facebook.com/" target='_blank' rel='noopener noreferrer'>
+                <button type='button' className='p-2'><FaFacebook size={20} /></button>
+              </a>
+            </div>
             <div className="w-full flex justify-center">
               <button
                 type="button"
                 className="bg-green-600 text-white px-4 py-2 rounded-md w-4/5 mx-auto mb-3 hover:bg-green-700 transition-colors duration-300"
-                onClick={toggleShareDivision}
               >
                 Share
               </button>
+            </div>
+
+             <div className="w-full flex justify-center">
+          <button
+                type="button"
+                className="bg-green-600 text-white px-4 py-2 rounded-md w-4/5 mx-auto mb-3 hover:bg-green-700 transition-colors duration-300"
+              >  <a href="/thankyou"> 
+                Click me to continue</a> 
+              </button>
+                
             </div>
           </form>
         </div>
