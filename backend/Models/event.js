@@ -19,7 +19,7 @@ const eventSchema = new mongoose.Schema({
     currency: { type: String, required: true },
     availability: { type: Number, required: true }, // Number of tickets available
   },
-  eventimages: [{ type: String }], // Array of image URLs
+  eventimages: { type: String, required: true }, 
   attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', default: [] }], // Changed 'default: empty' to 'default: []'
   created_at: { type: Date, default: Date.now },
   updated_at: { type: Date, default: Date.now }

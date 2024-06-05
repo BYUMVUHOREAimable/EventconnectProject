@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { ImagetoBase64 } from '../utility/ImagetoBase64';
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
@@ -23,7 +24,7 @@ const EventForm = () => {
       availability: ''
     },
     organizer: '',
-    eventimages: []
+    eventimages: ''
   });
 
   const [loading, setLoading] = useState(false);
@@ -45,13 +46,16 @@ const EventForm = () => {
     }
   };
 
-  const handleImageChange = async (e) => {
-    const imageUrls = [];
-  setEventData(prevData => ({
-      ...prevData,
-      eventimages: imageUrls,
-    }));
-  };
+  const handleImageChange =  async(e)=>{
+    const data = await ImagetoBase64(e.target.files[0])
+    setEventData((preve)=>{
+        return{
+          ...preve,
+          image : data
+        }
+    })
+
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -293,7 +297,6 @@ const EventForm = () => {
                 accept='image/*'
                 className="hidden"
                 onChange={handleImageChange}
-                multiple
                 required 
               />
             </label>

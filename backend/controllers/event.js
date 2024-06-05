@@ -191,7 +191,7 @@ router.delete('/:id', async (req, res) => {
       return res.status(404).send({ message: 'Event not found' });
     }
 
-    res.status(200).send({ message: 'Event deleted successfully', deletedEvent });
+    res.status(200).send({ message: 'Event deleted successfully' });
   } catch (error) {
     console.error(error.message);
     res.status(500).send({ message: 'Internal Server Error' });
