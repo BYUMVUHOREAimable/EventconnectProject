@@ -1,11 +1,7 @@
-import React,{useState} from 'react';
-import ShareDivision from './ShareDivision';
+import { FaWhatsapp,FaInstagram,FaFacebook} from 'react-icons/fa'
 
 export default function Notification() {
-     const [isOpen, setIsOpen] = useState(false);
-     const toggleShareDivision = () => {
-          setIsOpen(!isOpen);
-     };
+   
      return (
           <div className="flex items-center  bg-blue-950 bg-opacity-50 justify-center w-full h-screen">
                <div className="w-2/6  h-[90vh] bg-white rounded-2xl  justify-center items-center relative overflow-x-scroll">
@@ -28,10 +24,21 @@ export default function Notification() {
                                    <input type="time" className="text-center text-sm py-3 border-b-2" id="time" name="time" />
                               </div>
                          </div>
-                         {isOpen && <ShareDivision />}
+                         <div className='w-full flex justify-around text-black mb-4'>
+              <a href="https://web.whatsapp.com/" target='_blank' rel='noopener noreferrer'>
+                <button type='button' className='p-2'><FaWhatsapp size={20} /></button>
+              </a>
+              <a href="https://www.instagram.com/" target='_blank' rel='noopener noreferrer'>
+                <button type='button' className='p-2'><FaInstagram size={20} /></button>
+              </a>
+              <a href="http://www.facebook.com/" target='_blank' rel='noopener noreferrer'>
+                <button type='button' className='p-2'><FaFacebook size={20} /></button>
+              </a>
+            </div>
                          <div className='w-full absolute bottom-0 flex-shrink-0 flex justify-center'>
-                              <button type='button' className="bg-violet-950 text-white px-4 py-2 rounded-md w-4/5 mx-auto mb-3" onClick={toggleShareDivision}>Share</button>
+                              <button type='button' className="bg-violet-950 text-white px-4 py-2 rounded-md w-4/5 mx-auto mb-3">Share</button>
                          </div>
+                         
                     </form>
                </div>
           </div>

@@ -18,6 +18,11 @@ const Step4 = () => {
          <Link to="/step5"> <button className="bg-green-600 text-white px-6 py-3 rounded-md w-full md:w-auto focus:outline-none">
             Download Ticket
           </button>
+          </Link>
+          
+           <Link to="/step5"> <button className="mt-10 bg-green-600 text-white px-6 py-3 rounded-md w-full md:w-auto focus:outline-none">
+            Continue
+          </button>
             </Link>
         </div>
       </div>

@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { FcGoogle } from 'react-icons/fc'
-
+import React from 'react';
 export default function BookingTransc1() {
 
 
