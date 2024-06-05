@@ -45,13 +45,15 @@ const EventForm = () => {
     }
   };
 
-  const handleImageChange = async (e) => {
-    const imageUrls = [];
-  setEventData(prevData => ({
-      ...prevData,
-      eventimages: imageUrls,
-    }));
-  };
+  const handleImageChange = async(e)=>{
+    const data = await ImagetoBase64(e.target.files[0])
+    setEventData((preve)=>{
+        return{
+          ...preve,
+          eventimages : data
+        }
+    })
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
