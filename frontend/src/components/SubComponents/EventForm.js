@@ -46,30 +46,15 @@ const EventForm = () => {
     }
   };
 
-  const handleImageChange = async (e) => {
-    const imagePromises = []; // Array to store promises for each image conversion
-  
-    for (const file of e.target.files) {
-      // Optional validation (e.g., size, type)
-      if (file.size > 1024 * 1024) { // Check for maximum size (1MB)
-        alert("Image size exceeds 1MB. Please choose a smaller image.");
-        continue; // Skip this file if validation fails
-      }
-  
-      imagePromises.push(ImagetoBase64(file));
-    }
-  
-    if (!imagePromises.length) {
-      return; // No valid images selected
-    }
-  
-    const imageData = await Promise.all(imagePromises);
-  
-    setEventData((prevState) => ({
-      ...prevState,
-      eventimages: imageData, // Update state with array of base64 strings
-    }));
-  };
+  const handleImageChange = async(e)=>{
+    const data = await ImagetoBase64(e.target.files[0])
+    setEventData((preve)=>{
+        return{
+          ...preve,
+          eventimages : data
+        }
+    })
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -327,7 +312,7 @@ const EventForm = () => {
         <a
         href="/dashboard"
         onClick={handleReturnHome}
-        className="text-violet-900 hover:text-violet-800 py-6"
+        className="text-violet-900 hover:text-violet-800 hover:underline py-6"
       >
         Return home?
       </a>
