@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import '../../App';
-import { Navbar } from "../../components";
 const ThankYou = () => {
     return (
         <div>
-            <Navbar/>
         <section className="py-10 mt-16">
             <div className="container mx-auto">
                 <div className="flex justify-center items-center">

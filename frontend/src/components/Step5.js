@@ -7,8 +7,8 @@ import ThankYou from '../scenes/Thankyou/Thankyou';
 const Step5 = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <div className="flex-1 flex items-center justify-center bg-gray-200">
+      <Navbar/>
+      <div className="flex-1 flex items-center justify-center mt-20">
         <div className="max-w-screen-md w-full bg-white rounded-2xl relative px-6 py-8 md:px-8 md:py-10 shadow-lg">
           <ChevronLeft
             size={30}
