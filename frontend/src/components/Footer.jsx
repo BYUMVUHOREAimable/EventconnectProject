@@ -1,12 +1,13 @@
 import React from 'react'
 import { logo } from '../assets'
-import { FaFacebookF, FaDribbble, FaLinkedinIn, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaDribbble, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { RiFacebookFill } from "react-icons/ri";
 
 const Footer = () => {
   return (
     <div className='w-full bg-white py-24'>
-        <div className='md:max-w-[1480px] m-auto grid md:grid-cols-5 max-[780px]:grid-cols-2  gap-8 max-w-[600px]  px-4 md:px-0'>
+        <div className='md:max-w-[1480px] m-auto grid md:grid-cols-5 max-[780px]:grid-cols-2  gap-2 max-w-[600px]  px-4 md:px-8'>
             
             <div className='col-span-2'>
                 <img src={logo} className="w-[10rem]" alt='logo' />
@@ -14,12 +15,42 @@ const Footer = () => {
                 <h3 className='py-2 text-[#6D737A]'>Call : +250 784191775</h3>
                 <h3 className='py-2 text-[#6D737A]'>We value your opinion. Tell us how we can enhance your app experience.</h3>
                 <h3>Email: <a href="mailto: eventconnect123@gmail.com" className="text-blue-500 underline">eventconnect123@gmail.com</a></h3>
-                <div className='flex gap-4 py-4 max-sm:gap-1'>
-                <a href="https://www.facebook.com/kirengaremyclaudien/" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl  hover:bg-[#91d6a9]'><FaFacebookF size={25} style={{color:'#4DC39E'}} /></a>
-                        <a href="https://dribbble.com/byumvuhoreaimable" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaDribbble size={25} style={{color:'#4DC39E'}} /></a>
-                        <a href="https://www.linkedin.com/in/jeremy-nk-413a612a6/" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaLinkedinIn size={25} style={{color:'#4DC39E'}} /></a>
-                        <a href="www.instagram.comhttps://www.instagram.com/firstttyyy.____/" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaInstagram size={25} style={{color:'#4DC39E'}} /></a>
-                        <a href="https://www.youtube.com/@BAI-SHOWS" target="_blank" rel="noopener noreferrer" className='p-4 max-sm:p-2 bg-[#E9F8F3] rounded-xl hover:bg-[#91d6a9]'><FaYoutube size={25} style={{color:'#4DC39E'}} /></a>
+                <div className='flex max-sm:gap-1'>
+                    <a
+                    href="https://www.facebook.com/kirengaremyclaudien/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-4 py-6 max-sm:p-2 ">
+                    <RiFacebookFill  className='rounded-full p-2 text-5xl border border-blue-900 bg-white-100 hover:bg-green-500 text-green-500 hover:text-white' />
+                    </a>
+                    <a 
+                    href="https://dribbble.com/byumvuhoreaimable" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="px-4 py-6 max-sm:p-2 ">
+                    <FaDribbble  className='rounded-full p-2 text-5xl border border-blue-900 bg-white-100 hover:bg-green-500 text-green-500 hover:text-white'  />
+                    </a>
+                    <a 
+                    href="https://www.linkedin.com/in/jeremy-nk-413a612a6/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="px-4 py-6 max-sm:p-2 ">
+                    <FaLinkedinIn   className='rounded-full p-2 text-5xl border border-blue-900 bg-white-100 hover:bg-green-500 text-green-500 hover:text-white' />
+                    </a>
+                    <a 
+                    href="www.instagram.comhttps://www.instagram.com/firstttyyy.____/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="px-4 py-6 max-sm:p-2 ">
+                    <FaInstagram  className='rounded-full p-2 text-5xl border border-blue-900 bg-white-100 hover:bg-green-500 text-green-500 hover:text-white'  />
+                    </a>
+                    <a 
+                    href="https://www.youtube.com/@BAI-SHOWS" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="px-4 py-6 max-sm:p-2 ">
+                    <FaYoutube  className='rounded-full p-2 text-5xl border border-blue-900 bg-white-100 hover:bg-green-500 text-green-500 hover:text-white'  />
+                    </a>
 
                 </div>
 

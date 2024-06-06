@@ -11,7 +11,7 @@ const SignUp = () => {
     username: "",
     phoneNumber: "",
     password: "",
-    userProfile: null,
+    userprofile: null,
   });
   const [visible, setVisible] = useState(false);
   const [terms, setTerms] = useState(false);
@@ -23,14 +23,17 @@ const SignUp = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   }, []);
 
-  const handleImageChange = async (e) => {
+  const handleImageChange = useCallback(async (e) => {
     const data = await ImagetoBase64(e.target.files[0]);
-    setFormData((prevData) => ({ ...prevData, userProfile: data }));
-  };
+    setFormData((prevData) => ({
+      ...prevData,
+      userprofile: data,
+    }));
+  }, []);
 
   const validateForm = () => {
-    const { fullName, email, password, username, phoneNumber, userProfile } = formData;
-    if (!fullName || !email || !password || !username || !phoneNumber || !userProfile) {
+    const { fullName, email, password, username, phoneNumber, userprofile } = formData;
+    if (!fullName || !email || !password || !username || !phoneNumber || !userprofile) {
       toast.error("Please enter all required fields.");
       return false;
     }
@@ -57,7 +60,7 @@ const SignUp = () => {
         formDataToSend.append(key, formData[key]);
       });
 
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/event`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/signup`, {
         method: "POST",
         body: formDataToSend,
       });
@@ -80,7 +83,7 @@ const SignUp = () => {
 
   const googleSignup = () => {
     setLoading(true);
-    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google/callback`;
+    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
   };
 
   return (
@@ -167,8 +170,16 @@ const PasswordField = ({ visible, setVisible, value, onChange }) => (
 
 const FileInputField = ({ onChange }) => (
   <div className="flex flex-col text-gray-400 py-1">
-    <label htmlFor="profilePicture" className="text-sm">Profile Picture</label>
-    <input type="file" id="profilePicture" accept="image/*" className="p-1 rounded-sm focus:border-blue-500 border border-violet-900 bg-white indent-3" onChange={onChange} />
+    <label htmlFor="userprofile" className="text-sm">Profile Picture</label>
+    <input
+      type="file"
+      id="userprofile"
+      name="userprofile"
+      accept='image/*'
+      className="hidden"
+      onChange={onChange}
+      required 
+    />
   </div>
 );
 
