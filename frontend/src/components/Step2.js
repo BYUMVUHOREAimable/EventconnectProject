@@ -1,56 +1,45 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'react-feather';
-import { FcGoogle } from 'react-icons/fc';
-import { FaCcVisa } from 'react-icons/fa';
-import { FaPaypal } from 'react-icons/fa';
-import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
+import { FaPaypal } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+import { MdEmail } from 'react-icons/md';
+import Navbar from './Navbar';
 
-const Step2 = () => {
+const FreeTrialPage = () => {
   return (
     <div>
       <Navbar />
-      <div className="max-w-screen-md mx-auto w-full h-full md:max-h-[80vh] bg-white text-green-600 rounded-2xl relative overflow mt-20 p-4 md:p-6 shadow-lg">
-        <ChevronLeft size={30} className="absolute top-4 left-4 cursor-pointer" />
-        <h1 className="text-center py-4 text-base md:text-lg lg:text-xl font-bold">Payment Method</h1>
-        <div className="w-full md:w-10/12 p-4 rounded-lg grid grid-flow-row gap-4 text-xs md:text-sm bg-gray-200 mx-auto my-2">
-          <h2 className="text-left text-sm md:text-base font-semibold">UPI</h2>
-          {['Google Pay'].map((pay, idx) => (
-              <Link to={'/step4'}>
-                  <button key={idx} className="flex items-center justify-between border-b-2 border-gray-300 py-2">
-                      <FcGoogle size="1.1em" /> <span>{pay}</span> <ChevronRight size={16} /> 
-                    </button>
-              </Link>
-          ))}
+      <div className="max-w-md mx-auto w-full bg-gray-100 text-center rounded-2xl mt-24 p-6 shadow-lg">
+        <h1 className="text-3xl font-bold mb-4">Activate your free trial</h1>
+        <p className="text-lg mb-2">$0 due until July 4, 2024, then $9.99/month.</p>
+        <div className="flex items-center justify-center mb-8 text-sm text-gray-500">
+          <MdEmail className="mr-2" /> Don’t worry, we’ll email you before your trial ends.
         </div>
-        <div className="w-full md:w-10/12 p-4 rounded-lg grid grid-flow-row gap-4 text-xs md:text-sm bg-gray-200 mx-auto my-2">
-                  <Link to={'/step4'}>
-                      <button className="flex items-center justify-between">
-                        <span>Debit/Credit Cards</span> <FaCcVisa size={24} /> <ChevronRight size={16} />
-                    </button>
-                  </Link>
+        <div className="border-solid border-2 rounded border-sky-200 p-5 bg-white">
+        <div className="space-y-4">
+          <Link to="/step4">
+            <button className="w-full py-3 mb-2  bg-yellow-500 text-lg rounded-lg flex items-center justify-center hover:bg-yellow-600 transition duration-200">
+              <FaPaypal className="mr-2" /> PayPal
+            </button>
+          </Link>
+          <Link to="/step4">
+            <button className="w-full py-3 bg-black mb-2 text-white text-lg rounded-lg flex items-center justify-center hover:bg-gray-800 transition duration-200">
+              <FcGoogle className="mr-2" /> Google Pay
+            </button>
+          </Link>
+          <Link to="/step4">
+            <button className="w-full py-3 mb-2 border-solid border-2 border-sky-500 bg-gray-400 text-lg rounded-lg flex items-center justify-center hover:bg-gray-300 transition duration-200">
+              Credit or Debit Card
+            </button>
+          </Link>
         </div>
-        <div className="w-full md:w-10/12 p-4 rounded-lg grid grid-flow-row gap-4 text-xs md:text-sm bg-gray-200 mx-auto my-2">
-          <h2 className="text-left text-sm md:text-base font-semibold">Wallet</h2>
-          {['PayPal'].map((pay, idx) => (
-              <Link to={'/step4'}>
-                <button key={idx} className="flex items-center justify-between border-b-2 border-gray-300 py-2">
-                    <FaPaypal size="1.1em" /> <span>{pay}</span> <ChevronRight size={16} />
-                </button>
-              </Link>
-          ))}
-        </div>
-              <Link to={'/step4'}>
-              <button className="w-full md:w-10/12 block rounded-lg px-4 py-3 text-sm md:text-base bg-gray-200 mx-auto my-2">Net Banking</button>
-              </Link>
-            <Link to="/step4">   <button className="bg-green-600 text-white w-full md:w-10/12 block rounded-lg px-4 py-3 text-sm md:text-base mx-auto my-2">
-            Continue
-              </button>
-                  </Link>
-                  
+         <Link to="/">
+        <p className="mt-8 text-sm text-gray-500 cursor-pointer hover:text-gray-700 transition duration-200">Cancel anytime.</p>
+     </Link>
       </div>
-    </div>
+      </div>
+      </div>
   );
 };
 
-export default Step2;
+export default FreeTrialPage;
