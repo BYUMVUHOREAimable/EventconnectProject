@@ -10,35 +10,35 @@ const AboutTeam = () => {
     {
       id: 1,
       name: "BYUMVUHORE Aimable",
-      tasks: "Project Manager, Frontend Designer & UI/UX Designer",
+      tasks: "CEO, Project Manager, Frontend Developer & UI/UX Designer",
       profile: Aimable,
       linked: "https://www.linkedin.com/in/byumvuhore-aimable-554019262/"
     },
     {
       id: 2,
       name: "GITOLI Remy Claudien",
-      tasks: "Data Analyst & Backend Designer",
+      tasks: "Data Analyst & Backend Developer",
       profile: Remy,
       linked: "https://www.linkedin.com/in/kirenga-remy-claudien-9a3801273/"
     },
     {
       id: 3,
       name: "BIGIRABAGABO Blaise",
-      tasks: "System Integrator & Backend Designer",
+      tasks: "System Integrator & Backend Developer",
       profile: Blaise,
       linked: "http://www.linkedin.com/in/bigirabagabo-blaise-17110b259"
     },
     {
       id: 4,
       name: "ITANGAMAHORO Divine",
-      tasks: "Market Research & Backend Designer",
+      tasks: "Market Research & Backend Developer",
       profile: Divine,
       linked: "https://www.linkedin.com/in/divine-itangamahoro-759839261/"
     },
     {
       id: 5,
       name: "NKUNDABAGENZI Jeremy",
-      tasks: "UI/UX Designer & Frontend Designer",
+      tasks: "UI/UX Designer & Frontend Developer",
       profile: Jeremy,
       linked: "https://www.linkedin.com/in/jeremie-nkundabagenzi-413a612a6/"
     }
