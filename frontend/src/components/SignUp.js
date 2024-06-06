@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineGoogle } from "react-icons/ai";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -11,77 +11,111 @@ const SignUp = () => {
     username: "",
     phoneNumber: "",
     password: "",
-    userProfile: null,
+    userprofile: null,
   });
   const [visible, setVisible] = useState(false);
   const [terms, setTerms] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = useCallback((e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  }, []);
-
-  const handleImageChange = async (e) => {
-    const data = await ImagetoBase64(e.target.files[0]);
-    setFormData((prevData) => ({ ...prevData, userProfile: data }));
+    const keys = name.split('.');
+    if (keys.length === 1) {
+      setFormData({ ...formData, [name]: value });
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [keys[0]]: {
+          ...prevState[keys[0]],
+          [keys[1]]: value
+        }
+      }));
+    }
   };
 
-  const validateForm = () => {
-    const { fullName, email, password, username, phoneNumber, userProfile } = formData;
-    if (!fullName || !email || !password || !username || !phoneNumber || !userProfile) {
-      toast.error("Please enter all required fields.");
-      return false;
-    }
-    if (!email.match(/^\S+@\S+\.\S+$/)) {
-      toast.error("Invalid email format");
-      return false;
-    }
-    if (password.length < 6) {
-      toast.error("Password must be at least 6 characters long");
-      return false;
-    }
-    return true;
-  };
+  const handleImageChange =  async(e)=>{
+    const data = await ImagetoBase64(e.target.files[0])
+    setFormData((preve)=>{
+        return{
+          ...preve,
+          userprofile : data
+        }
+    })
+
+}
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    
+    // Validate required fields and email/password format
+    if (!formData.fullName || !formData.email || !formData.password || !formData.username || !formData.phoneNumber || !formData.userprofile) {
+        toast.error("Please enter all required fields.");
+        return;
+    }
+
+    if (!formData.email.match(/^\S+@\S+\.\S+$/)) {
+        toast.error("Invalid email format");
+        return;
+    }
+
+    if (formData.password.length < 6) {
+        toast.error("Password must be at least 6 characters long");
+        return;
+    }
 
     setLoading(true);
 
     try {
-      const formDataToSend = new FormData();
-      Object.keys(formData).forEach((key) => {
-        formDataToSend.append(key, formData[key]);
-      });
 
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/event`, {
-        method: "POST",
-        body: formDataToSend,
-      });
+        // Make API request
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/signup`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
 
-      const dataRes = await response.json();
+        // Parse JSON response
+        const dataRes = await response.json();
+        toast(dataRes.message)
 
-      if (response.status === 302) {
-        toast.success(dataRes.message);
-        navigate("/dashboard", { replace: true });
-      } else {
-        toast.error(dataRes.message);
-      }
+        // Check response status
+        if (!response.ok) {
+            if (response.status === 401) {
+                toast.error("Failed to create account");
+            } else if (response.status === 500) {
+                toast.error("Server error");
+            } else {
+                toast.error("Something went wrong");
+            }
+            return;
+        }
+
+        // Display success or error message
+        if (dataRes) {
+            toast.success(dataRes.message);
+            navigate("/authentication");
+        } else {
+            toast.error(dataRes.message);
+        }
     } catch (error) {
-      console.error(error);
-      toast.error("Event creation failed. Please try again.");
+        // Handle error cases
+        console.error("Error during form submission:", error);
+        if (error.message === "Network Error") {
+            toast.error("Network error, please check your internet connection");
+        } else {
+            toast.error(error.message);
+        }
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
-
+};
   const googleSignup = () => {
     setLoading(true);
-    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google/callback`;
-  };
+    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
+};
 
   return (
     <div className="w-full flex flex-col shadow-xl justify-center items-center mt-20">
@@ -167,8 +201,16 @@ const PasswordField = ({ visible, setVisible, value, onChange }) => (
 
 const FileInputField = ({ onChange }) => (
   <div className="flex flex-col text-gray-400 py-1">
-    <label htmlFor="profilePicture" className="text-sm">Profile Picture</label>
-    <input type="file" id="profilePicture" accept="image/*" className="p-1 rounded-sm focus:border-blue-500 border border-violet-900 bg-white indent-3" onChange={onChange} />
+    <label htmlFor="userprofile" className="text-sm">Profile Picture</label>
+    <input
+      type="file"
+      id="userprofile"
+      name="userprofile"
+      accept='image/*'
+      className="hidden"
+      onChange={onChange}
+      required 
+    />
   </div>
 );
 
