@@ -130,7 +130,7 @@ const googleSignup = async () => {
   }
 };
 
-
+console.log(`${process.env.REACT_APP_API_URL}/auth/google/callback`);
   return (
     <div className="w-full flex flex-col shadow-xl justify-center items-center mt-20">
       {loading && (
