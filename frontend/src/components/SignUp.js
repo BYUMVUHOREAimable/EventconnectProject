@@ -116,7 +116,7 @@ const googleSignup = async () => {
   setLoading(true);
 
   try {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/google`);
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/google/callback`);
     // Handle successful response (likely a redirect)
     if (response.ok) {
       window.location.href = response.url; // Follow the redirect URL
