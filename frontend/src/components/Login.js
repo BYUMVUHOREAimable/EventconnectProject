@@ -45,8 +45,8 @@ export default function Login() {
   };
   
   const googleLogin = async () => {
-        setLoading(true);
-        window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
+    setLoading(true);
+    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
 
 };
   return (
@@ -72,7 +72,7 @@ export default function Login() {
         className="flex flex-col w-1/2 pt-3 "
         id="offPro"
       >
-        <div className="p-1 bg-[#20B486] hover:bg-[#43edb7] hover:shadow-slate-950/30 shadow-lg text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleLogin}>
+        <div className="p-1 bg-violet-900 hover:bg-violet-800 hover:shadow-slate-950/30 shadow-lg text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleLogin}>
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
           Log in with Google
         </div>
