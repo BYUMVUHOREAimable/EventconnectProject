@@ -112,10 +112,24 @@ const SignUp = () => {
         setLoading(false);
     }
 };
-  const googleSignup = () => {
-    setLoading(true);
-    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
+const googleSignup = async () => {
+  setLoading(true);
+
+  try {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/google`);
+    // Handle successful response (likely a redirect)
+    if (response.ok) {
+      window.location.href = response.url; // Follow the redirect URL
+    } else {
+      console.error('Error initiating Google signup:', await response.text());
+      setLoading(false); // Handle errors appropriately
+    }
+  } catch (error) {
+    console.error('Error initiating Google signup:', error);
+    setLoading(false); // Handle errors appropriately
+  }
 };
+
 
   return (
     <div className="w-full flex flex-col shadow-xl justify-center items-center mt-20">
@@ -131,8 +145,8 @@ const SignUp = () => {
           <Link to="../" className="text-[#20B486] inline">Have Account&#63;</Link>
         </div>
       </div>
-      <div className="flex flex-col w-1/2 pt-3 self-center relative" id="offPro">
-        <Link to="./" className="p-1 bg-[#20B486] hover:bg-[#43edb7] hover:shadow-slate-950/30 shadow-lg text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleSignup}>
+      <div className="flex flex-col w-1/2 pt-3 self-center relative" id="offPro" onClick={googleSignup}>
+        <Link to="./" className="p-1 bg-[#20B486] hover:bg-[#43edb7] hover:shadow-slate-950/30 shadow-lg text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" >
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
           <div>Sign up with Google</div>
         </Link>

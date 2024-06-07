@@ -20,7 +20,7 @@ const nodemailer = require("nodemailer");
 const paymentRoute=require("./controllers/paymentRoute.js")
  
 // Configuration
-app.use(express.json({ limit: "10mb" }));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true, limit: "3mb" }));
