@@ -23,7 +23,6 @@ const EventForm = () => {
       currency: 'USD',
       availability: ''
     },
-    organizer: '',
     eventimages: ''
   });
 
@@ -72,7 +71,6 @@ const EventForm = () => {
           date: new Date(`${eventData.date}`).toISOString(),
           startTime: eventData.startTime,
           location: eventData.location,
-          organizer: eventData.organizer,
           categories: [eventData.categories],
           ticketInfo: eventData.ticketInfo,
           eventimages: eventData.eventimages
@@ -269,18 +267,6 @@ const EventForm = () => {
               name="ticketInfo.availability"
               className="w-full p-3 border rounded-md"
               value={eventData.ticketInfo.availability}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="organizer">Organizer Name</label>
-            <input
-              type="text"
-              id="organizer"
-              name="organizer"
-              className="w-full p-3 border rounded-md"
-              value={eventData.organizer}
               onChange={handleChange}
               required
             />
