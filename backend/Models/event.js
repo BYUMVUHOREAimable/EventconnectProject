@@ -13,7 +13,7 @@ const eventSchema = new mongoose.Schema({
     postalCode: { type: String, required: true },
   },
   organizer: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  category: [{ type: String }], // e.g., ['Wedding', 'Festival']
+  categories: [{ type: String }], // e.g., ['Wedding', 'Festival']
   ticketInfo: {
     price: { type: Number, required: true },
     currency: { type: String, required: true },

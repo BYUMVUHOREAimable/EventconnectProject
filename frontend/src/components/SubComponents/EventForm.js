@@ -17,7 +17,7 @@ const EventForm = () => {
       country: '',
       postalCode: ''
     },
-    category: '',
+    categories: '',
     ticketInfo: {
       price: '',
       currency: 'USD',
@@ -71,7 +71,7 @@ const EventForm = () => {
           date: new Date(`${eventData.date}`).toISOString(),
           startTime: eventData.startTime,
           location: eventData.location,
-          category: [eventData.category],
+          categories: [eventData.categories],
           ticketInfo: eventData.ticketInfo,
           eventimages: eventData.eventimages
         }),
@@ -411,12 +411,12 @@ const EventForm = () => {
             />
           </div>
           <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="category">Category</label>
+            <label className="block text-lg font-semibold mb-2" htmlFor="categories">Categories</label>
             <select
-              id="category"
-              name="category"
+              id="categories"
+              name="categories"
               className="w-full p-3 border rounded-md"
-              value={eventData.category}
+              value={eventData.categories}
               onChange={handleChange}
               required
             >
