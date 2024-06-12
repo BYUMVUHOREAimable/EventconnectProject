@@ -17,7 +17,7 @@ const EventForm = () => {
       country: '',
       postalCode: ''
     },
-    categories: '',
+    category: '',
     ticketInfo: {
       price: '',
       currency: 'USD',
@@ -71,7 +71,7 @@ const EventForm = () => {
           date: new Date(`${eventData.date}`).toISOString(),
           startTime: eventData.startTime,
           location: eventData.location,
-          categories: [eventData.categories],
+          category: [eventData.category],
           ticketInfo: eventData.ticketInfo,
           eventimages: eventData.eventimages
         }),
@@ -190,12 +190,12 @@ const EventForm = () => {
             />
           </div>
           <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="categories">Categories</label>
+            <label className="block text-lg font-semibold mb-2" htmlFor="country">Country</label>
             <select
-              id="categories"
-              name="categories"
+              id="country"
+              name="country"
               className="w-full p-3 border rounded-md"
-              value={eventData.categories}
+              value={eventData.country}
               onChange={handleChange}
               required
             >
@@ -411,18 +411,26 @@ const EventForm = () => {
             />
           </div>
           <div>
-            <label className="block text-lg font-semibold mb-2" htmlFor="categories">Categories</label>
+            <label className="block text-lg font-semibold mb-2" htmlFor="category">Category</label>
             <select
-              id="categories"
-              name="categories"
+              id="category"
+              name="category"
               className="w-full p-3 border rounded-md"
-              value={eventData.categories}
+              value={eventData.category}
               onChange={handleChange}
               required
             >
+              <option value="">Select Category</option>
+              <option value="Theme Park Visit">Theme Park Visit</option>
               <option value="Wedding">Wedding</option>
+              <option value="Anniversaire">Anniversaire</option>
+              <option value="Competition">Competition</option>
               <option value="Festival">Festival</option>
+              <option value="Worship">Worship</option>
+              <option value="Movie Premiere">Movie Premiere</option>
+              <option value="Hackathon">Hackathon</option>
               <option value="Concert">Concert</option>
+              <option value="Meeting">Metting</option>
               <option value="Conference">Conference</option>
               <option value="Other">Other</option>
             </select>

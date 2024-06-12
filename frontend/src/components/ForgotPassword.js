@@ -6,7 +6,12 @@ import { toast } from "react-hot-toast";
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const handleReturnLogin = (e) => {
+    e.preventDefault();
+    navigate("/authentication");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,6 +83,13 @@ export default function ForgotPassword() {
             Send
           </button>
         </form>
+        <a
+        href="/authentication"
+        onClick={handleReturnLogin}
+        className="text-violet-900 hover:text-violet-800 hover:underline py-6"
+      >
+        Return login?
+      </a>
       </div>
     </div>
   );

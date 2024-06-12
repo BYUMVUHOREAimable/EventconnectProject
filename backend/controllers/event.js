@@ -35,13 +35,13 @@ router.post('/', async (req, res) => {
       date, 
       startTime, 
       location, 
-      categories, 
+      category, 
       ticketInfo, 
       eventimages 
     } = req.body;
 
     // Check for missing required fields
-    if (!eventname || !description || !date || !startTime || !location || !ticketInfo || !categories) {
+    if (!eventname || !description || !date || !startTime || !location || !ticketInfo || !category) {
       return res.status(400).send({ message: 'Missing required fields' });
     }
 
@@ -83,7 +83,7 @@ router.post('/', async (req, res) => {
         country,
         postalCode
       },
-      categories,
+      category,
       ticketInfo: {
         price,
         currency,
@@ -143,7 +143,7 @@ router.put('/:id', async (req, res) => {
         postalCode: req.body.location.postalCode
       },
       organizer: req.body.organizer,
-      categories: req.body.categories,
+      category: req.body.category,
       ticketInfo: {
         price: req.body.ticketInfo.price,
         currency: req.body.ticketInfo.currency,
