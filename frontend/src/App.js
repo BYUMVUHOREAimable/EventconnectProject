@@ -82,7 +82,7 @@ function App() {
         <Route path="/homeDashboard" exact element={<HomeDashboard />} />
         <Route path="/oldDashboard" element={<HomeDashboard />} />
         <Route path="/dashboard" element={<NewDashboard />} />
-        <Route path="/dashboard/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile />} />
         <Route path="/team" element={<Team />} />
         <Route path="/contacts" element={<Services />} />
         <Route path="/thankyou" element={<ThankYou />} />

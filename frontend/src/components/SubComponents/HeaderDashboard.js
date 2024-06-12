@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaBell, FaUserCircle } from 'react-icons/fa';
+import { FaBell, FaPlus, FaUserCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function HeaderDashboard() {
   return (
@@ -9,8 +10,9 @@ function HeaderDashboard() {
         <p>All systems are running smoothly! You have 3 unread alerts!</p>
       </div>
       <div className="flex items-center space-x-4">
-        <FaBell size={24} className="text-gray-500" />
-        <FaUserCircle size={40} className="text-gray-500" />
+       <Link to="/create">  <FaPlus size={20} className="text-gray-500" /></Link>
+       <Link to="/notification"> <FaBell size={20} className="text-gray-500" /></Link>
+      <Link to="/profile">  <FaUserCircle size={40} className="text-gray-500" /></Link>
       </div>
     </div>
   );
