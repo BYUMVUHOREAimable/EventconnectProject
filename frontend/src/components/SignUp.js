@@ -132,7 +132,7 @@ const googleSignup = () => {
         </div>
       </div>
       <div className="flex flex-col w-1/2 pt-3 self-center relative" id="offPro">
-        <Link to="./" className="p-1 bg-violet-900 hover:bg-violet-800 hover:shadow-slate-950/30 shadow-lg text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleSignup}>
+        <Link to="./" className="p-1 bg-green-500 hover:bg-green-600 text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleSignup}>
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
           <div>Sign up with Google</div>
         </Link>
