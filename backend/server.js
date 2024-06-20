@@ -67,7 +67,7 @@ app.post("/forgot-password", async (req, res) => {
     }
     // Create a JWT token for password reset
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "2h",
     });
 
     const transporter = nodemailer.createTransport({
@@ -136,10 +136,6 @@ app.post("/reset-password/:id/:token", async (req, res) => {
     }
   }
 });
-
-app.get("/", (req, res) =>
-  res.send("Index Route For Server Api Event Connect ...")
-);
 
 // Starting the server
 app.listen(PORT, () => {
