@@ -139,6 +139,6 @@ app.post("/reset-password/:id/:token", async (req, res) => {
 
 // Starting the server
 app.listen(PORT, () => {
-  console.log();
+  console.log(`${process.env.REACT_APP_API_URL}/auth/google/callback`);
   console.log(`Server started on http://127.0.0.1:${PORT}`);
 });
