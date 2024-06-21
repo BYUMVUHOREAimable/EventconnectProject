@@ -50,7 +50,7 @@ const SignUp = () => {
     e.preventDefault();
     
     // Validate required fields and email/password format
-    if (!formData.fullName || !formData.email || !formData.password || !formData.username || !formData.phoneNumber || !formData.userprofile) {
+    if (!formData.fullName || !formData.email || !formData.password || !formData.username || !formData.phoneNumber) {
         toast.error("Please enter all required fields.");
         return;
     }
@@ -145,9 +145,9 @@ const googleSignup = () => {
       </div>
       <form className="grid grid-flow-row gap-3 md:w-3/5 w-1/2 self-center mx-auto pt-3 rounded-lg px-8 py-5 relative" onSubmit={handleSubmit} id="loginForm">
         <InputField type="text" placeholder="Your Full Names" name="fullName" value={formData.fullName} onChange={handleChange} />
-        <InputField type="text" placeholder="Email" name="email" value={formData.email} onChange={handleChange} />
-        <PasswordField visible={visible} setVisible={setVisible} value={formData.password} onChange={handleChange} />
-        <InputField type="tel" placeholder="Tel: +250 7899030993" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+        <InputField type="email" placeholder="Email..." name="email" value={formData.email} onChange={handleChange} />
+        <PasswordField visible={visible} setVisible={setVisible} placeholder="Pass..." name="password" value={formData.password} onChange={handleChange} />
+        <InputField type="tel" placeholder="Tel: +250 789903099" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
         <InputField type="text" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
         <FileInputField onChange={handleImageChange} />
         <div className="text-sm text-center">

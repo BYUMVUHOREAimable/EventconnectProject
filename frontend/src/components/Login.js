@@ -72,9 +72,9 @@ export default function Login() {
         className="flex flex-col w-1/2 pt-3 "
         id="offPro"
       >
-        <div className="p-1 bg-violet-900 hover:bg-violet-800 hover:shadow-slate-950/30 shadow-lg text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleLogin}>
+        <div className="p-1 bg-green-500 hover:bg-green-600 text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleLogin}>
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
-          Log in with Google
+          Login with Google
         </div>
       </div>
       <div
@@ -94,7 +94,7 @@ export default function Login() {
           <input
             className=" p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3"
             type="text"
-            placeholder="Email"
+            placeholder="Email..."
             value={email}
             name="email"
             onChange={(e) => setEmail(e.target.value)}
@@ -105,7 +105,7 @@ export default function Login() {
           <input
             className=" p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3"
             type={visible ? "text" : "password"}
-            placeholder="Password"
+            placeholder="Pass..."
             value={password}
             name="password"
             onChange={(e) => setPassword(e.target.value)}
