@@ -19,7 +19,7 @@ passport.use(
             // Check if the existing user is signed in with a different auth provider
             if (existingUser.authProvider !== 'google') {
                 // If the account exists but is not using Google auth, return an error message
-                return done(null, false, { message: "This email is already associated with another account" });
+                return done(null, false, { message: "This email is already associated with another account using signup" });
             }
             // If the user exists and is using Google auth, return the user
             return done(null, existingUser);
