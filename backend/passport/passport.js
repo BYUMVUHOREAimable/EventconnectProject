@@ -14,6 +14,7 @@ passport.use(
       try {
         // Find an existing user with the provided email
         const existingUser = await User.findOne({ email: profile.emails[0].value });
+        console.log(existingUser);
     
         if (existingUser) {
             // Check if the existing user is signed in with a different auth provider
@@ -38,6 +39,7 @@ passport.use(
         // Save the new user to db
         await newUser.save();
         done(null, newUser);
+        console.log(newUser);
     } catch (error) {
         console.error('Error in Google login:', error);
         done(error);

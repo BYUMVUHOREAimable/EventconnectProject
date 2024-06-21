@@ -33,6 +33,7 @@ const SignUp = () => {
       }));
     }
   };
+  console.log(`${process.env.REACT_APP_API_URL}/auth/google/callback`);
 
   const handleImageChange =  async(e)=>{
     const data = await ImagetoBase64(e.target.files[0])
