@@ -10,7 +10,6 @@ router.post('/', async (req, res) => {
   try {
 
     const data = validateUser(req.body);
-    console.log(data);
     if (data.error) {
       return res.status(400).send({ error: data.error.details[0].message });
     }
