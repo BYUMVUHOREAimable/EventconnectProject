@@ -64,32 +64,18 @@ const SignUp = () => {
       });
 
       const dataRes = await response.json();
-      toast(dataRes.message);
 
       if (!response.ok) {
-        if (response.status === 401) {
-          toast.error("Failed to create account");
-        } else if (response.status === 500) {
-          toast.error("Server error");
-        } else {
-          toast.error("Something went wrong");
-        }
+        toast.error(dataRes.message || "Something went wrong");
+        setLoading(false);
         return;
       }
 
-      if (dataRes) {
-        toast.success(dataRes.message);
-        navigate("/authentication");
-      } else {
-        toast.error(dataRes.message);
-      }
+      toast.success(dataRes.message);
+      navigate("/authentication");
     } catch (error) {
       console.error("Error during form submission:", error);
-      if (error.message === "Network Error") {
-        toast.error("Network error, please check your internet connection");
-      } else {
-        toast.error(error.message);
-      }
+      toast.error("Network error, please check your internet connection");
     } finally {
       setLoading(false);
     }

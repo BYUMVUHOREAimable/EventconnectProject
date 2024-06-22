@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
       password: hash,
       fullName: req.body.fullName,
       userprofile: req.body.userprofile,
-      phoneNumber: req.body.phoneNumber,
+      phoneNumber: req.body.phoneNumber
     });
 
     // Save the user to the database
