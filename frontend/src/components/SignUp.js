@@ -20,103 +20,85 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const keys = name.split('.');
-    if (keys.length === 1) {
-      setFormData({ ...formData, [name]: value });
-    } else {
-      setFormData(prevState => ({
-        ...prevState,
-        [keys[0]]: {
-          ...prevState[keys[0]],
-          [keys[1]]: value
-        }
-      }));
-    }
+    setFormData({ ...formData, [name]: value });
   };
-  console.log(`${process.env.REACT_APP_API_URL}/auth/google/callback`);
 
-  const handleImageChange =  async(e)=>{
-    const data = await ImagetoBase64(e.target.files[0])
-    setFormData((preve)=>{
-        return{
-          ...preve,
-          userprofile : data
-        }
-    })
-
-}
+  const handleImageChange = async (e) => {
+    const data = await ImagetoBase64(e.target.files[0]);
+    setFormData((prev) => ({
+      ...prev,
+      userprofile: data,
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
+    const { fullName, email, password, username, phoneNumber } = formData;
+
     // Validate required fields and email/password format
-    if (!formData.fullName || !formData.email || !formData.password || !formData.username || !formData.phoneNumber) {
-        toast.error("Please enter all required fields.");
-        return;
+    if (!fullName || !email || !password || !username || !phoneNumber) {
+      toast.error("Please enter all required fields.");
+      return;
     }
 
-    if (!formData.email.match(/^\S+@\S+\.\S+$/)) {
-        toast.error("Invalid email format");
-        return;
+    if (!email.match(/^\S+@\S+\.\S+$/)) {
+      toast.error("Invalid email format");
+      return;
     }
 
-    if (formData.password.length < 6) {
-        toast.error("Password must be at least 6 characters long");
-        return;
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return;
     }
 
     setLoading(true);
 
     try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-        // Make API request
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/signup`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        });
+      const dataRes = await response.json();
+      toast(dataRes.message);
 
-        // Parse JSON response
-        const dataRes = await response.json();
-        toast(dataRes.message)
-
-        // Check response status
-        if (!response.ok) {
-            if (response.status === 401) {
-                toast.error("Failed to create account");
-            } else if (response.status === 500) {
-                toast.error("Server error");
-            } else {
-                toast.error("Something went wrong");
-            }
-            return;
-        }
-
-        // Display success or error message
-        if (dataRes) {
-            toast.success(dataRes.message);
-            navigate("/authentication");
+      if (!response.ok) {
+        if (response.status === 401) {
+          toast.error("Failed to create account");
+        } else if (response.status === 500) {
+          toast.error("Server error");
         } else {
-            toast.error(dataRes.message);
+          toast.error("Something went wrong");
         }
+        return;
+      }
+
+      if (dataRes) {
+        toast.success(dataRes.message);
+        navigate("/authentication");
+      } else {
+        toast.error(dataRes.message);
+      }
     } catch (error) {
-        // Handle error cases
-        console.error("Error during form submission:", error);
-        if (error.message === "Network Error") {
-            toast.error("Network error, please check your internet connection");
-        } else {
-            toast.error(error.message);
-        }
+      console.error("Error during form submission:", error);
+      if (error.message === "Network Error") {
+        toast.error("Network error, please check your internet connection");
+      } else {
+        toast.error(error.message);
+      }
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
-};
-const googleSignup = () => {
-  setLoading(true);
-  window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
-};
+  };
+
+  const googleSignup = () => {
+    setLoading(true);
+    window.location.href = `${process.env.REACT_APP_API_URL}/auth/google`;
+  };
 
   return (
     <div className="w-full flex flex-col shadow-xl justify-center items-center mt-20">
@@ -133,10 +115,10 @@ const googleSignup = () => {
         </div>
       </div>
       <div className="flex flex-col w-1/2 pt-3 self-center relative" id="offPro">
-        <Link to="./" className="p-1 bg-green-500 hover:bg-green-600 text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleSignup}>
+        <div className="p-1 bg-green-500 hover:bg-green-600 text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleSignup}>
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
           <div>Sign up with Google</div>
-        </Link>
+        </div>
       </div>
       <div className="flex text-black text-xl text-center self-center justify-center items-center w-2/12 relative" id="or">
         <span className="border border-black w-full min-w-full"></span>
@@ -146,7 +128,7 @@ const googleSignup = () => {
       <form className="grid grid-flow-row gap-3 md:w-3/5 w-1/2 self-center mx-auto pt-3 rounded-lg px-8 py-5 relative" onSubmit={handleSubmit} id="loginForm">
         <InputField type="text" placeholder="Your Full Names" name="fullName" value={formData.fullName} onChange={handleChange} />
         <InputField type="email" placeholder="Email..." name="email" value={formData.email} onChange={handleChange} />
-        <PasswordField visible={visible} setVisible={setVisible} placeholder="Pass..." name="password" value={formData.password} onChange={handleChange} />
+        <PasswordField visible={visible} setVisible={setVisible} value={formData.password} onChange={handleChange} />
         <InputField type="tel" placeholder="Tel: +250 789903099" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
         <InputField type="text" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
         <FileInputField onChange={handleImageChange} />
@@ -176,7 +158,7 @@ const InputField = ({ type, placeholder, name, value, onChange }) => (
       name={name}
       value={value}
       onChange={onChange}
-      autoComplete=""
+      autoComplete="off"
     />
   </div>
 );
@@ -190,7 +172,7 @@ const PasswordField = ({ visible, setVisible, value, onChange }) => (
       name="password"
       value={value}
       onChange={onChange}
-      autoComplete=""
+      autoComplete="off"
     />
     {visible ? (
       <AiOutlineEye className="absolute top-3 right-1 cursor-pointer" onClick={() => setVisible(false)} />
@@ -207,10 +189,9 @@ const FileInputField = ({ onChange }) => (
       type="file"
       id="userprofile"
       name="userprofile"
-      accept='image/*'
+      accept="image/*"
       className="hidden"
       onChange={onChange}
-      required 
     />
   </div>
 );
