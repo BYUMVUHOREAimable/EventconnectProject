@@ -55,7 +55,7 @@ const SignUp = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/signup`, {
+      const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
