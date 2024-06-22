@@ -136,6 +136,9 @@ app.post("/reset-password/:id/:token", async (req, res) => {
     }
   }
 });
+app.get("/", (req, res) =>
+  res.send("Index Route For Server Api Event Connect ...")
+);
 
 // Starting the server
 app.listen(PORT, () => {
