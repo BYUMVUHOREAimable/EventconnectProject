@@ -35,7 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(
   cors({
-    origin: `${process.env.FRONTEND_URL}`,
+    origin: 'https://alleventconnect.vercel.app',
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
