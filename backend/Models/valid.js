@@ -11,7 +11,7 @@ const validateUser = (data) => {
       email: Joi.string().email().required().label('Email'),
       password: passwordComplexity().label('Password'),
       fullName: Joi.string().label('Full Name'),
-      userprofile: Joi.string().label('User Profile'),
+      //userprofile: Joi.string().label('User Profile'),
       phoneNumber: Joi.string().pattern(/^\+?[1-9]\d{1,14}$/).label('Phone Number') // E.164 phone number format
       // ...
     });
