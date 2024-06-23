@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible, AiOutlineGoogle } from "react-icons/ai";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { ImagetoBase64 } from './utility/ImagetoBase64.js';
+import { ImagetoBase64 } from './utility/ImagetoBase64';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ const SignUp = () => {
     const data = await ImagetoBase64(e.target.files[0]);
     setFormData((prev) => ({
       ...prev,
-      userprofile: data,
+      userprofile: data
     }));
   };
 
@@ -55,7 +55,7 @@ const SignUp = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/v1/api/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -114,9 +114,9 @@ const SignUp = () => {
       <form className="grid grid-flow-row gap-3 md:w-3/5 w-1/2 self-center mx-auto pt-3 rounded-lg px-8 py-5 relative" onSubmit={handleSubmit} id="loginForm">
         <InputField type="text" placeholder="Your Full Names" name="fullName" value={formData.fullName} onChange={handleChange} />
         <InputField type="email" placeholder="Email..." name="email" value={formData.email} onChange={handleChange} />
-        <PasswordField visible={visible} setVisible={setVisible} value={formData.password} onChange={handleChange} />
+        <PasswordField visible={visible} name="password" setVisible={setVisible} value={formData.password} onChange={handleChange} />
         <InputField type="tel" placeholder="Tel: +250 789903099" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
-        <InputField type="text" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
+        <InputField type="text" placeholder="Username..." name="username" value={formData.username} onChange={handleChange} />
         <FileInputField onChange={handleImageChange} />
         <div className="text-sm text-center">
           <input type="checkbox" id="terms" className="w-5" onClick={() => setTerms(!terms)} />
@@ -127,7 +127,7 @@ const SignUp = () => {
             <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./">Privacy Policy</Link>
           </label>
         </div>
-        <button className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 ${terms ? "bg-[#20B486] hover:shadow-teal-500/40" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms}>
+        <button type="submit" className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 ${terms ? "bg-[#20B486] hover:shadow-teal-500/40" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms}>
           Create account
         </button>
       </form>
