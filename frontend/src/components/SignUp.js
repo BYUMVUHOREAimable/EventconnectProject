@@ -56,11 +56,13 @@ const SignUp = () => {
 
     try {
       const response = await fetch('https://eventconnect2.onrender.com/v1/api/signup', {
-        method: "POST",
+        method: 'POST',
+        cache: 'no-cache',
+        credentials: 'same-origin',
         headers: {
-          "Content-Type": "application/json",
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ fullName, email, password, username, phoneNumber }),
       });
 
       if (!response.ok) {
@@ -119,7 +121,7 @@ const SignUp = () => {
         <InputField type="text" placeholder="Username..." name="username" value={formData.username} onChange={handleChange} />
         <FileInputField onChange={handleImageChange} />
         <div className="text-sm text-center">
-          <input type="checkbox" id="terms" className="w-5" onClick={() => setTerms(!terms)} />
+          <input type="checkbox" id="terms" className="w-5" onChange={() => setTerms(!terms)} />
           <label>
             Agree To Our{" "}
             <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./">Terms of Services</Link>{" "}
@@ -176,7 +178,7 @@ const FileInputField = ({ onChange }) => (
       id="userprofile"
       name="userprofile"
       accept="image/*"
-      className="hidden"
+      className="p-1 rounded-sm focus:border-blue-500 border border-[#20B486] bg-white indent-3 text-gray-700"
       onChange={onChange}
     />
   </div>
