@@ -34,7 +34,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { fullName, email, password, username, phoneNumber } = formData;
+    const { fullName, email, password, username, phoneNumber, userprofile } = formData;
 
     // Validate required fields and email/password format
     if (!fullName || !email || !password || !username || !phoneNumber) {
@@ -62,7 +62,7 @@ const SignUp = () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ fullName, email, password, username, phoneNumber }),
+        body: JSON.stringify({ fullName, email, password, username, phoneNumber, userprofile }),
       });
 
       if (!response.ok) {

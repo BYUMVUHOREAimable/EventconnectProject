@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
       email: req.body.email,
       password: hash,
       fullName: req.body.fullName,
-      //userprofile: req.body.userprofile,
+      userprofile: req.body.userprofile,
       phoneNumber: req.body.phoneNumber
     });
 
