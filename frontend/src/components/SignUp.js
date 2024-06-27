@@ -172,7 +172,7 @@ const PasswordField = ({ visible, setVisible, value, onChange }) => (
 
 const FileInputField = ({ onChange }) => (
   <div className="flex flex-col text-gray-400 py-1">
-    <label htmlFor="userprofile" className="text-sm">Profile Picture</label>
+<label htmlFor="userprofile" className="text-sm">Profile Picture (Optional)</label>
     <input
       type="file"
       id="userprofile"
