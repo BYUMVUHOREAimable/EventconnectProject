@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from './Navbar'
-import { FaHandshake, FaHandsHelping,FaShareSquare, FaPen, FaGift, FaDonate, FaChartLine, FaCommentDots } from 'react-icons/fa'
-import { TbNews,  } from 'react-icons/tb'
+import { FaChartLine, FaCommentDots, FaDonate, FaGift, FaHandsHelping, FaHandshake, FaPen, FaShareSquare } from 'react-icons/fa'
+import { TbNews, } from 'react-icons/tb'
 import Footer from './Footer'
+import Navbar from './Navbar'
 import ContactUs from './SubComponents/ContactUs'
 
 const Support = () => {

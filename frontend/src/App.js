@@ -1,53 +1,52 @@
 import React from "react";
-import "./index.css";
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import "./index.css";
 
-import DesktopLanding from "./layout/Landing";
-import LandingPage from "./layout/Landing";
+import { default as DesktopLanding, default as LandingPage } from "./layout/Landing";
 
 import Sharing from "./components/Sharing";
 
+import About from "./components/About";
+import EventCreation from "./components/EventCreation";
+import ForgotPassword from "./components/ForgotPassword";
+import Location from "./components/Location";
+import Login from "./components/Login";
+import Missing from "./components/Missing";
+import Notification from "./components/Notification";
+import ResetPassword from "./components/ResetPassword";
+import ServicePlanners from "./components/ServicePlanners";
+import Services from "./components/Services";
+import SignUp from "./components/SignUp";
+import Testing from "./components/SubComponents/BookingSteptest";
+import BookEvent from "./components/SubComponents/EventCard";
 import AuthenticationService from "./layout/Authenticating";
 import SignInOption from "./layout/SignInOption";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
-import ResetPassword from "./components/ResetPassword";
-import ForgotPassword from "./components/ForgotPassword";
-import Home from "./layout/Venue/Home";
 import BookPage from "./layout/Venue/Book";
-import BookEvent from "./components/SubComponents/EventCard";
-import Testing from "./components/SubComponents/BookingSteptest";
-import About from "./components/About";
-import Missing from "./components/Missing";
-import Location from "./components/Location";
-import Notification from "./components/Notification";
-import EventCreation from "./components/EventCreation";
-import Services from "./components/Services";
-import ServicePlanners from "./components/ServicePlanners";
+import Home from "./layout/Venue/Home";
 
 import HomeDashboard from "./components/HomeDashboard";
-import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
+import Team from "./scenes/team";
 // import Bar from "./scenes/bar";
 import Form from "./scenes/form";
 // import Line from "./scenes/line";
 // import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
 // import Geography from "./scenes/geography";
-import Calendar from "./scenes/calendar/calendar";
 import { Toaster } from "react-hot-toast";
-import Support from "./components/Support";
-import ContactUs from "./components/SubComponents/ContactUs";
-import ThankYou from "./scenes/Thankyou/Thankyou";
-import UserProfile from "./components/UserProfile";
-import TermsAndConditions from "./components/TermsandConditions";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
-import Step3 from "./components/Step4";
 import Step4 from "./components/Step3";
+import Step3 from "./components/Step4";
 import Step5 from "./components/Step5";
+import ContactUs from "./components/SubComponents/ContactUs";
+import Support from "./components/Support";
+import TermsAndConditions from "./components/TermsandConditions";
+import UserProfile from "./components/UserProfile";
+import ThankYou from "./scenes/Thankyou/Thankyou";
+import Calendar from "./scenes/calendar/calendar";
 
 import NewDashboard from "./components/NewDashboard";
 
