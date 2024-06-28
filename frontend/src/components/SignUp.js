@@ -103,7 +103,7 @@ const SignUp = () => {
         </div>
       </div>
       <div className="flex flex-col w-1/2 pt-3 self-center relative" id="offPro">
-        <div className="p-1 bg-green-500 hover:bg-green-600 text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleSignup}>
+        <div className="p-1 bg-[#20B486] hover:bg-[#608d7f] text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleSignup}>
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
           <div>Sign up with Google</div>
         </div>
@@ -129,7 +129,7 @@ const SignUp = () => {
             <Link className="text-[#20B486] hover:text-[#43edb7] font-semibold" to="./">Privacy Policy</Link>
           </label>
         </div>
-        <button type="submit" className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 ${terms ? "bg-[#20B486] hover:shadow-teal-500/40" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms}>
+        <button type="submit" className={`w-full my-1 py-1 shadow-lg text-white shadow-slate-500/50 font-semibold rounded-lg mt-1 ${terms ? "bg-[#20B486] hover:bg-[#608d7f]" : "bg-gray-400 cursor-not-allowed"}`} disabled={!terms}>
           Create account
         </button>
       </form>

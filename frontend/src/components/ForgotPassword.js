@@ -78,7 +78,7 @@ export default function ForgotPassword() {
             />
           <button
             type="submit"
-            className={`w-full shadow-lg shadow-slate-500/50 hover:shadow-slate-500/40 text-white font-semibold rounded-lg p-2 mt-4 bg-[#20B486] hover:bg-[#43edb7] text-center self-center`}
+            className={`w-full shadow-lg shadow-slate-500/50 hover:shadow-slate-500/40 text-white font-semibold rounded-lg p-2 mt-4 bg-[#20B486] hover:bg-[#558173] text-center self-center`}
           >
             Send
           </button>
@@ -86,7 +86,7 @@ export default function ForgotPassword() {
         <a
         href="/authentication"
         onClick={handleReturnLogin}
-        className="text-violet-900 hover:text-violet-800 hover:underline py-6"
+        className="text-[#20B486] hover:text-[#608d7f] hover:underline py-2"
       >
         Return login?
       </a>

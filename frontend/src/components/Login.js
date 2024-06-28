@@ -72,7 +72,7 @@ export default function Login() {
         className="flex flex-col w-1/2 pt-3 "
         id="offPro"
       >
-        <div className="p-1 bg-green-500 hover:bg-green-600 text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleLogin}>
+        <div className="p-1 bg-[#20B486] hover:bg-[#608d7f] text-white text-center relative w-full max-h-10 flex justify-center rounded-lg gap-2 mb-4 cursor-pointer" onClick={googleLogin}>
           <AiOutlineGoogle className="text-2xl absolute left-2 p-1" />
           Login with Google
         </div>
@@ -133,7 +133,7 @@ export default function Login() {
           </button>
         </div>
       </form>
-      <Link to="forgot" className="text-[#20B486] hover:text-[#52f8c4]">Forgot Your Password&#63;</Link>
+      <Link to="forgot" className="text-[#20B486] hover:text-[#558173] hover:underline py-2">Forgot Your Password&#63;</Link>
     </div>
   );
 }

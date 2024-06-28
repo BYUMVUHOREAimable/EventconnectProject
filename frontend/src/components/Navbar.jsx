@@ -25,7 +25,7 @@ const Navbar = () => {
                         <img src={lock} alt='lock' />
                         <span>Login</span>
                     </Link>
-                    <Link to='/authentication/signup' className='px-4 py-2 rounded-md bg-[#20B486] text-white font-bold hover:bg-[#6dcfb0]'>
+                    <Link to='/authentication/signup' className='px-4 py-2 rounded-md bg-[#20B486] text-white font-bold hover:bg-[#558173]'>
                         Sign Up
                     </Link>
                 </div>
@@ -45,7 +45,7 @@ const Navbar = () => {
                                 <img src={lock} alt='lock' />
                                 <span className='ml-2'>Login</span>
                             </Link>
-                            <Link to='/authentication/signup' className='px-4 py-2 rounded-md bg-[#20B486] text-white font-bold hover:bg-[#6dcfb0]'>
+                            <Link to='/authentication/signup' className='px-4 py-2 rounded-md bg-[#20B486] text-white font-bold hover:bg-[#608d7f]'>
                                 Sign Up
                             </Link>
                         </div>
